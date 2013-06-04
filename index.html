@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>THE TRANSFER STATION</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+</head>
+<body  data-spy="scroll" data-target="nav">
+	<header>
+		<div class="content">
+		<img src="images/xfr.png" alt="XFR">
+		<div id="welcome">WELCOME TO</div>
+		<img src="images/thetransferstation.png" alt="THE TRANSFER STATION">
+		<article id="tagline">
+			<div id="innovative">an innovative resource center for artists and entrepreneurs,</div> 
+			<div id="unique">and a unique venue for the community they inspire.</div>
+		</article>
+		<div id="inputs">
+		<form id="topform" action="">
+			<input type="text" placeholder="YOUR NAME">
+			<input type="text" placeholder="YOUR EMAIL">
+			<input type="submit" id="submit1" value="SUBSCRIBE TO UPDATES">
+		</form>
+		<a class="facebook" href="http://www.facebook.com/thetransferstation"><img src="images/facebook.jpg" alt="FACEBOOK"></a>
+		<a href="http://www.twitter.com/thetransferstation"><img src="images/twitter.jpg" alt="TWITTER"></a>
+		</div>
+		</div>
+	</header>
+	<nav>
+	<div id="sticky_navigation_wrapper">
+    <div id="sticky_navigation">
+		<div class="content">
+		<ul class="nav">
+			<li id="about1"><a href="#about">ABOUT</a></li>
+			<li><a href="#thelayout">THE LAYOUT</a></li>
+			<li><a href="#membership">MEMBERSHIP</a></li>
+			<li><a href="#connect">CONNECT</a></li>
+			<li><a href="#blog">BLOG</a></li>
+			<li id="subscribe1"><a href="#subscribe">SUBSCRIBE TO UPDATES</a></li>
+		</ul>
+		</div>
+	</div>
+	</div>
+	</nav>
+	<section id="smallspaces">
+		<div id="smallspaces">SMALL SPACES. <br>BIG IDEAS.</div>
+	</section>
+	<section id="about">
+		<div class="content clearfix">
+			<div class="column left">
+				<div class="inner">
+					<h1>ABOUT XFR</h1>
+					<p>Welcome to The Transfer Station (THEXFR), an innovative resource center for artists and entrepreneurs, and a unique venue for the community they inspire.  Located on Main Street in Manayunk, The Transfer Station offers tailored-made spaces and customized support services for bringing ideas to life.  Our curated marketplace, co-workspace, creative lab, artist studios, kitchen share and hidden cafe make for the ideal setting to work, sell, create, and collaborate with likeminded individuals.  Above all, The Transfer Station is a place to start.</p>
+					<p class="ctas">JOIN THE CONVERSATION ON <a href="http://www.facebook.com/thetransferstation">FACEBOOK</a> AND <a href="http://www.twitter.com/thetransferstation">TWITTER</a></p>
+				</div>
+			</div>
+			<div class="column right">
+				<div class="inner">
+					<h1>GET INVOLVED</h1>
+					<p>Our concept for The Transfer Station has been in development for years; now it's finally time to bring it to life!  In order to move forward, we need you - the community - to let us know what you think and give us feedback regarding which aspects appeal to you most.  By generating interest and encouraging participation through this website, we can all directly influence how soon The Transfer Station is able to open its doors and what the concept ultimately evolves into.  We ask you to explore this website, let us know what you're most interested in, and help spread the word!</p>
+					<p class="ctas">GET STARTED WITH THE XFR <a href="#membership">QUESTIONNAIRE</a> BELOW</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="iamhereto">
+		<div class="content">
+			<div id="ohhello">OH HELLO. I'M JUST HERE TO</div>
+			<ul id="nav2">
+				<li><a href="#">JOIN</a></li>
+				<li><a href="#">WORK</a></li>
+				<li><a href="#">SELL</a></li>
+				<li><a href="#">TRANSFER</a></li>
+				<li><a href="#">RINSE</a></li>
+				<li><a href="#">REPEAT</a></li>
+			</ul>
+		</div>
+	</section>
+		<script>
+/*####### STICKY NAV SCRIPT ##########*/
+	var nav_pos = $('nav').offset().top;
+	var i = 0;
+	var sticky_nav = function()
+	{
+		var top_pos = $(window).scrollTop(); // our current vertical position from the top
+
+		if ( (top_pos > nav_pos) && ($(window).width() > 640) )
+		{
+			$('#sticky_navigation').css({ 'position': 'fixed', 'top':0, 'left':0, 'z-index':9999999});
+		}
+		else
+		{
+			$('#sticky_navigation').css({ 'position': 'relative', 'top':0, 'left':0 });
+		}
+	};
+
+	$(window).scroll(function()
+	{
+		if (i <= 0)
+		{
+			nav_pos = $('nav').offset().top - 0;
+			i = 1;
+		};
+		 sticky_nav();
+	});
+
+	$(window).resize(function()
+	{
+			nav_pos = $('nav').offset().top - 0;
+	});
+</script>
+</body>
+</html>

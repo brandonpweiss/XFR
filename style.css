@@ -1,0 +1,340 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix */
+/* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
+/* Note: It's better to use display:inline-block; if width is set on the element you want to clear */
+.clearfix:before, .clearfix:after {
+	content: "\0020"; display: block; height: 0; visibility: hidden;	
+} 
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+/*FONTS -- KARBON*/
+
+
+@font-face {
+    font-family: 'karbonlight';
+    src: url('fonts/karbon/karbon-light-webfont.eot');
+    src: url('fonts/karbon/karbon-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/karbon/karbon-light-webfont.woff') format('woff'),
+         url('fonts/karbon/karbon-light-webfont.ttf') format('truetype'),
+         url('fonts/karbon/karbon-light-webfont.svg#karbonlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'karbonregular';
+    src: url('fonts/karbon/karbon-regular-webfont.eot');
+    src: url('fonts/karbon/karbon-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/karbon/karbon-regular-webfont.woff') format('woff'),
+         url('fonts/karbon/karbon-regular-webfont.ttf') format('truetype'),
+         url('fonts/karbon/karbon-regular-webfont.svg#karbonregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'karbonmedium';
+    src: url('fonts/karbon/karbon-medium-webfont.eot');
+    src: url('fonts/karbon/karbon-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/karbon/karbon-medium-webfont.woff') format('woff'),
+         url('fonts/karbon/karbon-medium-webfont.ttf') format('truetype'),
+         url('fonts/karbon/karbon-medium-webfont.svg#karbonmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+
+
+
+@font-face {
+    font-family: 'karbonsemibold';
+    src: url('fonts/karbon/karbon-semibold-webfont.eot');
+    src: url('fonts/karbon/karbon-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/karbon/karbon-semibold-webfont.woff') format('woff'),
+         url('fonts/karbon/karbon-semibold-webfont.ttf') format('truetype'),
+         url('fonts/karbon/karbon-semibold-webfont.svg#karbonsemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'karbonthin';
+    src: url('fonts/karbon/karbon-thin-webfont.eot');
+    src: url('fonts/karbon/karbon-thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/karbon/karbon-thin-webfont.woff') format('woff'),
+         url('fonts/karbon/karbon-thin-webfont.ttf') format('truetype'),
+         url('fonts/karbon/karbon-thin-webfont.svg#karbonthin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'karbonbold';
+    src: url('fonts/karbon/karbon-bold-webfont.eot');
+    src: url('fonts/karbon/karbon-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/karbon/karbon-bold-webfont.woff') format('woff'),
+         url('fonts/karbon/karbon-bold-webfont.ttf') format('truetype'),
+         url('fonts/karbon/karbon-bold-webfont.svg#karbonbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body{
+	font-family: karbonregular;
+	letter-spacing: 2px;
+}
+.content{
+	width: 95%;
+	max-width: 880px;	
+	margin: 0 auto;
+	overflow-x: hidden;
+}
+/*header*/
+header{
+	background: #ededed;
+	text-align: center;	
+	color: #a9a9a9;
+	padding: 83px 0px 140px 0px;
+}
+#welcome{
+	font-size: 18px;
+	font-family: karbonmedium;
+	text-transform: uppercase;
+	padding: 30px 0px 30px 0px;
+}
+#tagline{
+border-top: #dcdcdc solid medium;
+border-bottom: #dcdcdc solid medium;
+color: #909090;
+text-transform: uppercase;
+line-height: 30px;
+margin: 30px 0px 20px 0px;
+}
+
+header form#topform input{
+	border: 0px;
+	box-shadow:none;
+	text-align: center;
+	border-radius: 0px;
+	font-size: 20px;
+	font-family: karbonlight;
+	padding: 10px;
+	margin-right: 20px;
+}
+form#topform #submit1{
+	font-family: karbonregular;
+	background: #ffcc00;
+	color: #FFFFFF;
+	letter-spacing: 2px;
+	position: relative;
+	top: -5px;
+	padding: 10px 12px 9px 12px;
+}
+form#topform{
+	display: inline-block;
+}
+
+#inputs a{
+	display: inline-block;
+	position: relative;
+	top: 12px;
+}
+#inputs a.facebook{
+	margin-right: 10px;
+}
+/*end header*/
+
+/*nav*/
+nav{
+	background: #2b2b28;
+	text-align: center;
+	margin-bottom: -20px;
+}
+nav ul{
+	padding: 10px 0px 0px 0px;
+}
+nav ul li{
+	display:inline-block;
+	text-align: center;
+	padding: 0px 31px 0px 31px;
+}
+nav ul li a{
+	color:#ffcc00;
+	font-size: 14px;
+	font-family: karbonsemibold;
+}
+nav ul li a:hover{
+	color: #FFFFFF;
+	background-color: transparent;
+}
+ul.nav li#about1{
+	padding-left: 0px;
+}
+ul.nav li#subscribe1{
+	padding-right: 0px;
+}
+.active a{
+	color: #FFFFFF;
+}
+
+#sticky_navigation_wrapper {
+	background: #2b2b28;
+	text-align: center;
+	margin-bottom: -20px;
+}
+
+#sticky_navigation {
+	width: 100%;
+	position: relative;
+	z-index: 999999;
+	height: 32px;
+	background: #2b2b28;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+/*end nav*/
+section#smallspaces{
+	background: url(images/smallspacesbigideas.jpg) bottom center no-repeat;
+	background-size: cover;
+	height: 560px;
+	color:#ffcc00;
+	font-family: karbonsemibold;
+	font-size: 30px;
+	text-align: center;
+	border-top: #666666 solid medium;
+	border-bottom: #ededed solid thick;
+}
+div#smallspaces{
+	position: relative;
+	top: 50%;
+}
+
+/*about section*/
+#about{
+	background: #ffcc00;
+	border-top: #ffffff solid thick;
+	padding: 85px 0px 85px 0px;
+	border-bottom: #ededed solid thick;
+}
+#about .column{
+	width: 50%;
+	max-width: 420px;
+	display: inline-block;
+}
+#about .left{
+	float:left;	
+}
+#about .left .inner{
+	padding-right: 35px;
+}
+#about .right .inner{
+	padding-left: 35px;
+}
+#about h1{
+	font-family: karbonthin;
+	font-size: 30px;
+	padding-bottom: 15px;
+	border-bottom: solid thin black;
+}
+#about p{
+	padding-top: 15px;
+	text-align: justify;
+	line-height: 22px;
+	font-size: 14px;
+}
+p.ctas{
+	font-family: karbonsemibold;
+	color: #FFFFFF;
+	margin-top: 20px;
+	letter-spacing: 1px;
+}
+
+/*about section end*/
+/*iamhereto section*/
+#iamhereto{
+	background: #2c2c2a;
+	text-align: center;
+}
+#ohhello{
+	color: #666666;
+}
+ul#nav2{
+	background: #2c2c2a;
+}
+ul#nav2 li{
+	display:inline-block;
+}
+ul#nav2 li a{
+	color: #ffcc00;
+	font-family: karbonmedium;
+	font-size: 25px;
+	padding: 12px;
+}
+/*iamhereto section end*/
