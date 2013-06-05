@@ -270,9 +270,9 @@ section#smallspaces{
 	border-top: #666666 solid medium;
 	border-bottom: #ededed solid thick;
 }
-div#smallspaces{
+div.smallspaces{
 	position: relative;
-	top: 50%;
+	top: 45%;
 }
 
 /*about section*/
@@ -379,7 +379,7 @@ section#layout .layoutP{
     background: #ededed;
 }
 section#layout .layoutP .inner{
-	max-width: 1280px;
+	max-width: 980px;
 	margin: 0 auto;
 	padding: 0px 10px 0px 10px;
 }
@@ -460,32 +460,151 @@ font-family: karbonsemibold;
 	margin-top: 10px;
 	margin-bottom: 40px;
 }
-.learnmore{
+a.learnmore{
+	display:block;
 	background: #cccccc;
 	width: 85%;
 	margin: 0 auto;
 	font-family: karbonmedium;
 	font-size: 18px;
 	padding: 5px;
+	color: #000000;
+	text-decoration: none;
+
 }
-.tellafriend{
+a.tellafriend{
+	display:block;
 	background: #66cccc;
 	width: 85%;
 	margin: 0 auto;
 	margin-top: 10px;
 	font-size: 18px;
 	padding: 5px;
+	color: #000000;
+	text-decoration: none;
 }
 /*layout section end*/
 
+#transferhere{
+	background: url(images/transferhere.jpg) center center no-repeat;
+	background-size: cover;
+	height: 554px;
+	color:#ffcc00;
+	font-family: karbonsemibold;
+	font-size: 30px;
+	text-align: center;
+	border-top: #cccccc solid medium;
+	border-bottom: #ededed solid thick;
+}
 
+/*membership section*/
+#membership{
+	border-top: #ededed solid thick;
+	border-bottom: #ffffff solid thick;
+	background: #2b2b28;
+	padding: 80px 0px 40px 0px;
+}
+/*membership section end*/
 
+#membership .column{
+	width: 50%;
+	max-width: 420px;
+	display: inline-block;
+}
+#membership .left{
+	float:left;	
+}
+#membership .left .inner{
+	padding-right: 35px;
+}
+#membership .right .inner{
+	padding-left: 35px;
+}
+#membership h1{
+	font-family: karbonthin;
+	font-size: 30px;
+	color: #cccccc;
+	padding-bottom: 15px;
+	border-bottom: solid thin #cccccc;
+}
+#membership p{
+	padding-top: 15px;
+	text-align: justify;
+	line-height: 22px;
+	font-size: 14px;
+	color: #cccccc;
+}
+#membership p.yellow{
+	font-family: karbonmedium;
+	color: #ffcc00;
+	text-transform: uppercase;
+}
 
+#membership p.grey{
+	font-family: karbonmedium;
+	text-transform: uppercase;
+}
+#iwant{
+	clear:both;
+	color: #cccccc;
+	font-family: karbonmedium;
+	font-size: 25px;
+	padding-top: 40px;
+	display:block;
+}
+/*membership section end*/
+#oldstation{
+	border-top: #666666 solid thick;
+	border-bottom: #ffffff solid thick;
+}
+#oldstation img{
+	width: 100%;
+}
 
-
-
-
-
+/*connect section*/
+#connect{
+	background: #ffcc00;
+	border-top: #ffffff solid thick;
+	padding: 85px 0px 85px 0px;
+	border-bottom: #ededed solid thick;
+}
+#connect .column{
+	width: 50%;
+	max-width: 420px;
+	display: inline-block;
+}
+#connect .left{
+	float:left;	
+}
+#connect .left .inner{
+	padding-right: 35px;
+}
+#connect .right .inner{
+	padding-left: 35px;
+}
+#connect h1{
+	font-family: karbonthin;
+	font-size: 30px;
+	padding-bottom: 15px;
+	border-bottom: solid thin black;
+}
+#connect p{
+	padding-top: 15px;
+	text-align: justify;
+	line-height: 22px;
+	font-size: 14px;
+}
+#connect form input{
+	font-family: karbonthin;
+	background: none;
+	border:none;
+	box-shadow:none;
+	font-size: 30px;
+	width: 100%;
+	height: 100%;
+	margin-top: 10px;
+}
+/*connect section end*/
 
 
 
@@ -550,5 +669,4 @@ section#layout .dept p{
 section#signup .layoutP{
     padding: 0px;
 }
-
 }
