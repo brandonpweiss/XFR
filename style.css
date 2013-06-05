@@ -153,7 +153,6 @@ body{
 	width: 95%;
 	max-width: 880px;	
 	margin: 0 auto;
-	overflow-x: hidden;
 }
 /*header*/
 header{
@@ -319,13 +318,23 @@ p.ctas{
 /*about section end*/
 /*iamhereto section*/
 #iamhereto{
-	background: #2c2c2a;
+	background: url(images/checkers.jpg);
 	text-align: center;
+	height: 330px;
+	border-top: #FFFFFF solid thick;
+	border-bottom: #ededed solid thick;
+}
+#iamhereto .content{
+	position: relative;
+	top: 40%;
+	
 }
 #ohhello{
 	color: #666666;
+	margin-bottom: 20px;
 }
 ul#nav2{
+	padding: 10px;
 	background: #2c2c2a;
 }
 ul#nav2 li{
@@ -338,3 +347,208 @@ ul#nav2 li a{
 	padding: 12px;
 }
 /*iamhereto section end*/
+#chair{
+	background: url(images/chair.jpg) bottom center no-repeat;
+	border-bottom: #ffcc00 solid thick;
+	border-top: #ffffff solid thick;
+	background-size: cover;
+	height: 560px;
+}
+
+
+/*layout section*/
+
+section#layout{
+    background: url(images/checkers2.jpg);
+    padding: 0px 0px 40px 0px;
+    border-top:  #ffcc00 solid thick;
+	border-bottom: #cccccc solid thick;
+}
+span.bold{
+	font-family: karbonmedium;
+	font-size: 16px;
+}
+section#layout .content{
+	max-width: 1280px;
+	width: 95%;
+	margin: 0 auto;
+}
+
+section#layout .layoutP{
+    padding: 40px 60px 20px 60px;
+    background: #ededed;
+}
+section#layout .layoutP .inner{
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 0px 10px 0px 10px;
+}
+
+section#layout .layoutP h1{
+    color: #333;
+    font-family: karbonthin;
+    font-size: 30px;
+    margin-bottom: 20px;
+    letter-spacing: 4px;
+}
+section#layout .layoutP p{
+    padding: 20px 0px 20px 0px;
+    font-size: 16px;
+    font-family: karbonlight;
+    border-top: solid 1px #ccc;
+    color: #333;
+    text-align: justify;
+    line-height: 23px;
+}
+section#layout .layoutP p:nth-child(3){
+    padding-top: 10px;
+    font-size: 13px;
+    border-top: none;
+    color: #333;
+    text-align: justify;
+    line-height: 20px;
+}
+section#layout .dept{
+    float:left;
+    display:block;
+    width: 21%;
+    text-align: center;
+    padding: 20px 25px 0px 25px;
+}
+
+section#layout article#depts{
+    margin: 0 auto;
+}
+
+section#layout .dept img{
+ max-width: 234px;
+    margin: 20px 0px 20px 0px;  
+}
+section#layout .dept:nth-last-of-type(1){
+    padding-right: 0px;
+}
+section#layout .dept h2{
+    font-size: 30px;
+    width: 100%;
+    color: #eee;
+    padding: 10px 0px 10px 0px;
+	background: #2b2b28;
+	font-family: karbonmedium;
+    letter-spacing: 2px;
+}
+section#layout .dept p{
+    text-align: justify;
+    border-top: solid 20px #000000;
+    padding: 20px 0px 20px 0px;
+    line-height: 23px;
+    height: 300px;
+    font-family: karbonthin;
+}
+
+section#layout .dept .bold{
+color: #333;
+font-family: karbonsemibold;
+}
+
+.dept h3{
+	background: #ffcc00;
+	font-size: 20px;
+	font-family: karbonmedium;
+	padding: 5px;
+	width: 85%;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 40px;
+}
+.learnmore{
+	background: #cccccc;
+	width: 85%;
+	margin: 0 auto;
+	font-family: karbonmedium;
+	font-size: 18px;
+	padding: 5px;
+}
+.tellafriend{
+	background: #66cccc;
+	width: 85%;
+	margin: 0 auto;
+	margin-top: 10px;
+	font-size: 18px;
+	padding: 5px;
+}
+/*layout section end*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1024px) {
+
+    section#layout .layoutP{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+
+@media only screen and (max-width: 788px){
+section#layout .dept h2{
+    font-size: 16px;
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+    background: #444;
+    letter-spacing: 4px;
+}
+
+section#membership .layoutP{
+    padding: 0px 0px 0px 0px;
+}
+
+section#membership .layoutP p{
+    padding: 20px 0px 20px 0px;
+    font-size: 13px;
+    width: 100%;
+    text-align: justify;
+    line-height: 20px;
+     float:none;
+}
+
+section#layout .dept{
+    float:none;
+    display:block;
+    width: 100%;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    margin-bottom: 40px;
+}
+section#layout .dept p{
+    text-align: justify;
+    border-top: solid 2px #555;
+    padding: 10px 0px 0px 0px;
+    min-height: 100px;
+}
+section#signup .layoutP{
+    padding: 0px;
+}
+
+}
