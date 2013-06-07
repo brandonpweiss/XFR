@@ -748,11 +748,18 @@ form#inputs input{
 	padding: 10px 10px 6px 10px;
 	display:inline-block;
 }
+.names{
+}
 .rightz{
-	float:right;
 }
 .topz{
-	width: 21%;
+	width: 23.1%;
+}
+textarea{
+	border-radius: 0px;
+	border: 0px;
+	height: 100px;
+	width: 48.8%;
 }
 
 
@@ -766,6 +773,7 @@ form#inputs #submit3{
 	padding: 10px 0px 10px 0px;
 	margin-left: 0px;
 	clear:both;
+	margin-top: 20px;
 }
 
 /*options section end*/
