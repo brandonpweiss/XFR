@@ -918,10 +918,24 @@ footer p{
 /*footer end*/
 
 
-
-
+@media only screen and (max-width: 1300px) {
+	.topz{
+	width: 23%;
+}
+}
+@media only screen and (max-width: 1240px) {
+.topz{
+	width: 98%;
+}
+textarea{
+	width: 99%;
+	margin-bottom: 20px;
+}
+}
 @media only screen and (max-width: 1024px) {
-
+textarea{
+	width: 98%;
+}
 form#inputs .column{
 float:left;
 width: 50%;
@@ -1319,10 +1333,11 @@ section#options .option p{
 	min-height: 0px;
 }
 #options2 .option2 .heading .headingLeft{
-	width: 80%;
+	width: 90%;
 }
 #options2 .option2 .heading .addthis{
-	width: 30%;
+	position: relative;
+	left: -10px;
 	font-size: 12px;
 }
 #options2 .option2 .heading button{
