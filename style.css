@@ -919,6 +919,16 @@ section#layout .dept p{
 .selectbox button{
 	font-size: 18px;
 }
+#options p{
+	height: 180px;
+}
+#options .box{
+	height: 300px;
+}
+#options2 .info{
+	outline: red solid thin;
+	
+}
 }
 
 @media only screen and (max-width: 788px) {
@@ -984,6 +994,7 @@ section#layout .dept p{
     text-align: justify;
     border-top: solid 2px #555;
     padding: 10px 0px 0px 0px;
+    font-size: 12px;
     height: 500px;
 }
 section#layout .dept img{
@@ -996,6 +1007,31 @@ section#layout .dept img{
 	font-size: 18px;
 }
 
+
+#options h1{
+	font-size: 18px;
+}
+#options h2{
+	font-size: 12px;
+}
+#options p{
+	font-size: 12px;
+	height: 220px;
+}
+#options .box{
+	height: 350px;
+}
+#options .price{
+	font-size: 8px;
+	line-height: 14px;
+}
+#options .selectthis{
+	font-size: 16px;
+}
+#options button{
+	padding-bottom: 9px;
+	font-size: 16px;
+}
 
 }
 
