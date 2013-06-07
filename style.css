@@ -385,7 +385,7 @@ section#layout .layoutP{
 section#layout .layoutP .inner{
 	max-width: 980px;
 	margin: 0 auto;
-	padding: 0px 10px 0px 10px;
+	padding: 0px 20px 0px 20px;
 }
 
 section#layout .layoutP h1{
@@ -508,7 +508,6 @@ a.tellafriend{
 	background: #2b2b28;
 	padding: 80px 0px 40px 0px;
 }
-/*membership section end*/
 
 #membership .column{
 	width: 50%;
@@ -562,6 +561,7 @@ a.tellafriend{
 #options{
 	background: #ededed;
 	border-top: #FFFFFF;
+	padding-bottom: 40px;
 }
 #options .content{
 	max-width: 1280px;
@@ -737,6 +737,37 @@ button.check{
 	font-family: karbonmedium;
 	color: #999999;
 }
+
+form#inputs input{
+	border: none;
+	border-radius: 0;
+	font-size: 25px;
+	font-family: karbonmedium;
+	font-size: 14px;
+	color: #000000;
+	padding: 10px 10px 6px 10px;
+	display:inline-block;
+}
+.rightz{
+	float:right;
+}
+.topz{
+	width: 21%;
+}
+
+
+form#inputs #submit3{
+	width: 100%;
+	font-family: karbonmedium;
+	font-size: 30px;
+	color: #ffffff;
+	border: none;
+	background: #66cccc;
+	padding: 10px 0px 10px 0px;
+	margin-left: 0px;
+	clear:both;
+}
+
 /*options section end*/
 
 #oldstation{
@@ -811,8 +842,8 @@ footer .content{
 	position: relative;
 	width: 980px;	
 	height: 502px;
-	max-width: 1280px;
-	padding: 0px;
+	max-width: 95%;
+	padding: 20px;
 }
 footer ul.buttons{
 	text-align: center;
@@ -881,18 +912,64 @@ footer p{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 @media only screen and (max-width: 1024px) {
+
+form#inputs .column{
+float:left;
+width: 50%;
+}
+form#inputs input{
+	border: none;
+	border-radius: 0;
+	font-size: 25px;
+	font-family: karbonmedium;
+	font-size: 14px;
+	color: #000000;
+	padding: 10px 10px 6px 10px;
+	float:left;
+}
+.topz{
+	width: 95%;
+}
+.topz1{
+	margin-right: 12px;
+}
+
+form#inputs *{
+	display:block;
+}
+form textarea.comments{
+	width: 97%;
+	margin-top: 20px;
+	margin-left: 0px;
+}
+form textarea{
+	border-radius: 0;
+	border: none;
+	width: 100%;
+	margin-left: -20px;
+	height: 100px;
+	font-family: karbonmedium;
+	color: #000000;
+	font-size: 14px;
+}
+
+form#inputs #submit3{
+	width: 100%;
+	font-family: karbonmedium;
+	font-size: 30px;
+	color: #ffffff;
+	border: none;
+	background: #66cccc;
+	padding: 10px 0px 10px 0px;
+	margin-left: 0px;
+	clear:both;
+}
+
+
+
+
+
     section#layout .layoutP{
         padding-left: 0px;
         padding-right: 0px;
@@ -919,19 +996,35 @@ section#layout .dept p{
 .selectbox button{
 	font-size: 18px;
 }
-#options p{
+#options .option p{
 	height: 180px;
+	font-size: 14px;
 }
 #options .box{
 	height: 300px;
 }
-#options2 .info{
-	outline: red solid thin;
-	
+.option2 .info .price{
+	text-align: center;
+	float:right;
+	display:block;
+	width: 23%;
+	padding: 20px;
+	border-left: #FFFFFF solid thin;
+	line-height: 20px;
+}
+#options2 p{
+	font-size: 14px;
 }
 }
 
 @media only screen and (max-width: 788px) {
+	header .content{
+	max-width: 70%;
+}
+#tagline{
+	font-size: 14px;
+	line-height: 16px;
+}
 nav ul li{
 	display:inline-block;
 	text-align: center;
@@ -987,7 +1080,7 @@ section#layout .dept .learnmore, section#layout .dept .tellafriend{
 	font-size: 12px;
 }
 section#layout .dept h3{
-		font-size: 12px;
+		font-size: 10px;
 		margin-bottom:0px;		
 	}
 section#layout .dept p{
@@ -995,7 +1088,7 @@ section#layout .dept p{
     border-top: solid 2px #555;
     padding: 10px 0px 0px 0px;
     font-size: 12px;
-    height: 500px;
+    height: 420px;
 }
 section#layout .dept img{
 	width: 90%;
@@ -1012,14 +1105,14 @@ section#layout .dept img{
 	font-size: 18px;
 }
 #options h2{
-	font-size: 12px;
+	font-size: 12px;		
 }
-#options p{
+#options .option p{
 	font-size: 12px;
-	height: 220px;
+	height: 200px;
 }
 #options .box{
-	height: 350px;
+	height: 300px;
 }
 #options .price{
 	font-size: 8px;
@@ -1032,10 +1125,114 @@ section#layout .dept img{
 	padding-bottom: 9px;
 	font-size: 16px;
 }
-
+.addthis{
+	font-size: 18px;
+}
+#options2 .option2 .price{
+		width: 20%;
+}
+#options2 .option2 .info .para p{
+	font-size: 10px;
+	padding-right: 10px;
+}
+footer img{
+	display:none;
+}
+footer .content{
+	max-width: 90%;
+}
+footer .column#column3{
+	clear:both;
+}
+footer.column#column2{
+	float:right;
+}
+#connect form input#submit2{
+	text-align: left;
+	display:inline-block;
+	margin-left: 0px;
+	color: #FFFFFF;
+	width: 150px;
+	background: #000000;
+}
 }
 
 @media only screen and (max-width: 700px){
+nav{
+	display:none;
+}
+
+section#layout .dept p{
+    text-align: justify;
+    border-top: solid 2px #555;
+    padding: 10px 0px 0px 0px;
+    font-size: 12px;
+    height: auto;
+}
+section#layout .dept{
+	margin-top: 50px;
+}
+
+
+/*about section*/
+#about{
+	background: #ffcc00;
+	border-top: #ffffff solid thick;
+	padding: 85px 0px 85px 0px;
+	border-bottom: #ededed solid thick;
+}
+#about .column{
+	width: 100%;
+	max-width: 100%;
+	display: block;
+	float:none;
+	clear:both;
+}
+#about .left{
+	float:none;
+}
+#about .left .inner{
+	padding-right: 0px;
+}
+#about .right .inner{
+	padding-top: 40px;
+	padding-left: 0px;
+}
+/*about section end*/
+
+
+/*membership section*/
+#membership{
+	border-top: #ededed solid thick;
+	border-bottom: #ffffff solid thick;
+	background: #2b2b28;
+	padding: 80px 0px 40px 0px;
+}
+
+#membership .column{
+	width: 100%;
+	max-width: 100%;
+	display: inline-block;
+}
+#membership .left{
+	float:none
+}
+#membership .left .inner{
+	padding-right: 0px;
+}
+#membership .right .inner{
+	padding-left: 35px;
+}
+/*membership section end*/
+
+
+ul#nav2 li a{
+	color: #ffcc00;
+	font-family: karbonmedium;
+	font-size: 25px;
+	padding: 5px;
+}
+
 section#layout .dept h2{
     font-size: 16px;
     width: 100%;
@@ -1075,7 +1272,13 @@ section#signup .layoutP{
     padding: 0px;
 }
 
-
+#options .option .inner h2{
+	background: #ffcc00;
+	font-family: karbonmedium;
+	color: #000000;
+	padding: 5px 0px 5px 0px;
+	margin-bottom: 10px;
+}
 
 section#options .option h2{
     font-size: 16px;
@@ -1100,5 +1303,219 @@ section#options .option p{
     padding: 10px 0px 0px 0px;
     min-height: 100px;
 }
+#options .option p{
+	height: auto;
+}
+#options .box{
+	height: auto;
+	min-height: 0px;
+}
+#options2 .option2 .heading .headingLeft{
+	width: 80%;
+}
+#options2 .option2 .heading .addthis{
+	width: 30%;
+	font-size: 12px;
+}
+#options2 .option2 .heading button{
+	font-size: 12px;
+	width: 10%;
+}
+#options2 .option2 h1{
+font-size: 12px;
+letter-spacing: 0px;
+}
+.option2 p{
+	float:none;
+	width: 90%;
+}
+#options2 .option2 .price{
+	width: 90%;
+	border-left: none;
+	border-top: #ffffff solid thin;
+	margin-top: 20px;
+	padding-bottom: 0px;
+}
+#connect .column{
+	float:none;
+	width: 100%;
+}
 
+#connect .left .inner{
+	padding-right: 0px;
+}
+#connect .right .inner{
+	padding-top: 40px;
+	padding-left: 0px;
+}
+
+footer .content{
+	display:block;
+	position: relative;
+	width: 85%;	
+	height: 800px;
+	max-width: 95%;
+	padding: 20px;
+}
+}
+
+@media only screen and (max-width: 480px){
+
+form#inputs .column{
+float:none;
+width: 100%;
+}
+form#inputs input{
+	border: none;
+	border-radius: 0;
+	font-size: 25px;
+	font-family: karbonmedium;
+	font-size: 14px;
+	color: #000000;
+	padding: 10px 10px 6px 10px;
+	float:left;
+}
+.topz{
+	width: 95%;
+}
+.topz1{
+	margin-right: 12px;
+}
+
+form#inputs *{
+	display:block;
+}
+form textarea.comments{
+	width: 97%;
+	margin-top: 20px;
+	margin-left: 0px;
+}
+form textarea{
+	border-radius: 0;
+	border: none;
+	width: 100%;
+	margin-left: -20px;
+	height: 100px;
+	font-family: karbonmedium;
+	color: #000000;
+	font-size: 14px;
+}
+
+form#inputs #submit3{
+	width: 100%;
+	font-family: karbonmedium;
+	font-size: 18px;
+	color: #ffffff;
+	border: none;
+	background: #66cccc;
+	padding: 10px 0px 10px 0px;
+	margin-left: 0px;
+	clear:both;
+}
+
+
+
+footer {
+	max-width:100%;
+}
+
+header{
+	background: #ededed;
+	text-align: center;	
+	color: #a9a9a9;
+	padding: 10px 0px 40px 0px;
+	max-height: 100%;
+}
+header .content form{
+	position: relative;
+	left: 0px;
+}
+header img#xfr{
+	width: 50%;
+}
+
+#welcome{
+	font-size: 18px;
+	font-family: karbonmedium;
+	text-transform: uppercase;
+	padding: 0px 0px 0px 0px;
+}
+#tagline{
+	border-top: #dcdcdc solid medium;
+	border-bottom: #dcdcdc solid medium;
+	color: #909090;
+	text-transform: uppercase;
+	line-height: 16px;
+	font-size: 12px;
+	margin: 5px 0px 5px 0px;
+}
+
+header form#topform input{
+	border: 0px;
+	box-shadow:none;
+	text-align: center;
+	border-radius: 0px;
+	font-size: 20px;
+	font-family: karbonlight;
+	padding: 10px;
+	margin-right: 20px;
+}
+form#topform #submit1{
+	font-family: karbonregular;
+	background: #ffcc00;
+	color: #FFFFFF;
+	letter-spacing: 2px;
+	position: relative;
+	top: -5px;
+	padding: 10px 12px 9px 12px;
+}
+form#topform{
+	display: inline-block;
+}
+
+#inputs a{
+	display: inline-block;
+	position: relative;
+	top: 12px;
+}
+#inputs a.facebook{
+	margin-right: 10px;
+}
+
+
+
+header form#topform input{
+	border: 0px;
+	box-shadow:none;
+	text-align: center;
+	border-radius: 0px;
+	font-size: 20px;
+	font-family: karbonlight;
+	padding: 10px;
+	margin-right: 0px;
+	max-width: 200px;
+}
+form#topform #submit1{
+	font-family: karbonregular;
+	background: #ffcc00;
+	color: #FFFFFF;
+	font-size: 14px;
+	letter-spacing: 2px;
+	position: relative;
+	top: 0px;
+	padding: 10px 12px 9px 12px;
+}
+form#topform{
+	display: inline-block;
+}
+#connect form input{
+	font-family: karbonthin;
+	background: none;
+	border:none;
+	box-shadow:none;
+	font-size: 30px;
+	width: 90%;
+	height: 100%;
+	margin-top: 10px;
+}
 }
