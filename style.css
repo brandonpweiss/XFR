@@ -227,10 +227,14 @@ nav ul li a{
 	color:#ffcc00;
 	font-size: 14px;
 	font-family: karbonsemibold;
+	-webkit-transition: color .3s ease-in-out;
+	-moz-transition: color .3s ease-in-out;
+	-o-transition: color .3s ease-in-out;
+	-ms-transition: color .3s ease-in-out;
+	transition: color .3s ease-in-out;
 }
 nav ul li a:hover{
 	color: #FFFFFF;
-	background-color: transparent;
 }
 ul.nav li#about1{
 	padding-left: 0px;
@@ -546,13 +550,195 @@ a.tellafriend{
 }
 #iwant{
 	clear:both;
-	color: #cccccc;
+	color: #66cccc;
 	font-family: karbonmedium;
 	font-size: 25px;
 	padding-top: 40px;
 	display:block;
 }
 /*membership section end*/
+
+/*options section*/
+#options{
+	background: #ededed;
+	border-top: #FFFFFF;
+}
+#options .content{
+	max-width: 1280px;
+	width: 95%;
+	margin: 0 auto;
+	padding-top: 40px;
+}
+
+.option{
+	float:left;
+    display:block;
+    width: 25%;
+    text-align: center;
+}
+.option .inner{
+	padding: 20px;
+	padding-bottom: 0px;
+}
+
+#options h1{
+	text-align:center;
+	color: #FFFFFF;
+	background: #666666;
+	padding: 10px;
+	font-family: karbonmedium;
+	font-size: 30px;
+	padding: 10px 0px 10px 0px;
+	margin-bottom: 20px;
+}
+#options h2{
+	background: #ffcc00;
+	font-family: karbonmedium;
+	color: #000000;
+	padding: 5px 0px 5px 0px;
+	margin-bottom: 10px;
+}
+
+.box{
+	text-align: justify;
+	background: #cccccc;
+	padding: 20px;
+	min-height: 260px;
+}
+
+.box p{
+	font-family: karbonthin;
+	line-height: 20px;
+	padding-bottom: 60px;
+	min-height: 149px;
+}
+.box .price{
+	font-family: karbonmedium;
+	text-align: center;
+	border-top: #ffffff solid thin;
+	padding-top: 10px;
+	line-height: 20px;
+}
+.selectbox{
+	font-family: karbonmedium;
+	font-size: 30px;
+	color: #ffffff;
+	text-align: left;
+	margin-top: 3px;
+	width: 100%;
+}
+.selectthis{
+	background: #666666;
+	display: inline-block;
+	text-align: center;
+	width: 78%;
+	border-right: #ffffff solid thin;
+	padding: 10px 0px 9px 0px;
+	float:left;
+}
+button.check{
+	text-align: center;
+	display: inline-block;
+	background: #666666;
+	width: 21%;
+	padding: 9px 0px 8px 0px;
+	border: none;
+	margin-left: 0px;
+	color: #FFFFFF;
+	float:right;
+	position: relative;
+	font-size: 30px;
+	font-family: karbonmedium;
+}
+.option#transfer{
+	float:right;
+}
+
+.option2{
+	clear:both;
+	margin-bottom: 40px;
+}
+#options2 .inner{
+	padding: 20px;
+	padding-top: 0px;
+}
+
+.option2 .heading{
+	background: #666666;
+	width: 100%;
+}
+.option2 .heading .headingLeft{
+	float:left;
+	width: 94%;
+	padding: 10px 0px 10px 0px;
+}
+#options .option2 .heading .headingLeft h1{
+	width: 60%;
+	position: relative;
+	left: 10px;
+	text-align: left;
+	margin-bottom: 0px;
+	background:none;
+	padding: 0px;
+	float:left;
+}
+.option2 .info{
+	clear:both;
+}
+.addthis{
+	color: #FFFFFF;
+	font-size: 30px;
+	font-family: karbonmedium;
+	width: 40%;
+	float:right;
+	text-align: right;
+	padding:0px;
+}
+
+.option2 button{
+	width:5%;
+	padding: 0px;
+	float:right;
+	border-left: #FFFFFF solid 4px;
+	padding: 10px 0px 10px 0px;
+}
+
+.option2 p{
+	display:block;
+	float:left;
+	width: 70%;
+	text-align: justify;
+	line-height: 20px;
+}
+.option2 .info{
+	background: #cccccc;
+	width: 100%;
+	padding: 20px 0px 20px 0px;
+	font-family: karbonthin;
+}
+.option2 .info .para{
+	margin-left: 20px;
+}
+.option2 .info .price{
+	text-align: center;
+	float:right;
+	display:block;
+	width: 25%;
+	padding: 20px;
+	border-left: #FFFFFF solid thin;
+	line-height: 20px;
+}
+
+.fee{
+	font-family: karbonmedium;
+	color: #000000;
+}
+.why{
+	font-family: karbonmedium;
+	color: #999999;
+}
+/*options section end*/
+
 #oldstation{
 	border-top: #666666 solid thick;
 	border-bottom: #ffffff solid thick;
@@ -604,8 +790,93 @@ a.tellafriend{
 	height: 100%;
 	margin-top: 10px;
 }
+#connect form input#submit2{
+	text-align: left;
+	display:inline-block;
+	margin-left: 10px;
+	color: #FFFFFF;
+	width: 100px;
+	background: #000000;
+}
 /*connect section end*/
 
+/*footer*/
+footer{
+	background: #2b2b28	url(images/earth.png) center center no-repeat;
+	background-size: cover;;
+	border-top: #ffffff solid thick;
+}
+footer .content{
+	display:block;
+	position: relative;
+	width: 980px;	
+	height: 502px;
+	max-width: 1280px;
+	padding: 0px;
+}
+footer ul.buttons{
+	text-align: center;
+	margin-top: -70px;
+	margin-bottom: 70px;
+}
+footer ul.buttons li{
+	padding: 15px;
+	display: inline-block;
+	padding-top: 0px;
+}
+footer .column{
+	float:left;
+	display: inline-block;	
+}
+footer #column1{
+	padding-right: 118px;
+}
+footer #column2{
+	padding-right: 46px;
+}
+footer h3{
+	color: #ffcc00;
+	margin-bottom:20px;
+	font-family: karbonmedium;
+}
+footer ul li{
+	margin-bottom: 10px;
+}
+footer ul li{
+	color: #ededed;
+}
+footer ul li.address{
+	padding-left: 20px;
+}
+footer ul li a{
+color: #ededed;
+	-webkit-transition: color .3s ease-in-out;
+	-moz-transition: color .3s ease-in-out;
+	-o-transition: color .3s ease-in-out;
+	-ms-transition: color .3s ease-in-out;
+	transition: color .3s ease-in-out;
+}
+footer ul li a:hover{
+	color: #888888;
+	text-decoration: none;
+}
+footer ul.positions li{
+font-family: karbonmedium;
+}
+footer .position{
+	color: #999999;
+	font-family: karbonlight;
+}
+footer ul.positions li a{
+	color: #ffcc00;
+}
+footer p{
+	color: #939393;
+	font-family: karbonthin;
+	font-size: 10px;
+	margin-top: 70px;
+}
+/*footer end*/
 
 
 
@@ -669,4 +940,31 @@ section#layout .dept p{
 section#signup .layoutP{
     padding: 0px;
 }
+
+
+
+section#options .option h2{
+    font-size: 16px;
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+    background: #444;
+    letter-spacing: 4px;
+}
+
+
+section#options .option{
+    float:none;
+    display:block;
+    width: 100%;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    margin-bottom: 40px;
+}
+section#options .option p{
+    text-align: justify;
+    border-top: solid 2px #555;
+    padding: 10px 0px 0px 0px;
+    min-height: 100px;
+}
+
 }
