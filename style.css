@@ -893,15 +893,113 @@ footer p{
 
 
 @media only screen and (max-width: 1024px) {
-
     section#layout .layoutP{
         padding-left: 0px;
         padding-right: 0px;
     }
+
+    section#layout .dept{
+    display:block;
+    text-align: center;
+    padding: 0px 20px 0px 20px;
+    margin-bottom: 40px;
+}
+	section#layout .dept h3{
+		font-size: 14px;		
+	}
+section#layout .dept p{
+    text-align: justify;
+    border-top: solid 2px #555;
+    padding: 10px 0px 0px 0px;
+    height: 400px;
+}
+.selectthis{
+	font-size: 18px;
+}
+.selectbox button{
+	font-size: 18px;
+}
+}
+
+@media only screen and (max-width: 788px) {
+nav ul li{
+	display:inline-block;
+	text-align: center;
+	padding: 0px 10px 0px 10px;
+}
+header form#topform input{
+	border: 0px;
+	box-shadow:none;
+	text-align: center;
+	border-radius: 0px;
+	font-size: 20px;
+	font-family: karbonlight;
+	padding: 10px;
+	margin-right: 10px;
+}
+form#topform #submit1{
+	font-family: karbonregular;
+	background: #ffcc00;
+	color: #FFFFFF;
+	letter-spacing: 2px;
+	position: relative;
+	top: 0px;
+	float:none;
+	padding: 10px 12px 9px 12px;
+}
+
+#inputs a.facebook{
+	margin-right: 5px;
+}
+#inputs a{
+	clear:both;
+	position: relative;
+	left: -5px;
 }
 
 
-@media only screen and (max-width: 788px){
+
+section#layout .layoutP{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+section#layout .dept{
+    display:block;
+    text-align: center;
+    padding: 0px 14px 0px 14px;
+    margin-bottom: 40px;
+}
+section#layout .dept h2{
+font-size: 18px;
+}
+section#layout .dept .learnmore, section#layout .dept .tellafriend{
+	font-size: 12px;
+}
+section#layout .dept h3{
+		font-size: 12px;
+		margin-bottom:0px;		
+	}
+section#layout .dept p{
+    text-align: justify;
+    border-top: solid 2px #555;
+    padding: 10px 0px 0px 0px;
+    height: 500px;
+}
+section#layout .dept img{
+	width: 90%;
+}
+.selectthis{
+	font-size: 18px;
+}
+.selectbox button{
+	font-size: 18px;
+}
+
+
+}
+
+@media only screen and (max-width: 700px){
 section#layout .dept h2{
     font-size: 16px;
     width: 100%;
