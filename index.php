@@ -1,3 +1,190 @@
+<?php
+include('config.php');
+
+/* Subscribe */
+if ( isset( $_POST['submit1'] ) )
+{
+	/* Name */
+	if ($_POST['name'] != '')
+	{
+		$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$subscribeErrors .= "<span class='errors'>Please enter your name.</span>";
+	};
+
+	/* Email */
+	if ($_POST['email'] != '')
+	{
+		$sanemail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+		if(!filter_var($sanemail, FILTER_VALIDATE_EMAIL))
+		  {
+		  	$subscribeErrors .= "<span class='errors'>Please enter a valid email.</span>";
+		  } else {
+		  	$email = $sanemail;
+		  };
+	}
+	else
+	{
+		$subscribeErrors .= "<span class='errors'>Please enter your email address.</span>";
+	};
+
+	/* Send to DB */
+	if ($subscribeErrors == NULL)
+	{
+		mysqli_query($con,"INSERT INTO subscribers (name, email)
+		VALUES ('$name', '$email')");
+	};
+
+}
+else if ( isset( $_POST['submit2'] ) ) /* CONNECT */
+{
+
+	/* Name */
+	if ($_POST['name'] != '')
+	{
+		$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$connectErrors .= "<span class='errors'>Please enter your name.</span>";
+	};
+
+	/* Business Name */
+	if ($_POST['businessName'] != '')
+	{
+		$businessName = filter_var($_POST['businessName'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$connectErrors .= "<span class='errors'>Please enter your Business's name.</span>";
+	};
+
+	/* Email */
+	if ($_POST['email'] != '')
+	{
+		$sanemail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+		if(!filter_var($sanemail, FILTER_VALIDATE_EMAIL))
+		  {
+		  	$connectErrors .= "<span class='errors'>Please enter a valid email address.</span>";
+		  } else {
+		  	$email = $sanemail;
+		  };
+	}
+	else
+	{
+		$connectErrors .= "<span class='errors'>Please enter your email address.</span>";
+	};
+
+		/* Phone */
+	if ($_POST['phone'] != '')
+	{
+		$phone = filter_var($_POST['phone'], FILTER_SANITIZE_NUMBER_INT);
+	}
+	else
+	{
+		$connectErrors .= "<span class='errors'>Please enter your phone number.</span>";
+	};
+
+	/* Comments */
+	$comments = filter_var($_POST['comments'], FILTER_SANITIZE_STRING);
+
+
+	/* Send to DB */
+	if ($connectErrors == NULL)
+	{
+		mysqli_query($con,"INSERT INTO connect (name, businessName, email, phone, comments)
+		VALUES ('$name', '$businessName', '$email', '$phone', '$comments')");
+	};
+
+}
+else if ( isset( $_POST['submit3'] ) ) /* SURVEY */
+{
+
+	/* First Name */
+	if ($_POST['firstName'] != '')
+	{
+		$firstName = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your firstName.</span>";
+	};
+
+	/* Last Name */
+	if ($_POST['lastName'] != '')
+	{
+		$lastName = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your lastName.</span>";
+	};
+
+	/* Business Name */
+	if ($_POST['businessName'] != '')
+	{
+		$businessName = filter_var($_POST['businessName'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your businessName.</span>";
+	};
+
+	/* Email */
+	if ($_POST['email'] != '')
+	{
+		$sanemail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+		if(!filter_var($sanemail, FILTER_VALIDATE_EMAIL))
+		  {
+		  	$surveyErrors .= "<span class='errors'>Please enter a valid email address.</span>";
+		  } else {
+		  	$email = $sanemail;
+		  };
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your email address.</span>";
+	};
+
+	/* About */
+	$about = filter_var($_POST['about'], FILTER_SANITIZE_STRING);
+
+	/* How Did you Hear About Us? */
+	$howDidYouHear = filter_var($_POST['howDidYouHear'], FILTER_SANITIZE_STRING);
+
+	/* Main Service */
+	if ($_POST['mainService'] != '')
+	{
+	$mainService = filter_var($_POST['mainService'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please select the package you are most interest in.</span>";
+	};
+
+	/* Start Up Kit */
+	$startUpKit = filter_var($_POST['startUpKit'], FILTER_SANITIZE_STRING);
+
+	/* Office Assistant */
+	$officeAssistant = filter_var($_POST['officeAssistant'], FILTER_SANITIZE_STRING);
+
+	/* Retail Solution */
+	$retailSolution = filter_var($_POST['retailSolution'], FILTER_SANITIZE_STRING);
+
+	/* Send to DB */
+	if ($surveyErrors == NULL)
+	{
+		mysqli_query($con,"INSERT INTO membershipSurvey (firstName, lastName, businessName, email, about, howDidYouHear, mainService, startUpKit, officeAssistant, retailSolution)
+		VALUES ('$firstName', '$lastName', '$businessName', '$email', '$about', '$howDidYouHear', '$mainService', '$startUpKit', '$officeAssistant', '$retailSolution')");
+	};
+
+};
+
+mysqli_close($con);
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,24 +204,27 @@
 		<div id="welcome">WELCOME TO</div>
 		<img src="images/thetransferstation.png" alt="THE TRANSFER STATION">
 		<article id="tagline">
-			<div id="innovative">an innovative resource center for artists and entrepreneurs,</div> 
+			<div id="innovative">an innovative resource center for artists and entrepreneurs,</div>
 			<div id="unique">and a unique venue for the community they inspire.</div>
 		</article>
 		<div id="inputs">
-		<form id="topform" action="">
-			<input type="text" placeholder="YOUR NAME">
-			<input type="text" placeholder="YOUR EMAIL">
-			<input type="submit" id="submit1" value="SUBSCRIBE TO UPDATES">
+		<form id="topform" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>">
+			<input type="text" name="name" value="<?php $_POST['name'] ?>" placeholder="YOUR NAME">
+			<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="YOUR EMAIL">
+			<input type="submit" name="submit1" id="submit1" value="SUBSCRIBE TO UPDATES">
 		</form>
 		<a target="_blank" class="facebook" href="http://www.facebook.com/thexfr"><img src="images/facebook.jpg" alt="FACEBOOK"></a>
 		<a target="_blank" href="http://www.twitter.com/thexfr"><img src="images/twitter.jpg" alt="TWITTER"></a>
+		<?php
+		echo $subscribeErrors; ?>
 		</div>
 		</div>
 	</header>
+	<div id="navbttnwrapper"><div id="navbttn"></div></div>
 	<nav>
 	<div id="sticky_navigation_wrapper">
     <div id="sticky_navigation">
-		<div class="content">
+		<!-- <div class="content"> -->
 		<ul class="nav">
 			<li id="about1"><a href="#about">ABOUT</a></li>
 			<li><a href="#layout">THE LAYOUT</a></li>
@@ -43,7 +233,7 @@
 			<li><a href="#blog">BLOG</a></li>
 			<li id="subscribe1"><a href="#top">SUBSCRIBE TO UPDATES</a></li>
 		</ul>
-		</div>
+		<!-- </div> -->
 	</div>
 	</div>
 	</nav>
@@ -161,6 +351,7 @@
 
 <section id="options">
 	<div class="content clearfix">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs">
 		<div class="option" id="start">
 			<div class="inner">
 			<h1>START</h1>
@@ -169,7 +360,7 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi non amet exercitationem? Deleniti, nihil labore doloremque id quae magni saepe.</p>
 				<div class="price">FROM $25 PER DAY<br>OR $245 PER MONTH</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button class="check">X</button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainService" value="sharedDesk" id="sharedDesk"><label for="sharedDesk"><span></span></label></div>
 			</div>
 		</div>
 		<div class="option" id="work">
@@ -180,7 +371,7 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, sequi deleniti quae totam distinctio commodi cumque excepturi rem assumenda animi.</p>
 				<div class="price">FROM $395 PER MONTH</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button class="check">X</button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainService" value="privateDesk" id="privateDesk"><label for="privateDesk"><span></span></label></div>
 		</div>
 		</div>
 		<div class="option" id="sell">
@@ -191,7 +382,7 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta tempore nulla cupiditate consequatur? Eum, ipsum, maiores repudiandae tempore voluptas reiciendis!</p>
 				<div class="price">FROM $795 PER MONTH</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button class="check">X</button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainService" value="teamOffice" id="teamOffice"><label for="teamOffice"><span></span></label></div>
 			</div>
 		</div>
 		<div class="option" id="transfer">
@@ -202,7 +393,7 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, repudiandae voluptate sit libero qui id fuga molestias magnam officiis saepe.</p>
 				<div class="price">NAME YOUR PRICE</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button class="check">X</button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainService" value="buildYourOwn" id="buildYourOwn"><label for="buildYourOwn"><span></span></label></div>
 			</div>
 		</div>
 	</div>
@@ -215,7 +406,7 @@
 			<h1>+ THE XFR STARTUP KIT</h1>
 			<span class="addthis">ADD THIS</span>
 			</div>
-			<button class="check">X</button>
+			<input type="checkbox" name="startUpKit" value="1" id="startUpKit"><label for="startUpKit"><span></span></label>
 		</div>
 		<div class="info clearfix">
 			<div class="para">
@@ -232,7 +423,7 @@
 			<h1>+ THE XFR OFFICE ASSISTANT</h1>
 			<span class="addthis">ADD THIS</span>
 			</div>
-			<button class="check">X</button>
+			<input type="checkbox" name="officeAssistant" value="1" id="officeAssistant"><label for="officeAssistant"><span></span></label>
 		</div>
 		<div class="info clearfix">
 			<div class="para">
@@ -247,7 +438,7 @@
 			<h1>+ THE XFR RETAIL SOLUTION</h1>
 			<span class="addthis">ADD THIS</span>
 			</div>
-			<button class="check">X</button>
+			<input type="checkbox" name="retailSolution" value="1" id="retailSolution"><label for="retailSolution"><span></span></label>
 		</div>
 		<div class="info clearfix">
 			<div class="para">
@@ -256,17 +447,17 @@
 			<div class="price"><span class="fee">$495 PER MONTH</span> <br> <span class="why">A MAIN STREET DREAM COME TRUE</span></div>
 		</div>
 	</div>
-<form action="" id="inputs">
 	<div class="toprow">
-	<input type="text" placeholder="FIRST NAME" class="topz names topz1">
-	<input type="text" placeholder="LAST NAME" class="topz names">
-	<input type="text" placeholder="BUSINESS NAME" class="topz names topz1">
-	<input type="text" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
-	<textarea placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
-	<textarea placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+	<input type="text" name="firstName" value="<?php $_POST['firstName'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastName" value="<?php $_POST['lastName'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessName" pvalue="<?php $_POST['businessName'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
+	<textarea name="howDidYouHear" value="<?php $_POST['howDidYouHear'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
-	<input type="submit" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+	<input type="submit" name ="submit3" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
+<?php echo $surveyErrors; ?>
 </div>
 </div>
 </div>
@@ -288,14 +479,15 @@
 			<div class="column right">
 				<div class="inner">
 					<h1>CONNECT</h1>
-					<form action="">
-						<input type="text" placeholder="FIRST AND LAST NAME">
-						<input type="text" placeholder="BUSINESS NAME">
-						<input type="text" placeholder="EMAIL ADDRESS">
-						<input type="text" placeholder="PHONE NUMBER">
-						<input type="text" placeholder="COMMENTS">
-						<input type="submit" id="submit2" value="SUBMIT">
+					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>">
+						<input name="name" type="text" value="<?php $_POST['name'] ?>" placeholder="FIRST AND LAST NAME">
+						<input name="businessName" type="text" value="<?php $_POST['businessName'] ?>" placeholder="BUSINESS NAME">
+						<input name="email" type="text" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS">
+						<input name="phone" type="text" value="<?php $_POST['phone'] ?>" placeholder="PHONE NUMBER">
+						<input name="comments" type="text" value="<?php $_POST['comments'] ?>" placeholder="COMMENTS">
+						<input type="submit" name="submit2" id="submit2" value="SUBMIT">
 					</form>
+					<?php echo $connectErrors; ?>
 				</div>
 			</div>
 		</div>
@@ -367,9 +559,9 @@
 
 	$(window).scroll(function()
 	{
-		if (i <= 0)
+		if (i <= 1)
 		{
-			nav_pos = $('nav').offset().top - 0;
+			nav_pos = $('nav').offset().top;
 			i = 1;
 		};
 		 sticky_nav();
@@ -377,8 +569,18 @@
 
 	$(window).resize(function()
 	{
-			nav_pos = $('nav').offset().top - 0;
+			nav_pos = $('nav').offset().top;
 	});
+
+			$(document).ready(function()
+		{
+			$('#navbttn').click(function()
+			{
+				$('nav').toggleClass('open');
+				$('nav').slideToggle(250);
+			});
+		});
+
 </script>
 <script>window.scrollTo(0, 1);</script>
 </body>
