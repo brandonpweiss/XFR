@@ -1259,17 +1259,10 @@ nav{
 	padding-bottom: 10px;
 	display: none;
 	background:none;
-<<<<<<< HEAD
 }
 nav ul {
 	padding: 0px;
 }
-=======
-}
-nav ul {
-	padding: 0px;
-}
->>>>>>> e20dd5ca4606f5a34311fbcbbdba5e41e1e79623
 nav ul li {
 	display: block;
 	background-color: #2b2b28;
