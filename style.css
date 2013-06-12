@@ -576,9 +576,26 @@ a.tellafriend{
     width: 25%;
     text-align: center;
 }
+
+#startstuff .option .inner{
+	padding-top: 0px;
+}
 .option .inner{
 	padding: 20px;
 	padding-bottom: 0px;
+}
+
+button.choice1{
+	text-align:center;
+	color: #FFFFFF;
+	background: #666666;
+	padding: 10px;
+	font-family: karbonmedium;
+	font-size: 30px;
+	padding: 10px 0px 10px 0px;
+	margin-bottom: 20px;
+	border:none;
+	width: 100%;
 }
 
 #options h1{
@@ -603,14 +620,14 @@ a.tellafriend{
 	text-align: justify;
 	background: #cccccc;
 	padding: 20px;
-	min-height: 260px;
+	min-height: 340px;
 }
 
 .box p{
 	font-family: karbonthin;
 	line-height: 20px;
 	padding-bottom: 60px;
-	min-height: 149px;
+	min-height: 209px;
 }
 .box .price{
 	font-family: karbonmedium;

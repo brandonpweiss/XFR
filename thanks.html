@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>THANKS FOR YOUR INTEREST IN THE TRANSFER STATION</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="An innovative resource center for artists and entrepreneurs, and a unique venue for the community they inspire. Located on Main Street in Manayunk, The Transfer Station offers tailored-made spaces and customized support services for bringing ideas to life."/>
+	<style type="text/css">
+	body{
+		background: #ededed;
+	}
+	</style>
+</head>
+<body  data-spy="scroll" data-target="nav">
+	<header>
+		<div class="content">
+		<img src="images/xfr.png" id="xfr" alt="XFR">
+		<img style="margin-top: 30px" src="images/thetransferstation.png" alt="THE TRANSFER STATION">
+		<article id="tagline">
+			<div id="innovative">THANK YOU FOR YOUR INTEREST!</div>
+		</article>
+		<div id="inputs">
+			Now, let your friends know!<br>
+		<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.thexfr.org" target="_blank"><img src="images/facebook.jpg" alt="FACEBOOK"></a><a href="http://clicktotweet.com/9AU8J"> &nbsp;<img src="images/twitter.jpg" alt="Tweet"></a>
+		</div>
+		</div>
+	</header>
+		<script>
+/*####### STICKY NAV SCRIPT ##########*/
+	var nav_pos = $('nav').offset().top;
+	var i = 0;
+	var sticky_nav = function()
+	{
+		var top_pos = $(window).scrollTop(); // our current vertical position from the top
+
+		if ( (top_pos > nav_pos) && ($(window).width() > 640) )
+		{
+			$('#sticky_navigation').css({ 'position': 'fixed', 'top':0, 'left':0, 'z-index':9999999});
+		}
+		else
+		{
+			$('#sticky_navigation').css({ 'position': 'relative', 'top':0, 'left':0 });
+		}
+	};
+
+	$(window).scroll(function()
+	{
+		if (i <= 0)
+		{
+			nav_pos = $('nav').offset().top - 0;
+			i = 1;
+		};
+		 sticky_nav();
+	});
+
+	$(window).resize(function()
+	{
+			nav_pos = $('nav').offset().top - 0;
+	});
+</script>
+<script>var sharer = "https://www.facebook.com/sharer/sharer.php?u=http://www.thexfr.org";
+window.open(sharer, 'sharer', 'width=626,height=436');</script>
+<script>window.scrollTo(0, 1);</script>
+</body>
+</html>
