@@ -347,27 +347,27 @@ mysqli_close($con);
 
 <div class="option topoption" id="start">
 			<div class="inner">
-			<button type="button" data-toggle="collapse" data-target="#startstuff" class="choice1">START</button>
+			<button type="button" data-toggle="collapse" data-target="#startstuff" class="choice1 collapsed">START</button>
 			</div>
 			</div>
 
 		<div class="option topoption" id="work">
 			<div class="inner">
-			<button type="button" data-toggle="collapse" data-target="#workstuff" class="choice1">WORK</button>
+			<button type="button" data-toggle="collapse" data-target="#workstuff" class="choice1 collapsed">WORK</button>
 		</div>
 		</div>
 		
 
 		<div class="option topoption" id="sell">
 			<div class="inner">
-			<button type="button" data-toggle="collapse" data-target="#sellstuff" class="choice1">SELL</button>
+			<button type="button" data-toggle="collapse" data-target="#sellstuff" class="choice1 collapsed">SELL</button>
 			</div>
 		</div>
 		
 
 		<div class="option topoption" id="transfer">
 			<div class="inner">
-			<button type="button" data-toggle="collapse" data-target="#transferstuff"  class="choice1">TRANSFER</button>
+			<button type="button" data-toggle="collapse" data-target="#transferstuff"  class="choice1 collapsed">TRANSFER</button>
 			</div>
 		</div>
 	</div>

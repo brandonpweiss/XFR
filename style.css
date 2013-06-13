@@ -260,8 +260,6 @@ input[type="checkbox"] + label span {
 input[type="radio"] + label span{
 	width:100%;
     height:49px;
-        outline: red solid thin;
-    
 }
 
 input[type="checkbox"]:checked + label span, input[type="radio"]:checked + label span {
@@ -631,10 +629,6 @@ a.tellafriend{
 	padding-top: 40px;
 }
 
-button.choice1:hover{
-	background: #66cccc;
-}
-
 .option{
 	float:left;
     display:block;
@@ -650,10 +644,25 @@ button.choice1:hover{
 	padding-top:0px;
 }
 
-button.choice1{
+button.choice1.collapsed{
 	text-align:center;
 	color: #FFFFFF;
 	background: #666666;
+	padding: 10px;
+	font-family: karbonmedium;
+	font-size: 30px;
+	padding: 10px 0px 10px 0px;
+	margin-bottom: 0px;
+	border:none;
+	width: 100%;
+}
+button.choice1:hover{
+	background: #66cccc;
+}
+button.choice1{
+	text-align:center;
+	color: #FFFFFF;
+	background: #66cccc;
 	padding: 10px;
 	font-family: karbonmedium;
 	font-size: 30px;
