@@ -256,6 +256,9 @@ input[type="checkbox"] + label span {
 	width:5%;
     height:49px;
 }
+#startstuff input[type="checkbox"] + label span {
+width: 21%;
+}
 input[type="radio"] + label span{
 	width:21%;
     height:49px;
@@ -852,7 +855,7 @@ form#inputs input{
 .rightz{
 }
 input.topz{
-	width: 23.75%;
+	width: 23.7%;
 	border:none;
 	border-radius:0;
 }
