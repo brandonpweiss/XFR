@@ -332,6 +332,81 @@ else if ( isset( $_POST['submit5'] ) ) /* SELL */
 		VALUES ('$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$gallerywall', '$displaycase', '$retailstore', '$customize', '$startupkit', '$officeassistant', '$retailsolution')");
 	};
 
+}
+else if ( isset( $_POST['submit5'] ) ) /* TRANSFER */
+{
+
+	/* First Name */
+	if ($_POST['firstname'] != '')
+	{
+		$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your first name.</span>";
+	};
+
+	/* Last name */
+	if ($_POST['lastname'] != '')
+	{
+		$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your last name.</span>";
+	};
+
+	/* Business name */
+	if ($_POST['businessname'] != '')
+	{
+		$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your business name.</span>";
+	};
+
+	/* Email */
+	if ($_POST['email'] != '')
+	{
+		$sanemail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+		if(!filter_var($sanemail, FILTER_VALIDATE_EMAIL))
+		  {
+		  	$surveyErrors .= "<span class='errors'>Please enter a valid email address.</span>";
+		  } else {
+		  	$email = $sanemail;
+		  };
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your email address.</span>";
+	};
+
+	/* About */
+	$about = filter_var($_POST['about'], FILTER_SANITIZE_STRING);
+
+	/* How Did you Hear About Us? */
+	$referrer = filter_var($_POST['referrer'], FILTER_SANITIZE_STRING);
+
+	/* learn */
+	$learn = filter_var($_POST['learn'], FILTER_SANITIZE_STRING);
+
+	/* share */
+	$share = filter_var($_POST['share'], FILTER_SANITIZE_STRING);
+
+	/* create */
+	$create = filter_var($_POST['create'], FILTER_SANITIZE_STRING);
+
+	/* perform */
+	$perform = filter_var($_POST['perform'], FILTER_SANITIZE_STRING);
+
+	/* Send to DB */
+	if ($surveyErrors == NULL)
+	{
+		mysqli_query($con,"INSERT INTO sell (dt, firstname, lastname, businessname, email, about, referrer, learn, share, create, perform)
+		VALUES ('$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$learn', '$share', '$create', '$perform')");
+	};
+
 };
 
 mysqli_close($con);
@@ -537,7 +612,7 @@ mysqli_close($con);
 <!---#startstuff---->
 	<article id="startstuff" class="collapse">
 		<div class="content clearfix">
-		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs1">
 
 <div class="option" id="sayhello">
 			<div class="inner">
@@ -547,7 +622,7 @@ mysqli_close($con);
 				<div class="price">SUBSCRIBE AND SHARE</div>
 			</div>
 
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#startmore" class="check"><input type="radio" name="sayhello" value="1" id="sayhello"><label for="sayhello"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#startmore" class="check"><input type="checkbox" name="sayhello" value="1" id="sayhello"><label for="sayhello"><span></span></label></button></div>
 			</div>
 		</div>
 </div>
@@ -565,8 +640,10 @@ mysqli_close($con);
 	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
 	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
-	<input type="submit" name ="submit3" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+	<input type="submit" name ="submit3" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
+</div>
+</div>
 </div>
 </article>
 <!---end #startstuff---->
@@ -580,7 +657,7 @@ mysqli_close($con);
 <!---#workstuff---->
 	<article id="workstuff" class="collapse">
 		<div class="content clearfix">
-		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs2" name="work">
 
 <div class="option" id="shareddesk">
 			<div class="inner">
@@ -590,7 +667,7 @@ mysqli_close($con);
 				<div class="price">FROM $25 PER DAY<br>OR $245 PER MONTH</div>
 			</div>
 
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="shareddesk" value="1" id="shareddesk"><label for="shareddesk"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="mainservicework" value="shareddesk" id="shareddesk"><label for="shareddesk"><span></span></label></button></div>
 			</div>
 		</div>
 
@@ -605,7 +682,7 @@ mysqli_close($con);
 			</div>
 
 
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="privatedesk" value="1" id="privatedesk"><label for="privatedesk"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="mainservicework" value="privatedesk" id="privatedesk"><label for="privatedesk"><span></span></label></button></div>
 
 
 
@@ -619,7 +696,7 @@ mysqli_close($con);
 				<p>	Co-working for groups!  If you're part of a team that needs space for up to four employees, reserve a private office and enjoy the full XFR experience for your whole team!  Customizable layouts are available for your individual needs.</p>
 				<div class="price">FROM $795 PER MONTH</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="teamoffice" value="1" id="teamoffice"><label for="teamoffice"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="mainservicework" value="teamoffice" id="teamoffice"><label for="teamoffice"><span></span></label></button></div>
 			</div>
 		</div>
 
@@ -630,7 +707,7 @@ mysqli_close($con);
 				<p>Your dream office on Main Street!  Our architectural team has designed our spaces with flexibility in mind to best accommodate your individual needs.  Let us know what your ideal workspace looks like, and we'll build it together.</p>
 				<div class="price">NAME YOUR PRICE</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="customize" value="1" id="customize"><label for="customize"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="mainservicework" value="customize" id="customize"><label for="customize"><span></span></label></button></div>
 			</div>
 		</div>
 </div>
@@ -650,7 +727,7 @@ mysqli_close($con);
 		</div>
 		<div class="info clearfix">
 			<div class="para">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, nihil, odio nisi ullam exercitationem porro eveniet quisquam veritatis enim iusto. Dolore, deserunt laborum esse sapiente minima animi ipsam tempore maiores obcaecati sint quis qui adipisci asperiores aut ratione dolorum dignissimos mollitia dolores autem aperiam blanditiis quidem consectetur tempora architecto ducimus.
+			<p>MAKE YOUR BEST FIRST IMPRESSION.  Every member of the XFR community should be armed with the tools they need to make a great impression on their future clients and co-workers.  For a limited time, we will be offering new members a complete startup kit including a branding design/makeover kit from our in-house creative team, consultation with our consultants network (strategy/legal/accounting), and a basic website with an email address and social media integration through our XFR domain!
 			</p>
 			</div>
 			<div class="price"><span class="fee">$495 ONE TIME FEE</span> <br> <span class="why">WHY IS THIS SO CHEAP?</span></div>
@@ -667,9 +744,25 @@ mysqli_close($con);
 		</div>
 		<div class="info clearfix">
 			<div class="para">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, cupiditate, sed. Illo, voluptatem voluptatum reiciendis nulla qui labore at dolorem. Aspernatur, perferendis, deserunt, ipsam harum esse deleniti repellat sunt dolor excepturi perspiciatis exercitationem explicabo ab quod accusamus at beatae quaerat.</p>
+			<p>THE ULTIMATE BUSINESS TOOLKIT.  As small business owners ourselves, we're offering a toolkit that includes everything we wish we had when we were first starting out.  This business support package includes live reception services with intercom and custom answering options, a business mailing address and shipping center with forwarding service, office hours with our professional consultants network, discounted access to all XFR classes/events, and a monthly guest-pass allotment.  Limited availability!
+</p>
 			</div>
 			<div class="price"><span class="fee">$195 PER MONTH</span> <br> <span class="why">THE MOST AFFORDABLE EMPLOYEE</span></div>
+		</div>
+	</div>
+	<div class="option2">
+		<div class="heading clearfix">
+		<div class="headingLeft">
+			<h1>+ THE XFR RETAIL SOLUTION</h1>
+			<span class="addthis">ADD THIS</span>
+			</div>
+			<input type="checkbox" name="retailsolution" value="1" id="retailsolution"><label for="retailsolution"><span></span></label>
+		</div>
+		<div class="info clearfix">
+			<div class="para">
+			<p>A COMPLETE RETAIL ECOSYSTEM.  The true cost of owning a retail store becomes apparent when considering all of the operational expenses (rent, employees, insurance, security, etc).  We're setting out to remove the high-cost barriers to retail by giving small operations a truly complete solution that includes full-time staffing (our staff becomes your staff), electronic payment processing, e-commerce integration with shipping management, secure inventory storage, and remote monitoring for 24/7 security. </p>
+			</div>
+			<div class="price"><span class="fee">$495 PER MONTH</span> <br> <span class="why">A MAIN STREET DREAM COME TRUE</span></div>
 		</div>
 	</div>
 	<div class="toprow">
@@ -680,7 +773,7 @@ mysqli_close($con);
 	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
 	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
-	<input type="submit" name ="submit4" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+	<input type="submit" name ="submit4" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
 </div>
 </article>
@@ -693,7 +786,7 @@ mysqli_close($con);
 <!---#sellstuff---->
 	<article id="sellstuff" class="collapse">
 		<div class="content clearfix">
-		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs3">
 
 <div class="option" id="gallerywall">
 			<div class="inner">
@@ -703,7 +796,7 @@ mysqli_close($con);
 				<div class="price">FROM $45 PER MONTH</div>
 			</div>
 
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="gallerywall" value="1" id="gallerywall"><label for="gallerywall"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="mainservicesell" value="gallerywall" id="gallerywall"><label for="gallerywall"><span></span></label></button></div>
 			</div>
 		</div>
 
@@ -718,7 +811,7 @@ mysqli_close($con);
 			</div>
 
 
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="displaycase" value="1" id="displaycase"><label for="displaycase"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="mainservicesell" value="displaycase" id="displaycase"><label for="displaycase"><span></span></label></button></div>
 
 
 
@@ -732,7 +825,7 @@ mysqli_close($con);
 				<p>	Completely customizable, unbelievably affordable.  Whether you're just starting out or already have an existing operation that needs to expand or downscale, our XFR retail pods are changing how retail is done in Philadelphia.</p>
 				<div class="price">FROM $345 PER MONTH</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="retailstore" value="1" id="retailstore"><label for="retailstore"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="mainservicesell" value="retailstore" id="retailstore"><label for="retailstore"><span></span></label></button></div>
 			</div>
 		</div>
 
@@ -743,7 +836,7 @@ mysqli_close($con);
 				<p>	Your store-front dream on Main Street.  Our architectural team has designed our spaces with flexibility in mind to best accommodate your individual needs.  Let us know what your ideal storefront looks like, and we'll build it together. </p>
 				<div class="price">NAME YOUR PRICE</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="customize" value="1" id="customize"><label for="customize"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="mainservicesell" value="customize2" id="customize2"><label for="customize"><span></span></label></button></div>
 			</div>
 		</div>
 </div>
@@ -808,7 +901,7 @@ mysqli_close($con);
 	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
 	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
-	<input type="submit" name ="submit5" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+	<input type="submit" name ="submit5" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
 </div>
 </article>
@@ -821,7 +914,7 @@ mysqli_close($con);
 <!---#transferstuff---->
 	<article id="transferstuff" class="collapse">
 		<div class="content clearfix">
-		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs4">
 
 	<div class="option" id="learn">
 			<div class="inner">
@@ -830,7 +923,7 @@ mysqli_close($con);
 				<p>One of the core tenants of the XFR concept is self-development.  We're offering a myriad of ways to learn, grow, and experience something new through lectures, hands-on workshops, and individual lessons.  Let us know what you want to learn!</p>
 				<div class="price">SUBSCRIBE AND SHARE</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="learn" value="1" id="learn"><label for="learn"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="mainservicetransfer" value="learn" id="learn"><label for="learn"><span></span></label></button></div>
 			</div>
 		</div>
 
@@ -843,7 +936,7 @@ mysqli_close($con);
 				<p>Are you an expert in your field and love to share?  Join our group of teachers and sign up to give lectures, workshops, or individual lessons - we're looking for expertise in any and every field, no matter how obscure it may seem.</p>
 				<div class="price">SUBSCRIBE AND SHARE</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="share" value="1" id="share"><label for="share"><span></span></label></button>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="mainservicetransfer" value="share" id="share"><label for="share"><span></span></label></button>
 			</div>
 		</div>
 		</div>
@@ -855,7 +948,7 @@ mysqli_close($con);
 				<p>	Between our small-batch kitchen, our creative media production studio, and our sister facility MAKESH/FT (a full-service maker lab), we have the resources to help bring your ideas to life.  Get your creations started at the XFR!</p>
 				<div class="price">SUBSCRIBE AND SHARE</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="create" value="1" id="create"><label for="create"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="mainservicetransfer" value="create" id="create"><label for="create"><span></span></label></button></div>
 			</div>
 		</div>
 
@@ -866,7 +959,7 @@ mysqli_close($con);
 				<p>As beautiful as our performance and rehearsal venues are, they need you to bring them to life.  If you're looking for a performance venue or unique event space, let us know if you think our facilities would be the right fit!</p>
 				<div class="price">SUBSCRIBE AND SHARE</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="perform" value="1" id="perform"><label for="perform"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="mainservicetransfer" value="perform" id="perform"><label for="perform"><span></span></label></button></div>
 			</div>
 		</div>
 </div>
@@ -883,7 +976,7 @@ mysqli_close($con);
 	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
 	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
-	<input type="submit" name ="submit6" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+	<input type="submit" name ="submit6" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
 </div>
 </article>
