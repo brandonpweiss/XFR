@@ -1,6 +1,6 @@
 <?php
 include('config.php');
-
+$dt = date("Y-m-d H:i:s")
 /* Subscribe */
 if ( isset( $_POST['submit1'] ) )
 {
@@ -99,37 +99,37 @@ else if ( isset( $_POST['submit2'] ) ) /* CONNECT */
 	};
 
 }
-else if ( isset( $_POST['submit3'] ) ) /* SURVEY */
+else if ( isset( $_POST['submit3'] ) ) /* START */
 {
 
 	/* First Name */
-	if ($_POST['firstName'] != '')
+	if ($_POST['firstname'] != '')
 	{
-		$firstName = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
+		$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
 	}
 	else
 	{
-		$surveyErrors .= "<span class='errors'>Please enter your firstName.</span>";
+		$surveyErrors .= "<span class='errors'>Please enter your first name.</span>";
 	};
 
-	/* Last Name */
-	if ($_POST['lastName'] != '')
+	/* Last name */
+	if ($_POST['lastname'] != '')
 	{
-		$lastName = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
+		$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
 	}
 	else
 	{
-		$surveyErrors .= "<span class='errors'>Please enter your lastName.</span>";
+		$surveyErrors .= "<span class='errors'>Please enter your last name.</span>";
 	};
 
-	/* Business Name */
-	if ($_POST['businessName'] != '')
+	/* Business name */
+	if ($_POST['businessname'] != '')
 	{
-		$businessName = filter_var($_POST['businessName'], FILTER_SANITIZE_STRING);
+		$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
 	}
 	else
 	{
-		$surveyErrors .= "<span class='errors'>Please enter your businessName.</span>";
+		$surveyErrors .= "<span class='errors'>Please enter your business name.</span>";
 	};
 
 	/* Email */
@@ -152,32 +152,25 @@ else if ( isset( $_POST['submit3'] ) ) /* SURVEY */
 	$about = filter_var($_POST['about'], FILTER_SANITIZE_STRING);
 
 	/* How Did you Hear About Us? */
-	$howDidYouHear = filter_var($_POST['howDidYouHear'], FILTER_SANITIZE_STRING);
+	$referrer = filter_var($_POST['referrer'], FILTER_SANITIZE_STRING);
 
-	/* Main Service */
-	if ($_POST['mainService'] != '')
-	{
-	$mainService = filter_var($_POST['mainService'], FILTER_SANITIZE_STRING);
-	}
-	else
-	{
-		$surveyErrors .= "<span class='errors'>Please select the package you are most interest in.</span>";
-	};
+	/* Say Hello */
+	$sayhello = filter_var($_POST['sayhello'], FILTER_SANITIZE_STRING);
 
 	/* Start Up Kit */
-	$startUpKit = filter_var($_POST['startUpKit'], FILTER_SANITIZE_STRING);
+	$startupkit = filter_var($_POST['startupkit'], FILTER_SANITIZE_STRING);
 
 	/* Office Assistant */
-	$officeAssistant = filter_var($_POST['officeAssistant'], FILTER_SANITIZE_STRING);
+	$officeassistant = filter_var($_POST['officeassistant'], FILTER_SANITIZE_STRING);
 
 	/* Retail Solution */
-	$retailSolution = filter_var($_POST['retailSolution'], FILTER_SANITIZE_STRING);
+	$retailsolution = filter_var($_POST['retailsolution'], FILTER_SANITIZE_STRING);
 
 	/* Send to DB */
 	if ($surveyErrors == NULL)
 	{
-		mysqli_query($con,"INSERT INTO membershipSurvey (firstName, lastName, businessName, email, about, howDidYouHear, mainService, startUpKit, officeAssistant, retailSolution)
-		VALUES ('$firstName', '$lastName', '$businessName', '$email', '$about', '$howDidYouHear', '$mainService', '$startUpKit', '$officeAssistant', '$retailSolution')");
+		mysqli_query($con,"INSERT INTO start (dt, firstname, lastname, businessname, email, about, referrer, start, startupkit, officeassistant, retailsolution)
+		VALUES ('$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$start', '$startupkit', '$officeassistant', '$retailsolution')");
 	};
 
 };
