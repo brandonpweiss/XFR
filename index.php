@@ -1,6 +1,6 @@
 <?php
 include('config.php');
-$dt = date("Y-m-d H:i:s")
+$dt = date("Y-m-d H:i:s");
 /* Subscribe */
 if ( isset( $_POST['submit1'] ) )
 {
@@ -157,6 +157,81 @@ else if ( isset( $_POST['submit3'] ) ) /* START */
 	/* Say Hello */
 	$sayhello = filter_var($_POST['sayhello'], FILTER_SANITIZE_STRING);
 
+	/* Send to DB */
+	if ($surveyErrors == NULL)
+	{
+		mysqli_query($con,"INSERT INTO start (dt, firstname, lastname, businessname, email, about, referrer, sayhello)
+		VALUES ('$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$sayhello')");
+	};
+
+}
+else if ( isset( $_POST['submit4'] ) ) /* WORK */
+{
+
+	/* First Name */
+	if ($_POST['firstname'] != '')
+	{
+		$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your first name.</span>";
+	};
+
+	/* Last name */
+	if ($_POST['lastname'] != '')
+	{
+		$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your last name.</span>";
+	};
+
+	/* Business name */
+	if ($_POST['businessname'] != '')
+	{
+		$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your business name.</span>";
+	};
+
+	/* Email */
+	if ($_POST['email'] != '')
+	{
+		$sanemail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+		if(!filter_var($sanemail, FILTER_VALIDATE_EMAIL))
+		  {
+		  	$surveyErrors .= "<span class='errors'>Please enter a valid email address.</span>";
+		  } else {
+		  	$email = $sanemail;
+		  };
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your email address.</span>";
+	};
+
+	/* About */
+	$about = filter_var($_POST['about'], FILTER_SANITIZE_STRING);
+
+	/* How Did you Hear About Us? */
+	$referrer = filter_var($_POST['referrer'], FILTER_SANITIZE_STRING);
+
+	/* shared desk */
+	$shareddesk = filter_var($_POST['shareddesk'], FILTER_SANITIZE_STRING);
+
+	/* private desk */
+	$privatedesk = filter_var($_POST['privatedesk'], FILTER_SANITIZE_STRING);
+
+	/* team office */
+	$teamoffice = filter_var($_POST['teamoffice'], FILTER_SANITIZE_STRING);
+
+	/* customize*/
+	$customize = filter_var($_POST['customize'], FILTER_SANITIZE_STRING);
+
 	/* Start Up Kit */
 	$startupkit = filter_var($_POST['startupkit'], FILTER_SANITIZE_STRING);
 
@@ -169,8 +244,92 @@ else if ( isset( $_POST['submit3'] ) ) /* START */
 	/* Send to DB */
 	if ($surveyErrors == NULL)
 	{
-		mysqli_query($con,"INSERT INTO start (dt, firstname, lastname, businessname, email, about, referrer, start, startupkit, officeassistant, retailsolution)
-		VALUES ('$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$start', '$startupkit', '$officeassistant', '$retailsolution')");
+		mysqli_query($con,"INSERT INTO work (dt, firstname, lastname, businessname, email, about, referrer, shareddesk, privatedesk, teamoffice, customize, startupkit, officeassistant, retailsolution)
+		VALUES ('$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$shareddesk', '$privatedesk', '$teamoffice', '$customize', '$startupkit', '$officeassistant', '$retailsolution')");
+	};
+
+}
+else if ( isset( $_POST['submit5'] ) ) /* SELL */
+{
+
+	/* First Name */
+	if ($_POST['firstname'] != '')
+	{
+		$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your first name.</span>";
+	};
+
+	/* Last name */
+	if ($_POST['lastname'] != '')
+	{
+		$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your last name.</span>";
+	};
+
+	/* Business name */
+	if ($_POST['businessname'] != '')
+	{
+		$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your business name.</span>";
+	};
+
+	/* Email */
+	if ($_POST['email'] != '')
+	{
+		$sanemail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+		if(!filter_var($sanemail, FILTER_VALIDATE_EMAIL))
+		  {
+		  	$surveyErrors .= "<span class='errors'>Please enter a valid email address.</span>";
+		  } else {
+		  	$email = $sanemail;
+		  };
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your email address.</span>";
+	};
+
+	/* About */
+	$about = filter_var($_POST['about'], FILTER_SANITIZE_STRING);
+
+	/* How Did you Hear About Us? */
+	$referrer = filter_var($_POST['referrer'], FILTER_SANITIZE_STRING);
+
+	/* shared desk */
+	$gallerywall = filter_var($_POST['gallerywall'], FILTER_SANITIZE_STRING);
+
+	/* private desk */
+	$displaycase = filter_var($_POST['displaycase'], FILTER_SANITIZE_STRING);
+
+	/* team office */
+	$retailstore = filter_var($_POST['retailstore'], FILTER_SANITIZE_STRING);
+
+	/* customize*/
+	$customize = filter_var($_POST['customize'], FILTER_SANITIZE_STRING);
+
+	/* Start Up Kit */
+	$startupkit = filter_var($_POST['startupkit'], FILTER_SANITIZE_STRING);
+
+	/* Office Assistant */
+	$officeassistant = filter_var($_POST['officeassistant'], FILTER_SANITIZE_STRING);
+
+	/* Retail Solution */
+	$retailsolution = filter_var($_POST['retailsolution'], FILTER_SANITIZE_STRING);
+
+	/* Send to DB */
+	if ($surveyErrors == NULL)
+	{
+		mysqli_query($con,"INSERT INTO sell (dt, firstname, lastname, businessname, email, about, referrer, gallerywall, displaycase, retailstore, customize, startupkit, officeassistant, retailsolution)
+		VALUES ('$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$gallerywall', '$displaycase', '$retailstore', '$customize', '$startupkit', '$officeassistant', '$retailsolution')");
 	};
 
 };
@@ -356,14 +515,14 @@ mysqli_close($con);
 			<button type="button" data-toggle="collapse" data-target="#workstuff" class="choice1 collapsed">WORK</button>
 		</div>
 		</div>
-		
+
 
 		<div class="option topoption" id="sell">
 			<div class="inner">
 			<button type="button" data-toggle="collapse" data-target="#sellstuff" class="choice1 collapsed">SELL</button>
 			</div>
 		</div>
-		
+
 
 		<div class="option topoption" id="transfer">
 			<div class="inner">
@@ -388,7 +547,7 @@ mysqli_close($con);
 				<div class="price">SUBSCRIBE AND SHARE</div>
 			</div>
 
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#startmore" class="check"><input type="radio" name="mainService" value="sayHello" id="sayHello"><label for="sayHello"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#startmore" class="check"><input type="radio" name="sayhello" value="1" id="sayhello"><label for="sayhello"><span></span></label></button></div>
 			</div>
 		</div>
 </div>
@@ -399,12 +558,12 @@ mysqli_close($con);
 <div class="content clearfix">
 	<div class="inner">
 	<div class="toprow">
-	<input type="text" name="firstName" value="<?php $_POST['firstName'] ?>" placeholder="FIRST NAME" class="topz names topz1">
-	<input type="text" name="lastName" value="<?php $_POST['lastName'] ?>" placeholder="LAST NAME" class="topz names">
-	<input type="text" name="businessName" pvalue="<?php $_POST['businessName'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
 	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
 	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
-	<textarea name="howDidYouHear" value="<?php $_POST['howDidYouHear'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
 	<input type="submit" name ="submit3" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
@@ -431,7 +590,7 @@ mysqli_close($con);
 				<div class="price">FROM $25 PER DAY<br>OR $245 PER MONTH</div>
 			</div>
 
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="mainService" value="sharedDesk" id="sharedDesk"><label for="sharedDesk"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="shareddesk" value="1" id="shareddesk"><label for="shareddesk"><span></span></label></button></div>
 			</div>
 		</div>
 
@@ -446,7 +605,7 @@ mysqli_close($con);
 			</div>
 
 
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="mainService" value="privateDesk" id="privateDesk"><label for="privateDesk"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="privatedesk" value="1" id="privatedesk"><label for="privatedesk"><span></span></label></button></div>
 
 
 
@@ -460,10 +619,10 @@ mysqli_close($con);
 				<p>	Co-working for groups!  If you're part of a team that needs space for up to four employees, reserve a private office and enjoy the full XFR experience for your whole team!  Customizable layouts are available for your individual needs.</p>
 				<div class="price">FROM $795 PER MONTH</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="mainService" value="teamOffice" id="teamOffice"><label for="teamOffice"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="teamoffice" value="1" id="teamoffice"><label for="teamoffice"><span></span></label></button></div>
 			</div>
 		</div>
-		
+
 <div class="option" id="buildyourown">
 			<div class="inner">
 			<h2>4. BUILD YOUR OWN</h2>
@@ -471,7 +630,7 @@ mysqli_close($con);
 				<p>Your dream office on Main Street!  Our architectural team has designed our spaces with flexibility in mind to best accommodate your individual needs.  Let us know what your ideal workspace looks like, and we'll build it together.</p>
 				<div class="price">NAME YOUR PRICE</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="mainService" value="buildYourOwn" id="buildYourOwn"><label for="buildYourOwn"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="customize" value="1" id="customize"><label for="customize"><span></span></label></button></div>
 			</div>
 		</div>
 </div>
@@ -487,7 +646,7 @@ mysqli_close($con);
 			<h1>+ THE XFR STARTUP KIT</h1>
 			<span class="addthis">ADD THIS</span>
 			</div>
-			<input type="checkbox" name="workmoreStartUpKit" value="1" id="workmoreStartUpKit"><label for="workmoreStartUpKit"><span></span></label>
+			<input type="checkbox" name="startupkit" value="1" id="startupkit"><label for="startupkit"><span></span></label>
 		</div>
 		<div class="info clearfix">
 			<div class="para">
@@ -504,7 +663,7 @@ mysqli_close($con);
 			<h1>+ THE XFR OFFICE ASSISTANT</h1>
 			<span class="addthis">ADD THIS</span>
 			</div>
-			<input type="checkbox" name="workmoreOfficeAssistant" value="1" id="workmoreOfficeAssistant"><label for="workmoreOfficeAssistant"><span></span></label>
+			<input type="checkbox" name="officeassistant" value="1" id="officeassistant"><label for="officeassistant"><span></span></label>
 		</div>
 		<div class="info clearfix">
 			<div class="para">
@@ -514,14 +673,14 @@ mysqli_close($con);
 		</div>
 	</div>
 	<div class="toprow">
-	<input type="text" name="firstName" value="<?php $_POST['firstName'] ?>" placeholder="FIRST NAME" class="topz names topz1">
-	<input type="text" name="lastName" value="<?php $_POST['lastName'] ?>" placeholder="LAST NAME" class="topz names">
-	<input type="text" name="businessName" pvalue="<?php $_POST['businessName'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
 	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
 	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
-	<textarea name="howDidYouHear" value="<?php $_POST['howDidYouHear'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
-	<input type="submit" name ="submit3" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+	<input type="submit" name ="submit4" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
 </div>
 </article>
@@ -544,7 +703,7 @@ mysqli_close($con);
 				<div class="price">FROM $45 PER MONTH</div>
 			</div>
 
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="mainService" value="galleryWall" id="galleryWall"><label for="galleryWall"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="gallerywall" value="1" id="gallerywall"><label for="gallerywall"><span></span></label></button></div>
 			</div>
 		</div>
 
@@ -559,7 +718,7 @@ mysqli_close($con);
 			</div>
 
 
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="mainService" value="displayCase" id="displayCase"><label for="displayCase"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="displaycase" value="1" id="displaycase"><label for="displaycase"><span></span></label></button></div>
 
 
 
@@ -573,10 +732,10 @@ mysqli_close($con);
 				<p>	Completely customizable, unbelievably affordable.  Whether you're just starting out or already have an existing operation that needs to expand or downscale, our XFR retail pods are changing how retail is done in Philadelphia.</p>
 				<div class="price">FROM $345 PER MONTH</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="mainService" value="retailStore" id="retailStore"><label for="retailStore"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="retailstore" value="1" id="retailstore"><label for="retailstore"><span></span></label></button></div>
 			</div>
 		</div>
-		
+
 <div class="option" id="customize">
 			<div class="inner">
 			<h2>4. CUSTOMIZE</h2>
@@ -584,7 +743,7 @@ mysqli_close($con);
 				<p>	Your store-front dream on Main Street.  Our architectural team has designed our spaces with flexibility in mind to best accommodate your individual needs.  Let us know what your ideal storefront looks like, and we'll build it together. </p>
 				<div class="price">NAME YOUR PRICE</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="mainService" value="customize1" id="customize1"><label for="customize1"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="customize" value="1" id="customize"><label for="customize"><span></span></label></button></div>
 			</div>
 		</div>
 </div>
@@ -599,7 +758,7 @@ mysqli_close($con);
 			<h1>+ THE XFR STARTUP KIT</h1>
 			<span class="addthis">ADD THIS</span>
 			</div>
-			<input type="checkbox" name="sellmoreStartUpKit" value="1" id="sellmoreStartUpKit"><label for="sellmoreStartUpKit"><span></span></label>
+			<input type="checkbox" name="startupkit" value="1" id="startupkit"><label for="startupkit"><span></span></label>
 		</div>
 		<div class="info clearfix">
 			<div class="para">
@@ -616,7 +775,7 @@ mysqli_close($con);
 			<h1>+ THE XFR OFFICE ASSISTANT</h1>
 			<span class="addthis">ADD THIS</span>
 			</div>
-			<input type="checkbox" name="sellmoreOfficeAssistant" value="1" id="sellmoreOfficeAssistant"><label for="sellmoreOfficeAssistant"><span></span></label>
+			<input type="checkbox" name="officeassistant" value="1" id="officeassistant"><label for="officeassistant"><span></span></label>
 		</div>
 		<div class="info clearfix">
 			<div class="para">
@@ -632,7 +791,7 @@ mysqli_close($con);
 			<h1>+ THE XFR RETAIL SOLUTION</h1>
 			<span class="addthis">ADD THIS</span>
 			</div>
-			<input type="checkbox" name="sellmoreRetailSolution" value="1" id="sellmoreRetailSolution"><label for="sellmoreRetailSolution"><span></span></label>
+			<input type="checkbox" name="retailsolution" value="1" id="retailsolution"><label for="retailsolution"><span></span></label>
 		</div>
 		<div class="info clearfix">
 			<div class="para">
@@ -642,14 +801,14 @@ mysqli_close($con);
 		</div>
 	</div>
 	<div class="toprow">
-	<input type="text" name="firstName" value="<?php $_POST['firstName'] ?>" placeholder="FIRST NAME" class="topz names topz1">
-	<input type="text" name="lastName" value="<?php $_POST['lastName'] ?>" placeholder="LAST NAME" class="topz names">
-	<input type="text" name="businessName" pvalue="<?php $_POST['businessName'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
 	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
 	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
-	<textarea name="howDidYouHear" value="<?php $_POST['howDidYouHear'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
-	<input type="submit" name ="submit3" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+	<input type="submit" name ="submit5" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
 </div>
 </article>
@@ -671,7 +830,7 @@ mysqli_close($con);
 				<p>One of the core tenants of the XFR concept is self-development.  We're offering a myriad of ways to learn, grow, and experience something new through lectures, hands-on workshops, and individual lessons.  Let us know what you want to learn!</p>
 				<div class="price">SUBSCRIBE AND SHARE</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="mainService" value="learn1" id="learn1"><label for="learn1"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="learn" value="1" id="learn"><label for="learn"><span></span></label></button></div>
 			</div>
 		</div>
 
@@ -684,7 +843,7 @@ mysqli_close($con);
 				<p>Are you an expert in your field and love to share?  Join our group of teachers and sign up to give lectures, workshops, or individual lessons - we're looking for expertise in any and every field, no matter how obscure it may seem.</p>
 				<div class="price">SUBSCRIBE AND SHARE</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="mainService" value="share1" id="share1"><label for="share1"><span></span></label></button>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="share" value="1" id="share"><label for="share"><span></span></label></button>
 			</div>
 		</div>
 		</div>
@@ -696,10 +855,10 @@ mysqli_close($con);
 				<p>	Between our small-batch kitchen, our creative media production studio, and our sister facility MAKESH/FT (a full-service maker lab), we have the resources to help bring your ideas to life.  Get your creations started at the XFR!</p>
 				<div class="price">SUBSCRIBE AND SHARE</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="mainService" value="create1" id="create1"><label for="create1"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="create" value="1" id="create"><label for="create"><span></span></label></button></div>
 			</div>
 		</div>
-		
+
 <div class="option" id="perform">
 			<div class="inner">
 			<h2>4. PERFORM</h2>
@@ -707,7 +866,7 @@ mysqli_close($con);
 				<p>As beautiful as our performance and rehearsal venues are, they need you to bring them to life.  If you're looking for a performance venue or unique event space, let us know if you think our facilities would be the right fit!</p>
 				<div class="price">SUBSCRIBE AND SHARE</div>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="mainService" value="perform1" id="perform1"><label for="perform1"><span></span></label></button></div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="perform" value="1" id="perform"><label for="perform"><span></span></label></button></div>
 			</div>
 		</div>
 </div>
@@ -717,14 +876,14 @@ mysqli_close($con);
 <div class="content clearfix">
 	<div class="inner">
 	<div class="toprow">
-	<input type="text" name="firstName" value="<?php $_POST['firstName'] ?>" placeholder="FIRST NAME" class="topz names topz1">
-	<input type="text" name="lastName" value="<?php $_POST['lastName'] ?>" placeholder="LAST NAME" class="topz names">
-	<input type="text" name="businessName" pvalue="<?php $_POST['businessName'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
 	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
 	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
-	<textarea name="howDidYouHear" value="<?php $_POST['howDidYouHear'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
-	<input type="submit" name ="submit3" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+	<input type="submit" name ="submit6" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
 </div>
 </article>
@@ -763,7 +922,7 @@ mysqli_close($con);
 					<h1>CONNECT</h1>
 					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>">
 						<input name="name" type="text" value="<?php $_POST['name'] ?>" placeholder="FIRST AND LAST NAME">
-						<input name="businessName" type="text" value="<?php $_POST['businessName'] ?>" placeholder="BUSINESS NAME">
+						<input name="businessname" type="text" value="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME">
 						<input name="email" type="text" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS">
 						<input name="phone" type="text" value="<?php $_POST['phone'] ?>" placeholder="PHONE NUMBER">
 						<input name="comments" type="text" value="<?php $_POST['comments'] ?>" placeholder="COMMENTS">
