@@ -245,7 +245,6 @@ input[type="checkbox"], input[type="radio"] {
 }
 input[type="checkbox"] + label span, input[type="radio"] + label span{
     display:inline-block;
-    width:21%;
     height:49px;
     vertical-align:middle;
     background:url(images/x.png) center no-repeat;
@@ -254,11 +253,11 @@ input[type="checkbox"] + label span, input[type="radio"] + label span{
     background-color: #666666;
 }
 input[type="checkbox"] + label span {
-	width:6%;
+	width:5%;
     height:49px;
 }
 input[type="radio"] + label span{
-	width:100%;
+	width:21%;
     height:49px;
 }
 
@@ -582,6 +581,11 @@ a.tellafriend{
 #membership .right .inner{
 	padding-left: 35px;
 }
+#membership .right .inner p{
+	padding-top: 60px;
+		font-size: 20px;
+		line-height: 25px;
+}
 #membership h1{
 	font-family: karbonthin;
 	font-size: 30px;
@@ -610,7 +614,7 @@ a.tellafriend{
 	clear:both;
 	color: #66cccc;
 	font-family: karbonmedium;
-	font-size: 25px;
+	font-size: 30px;
 	padding-top: 40px;
 	display:block;
 }
@@ -836,7 +840,7 @@ button.check{
 form#inputs input{
 	border: none;
 	border-radius: 0;
-	font-size: 25px;
+	font-size: 25px
 	font-family: karbonmedium;
 	font-size: 14px;
 	color: #000000;
@@ -847,8 +851,10 @@ form#inputs input{
 }
 .rightz{
 }
-.topz{
-	width: 23.1%;
+input.topz{
+	width: 23.75%;
+	border:none;
+	border-radius:0;
 }
 textarea{
 	border-radius: 0px;
@@ -858,7 +864,7 @@ textarea{
 }
 
 
-.submit3{
+input.submit3{
 	width: 100%;
 	font-family: karbonmedium;
 	font-size: 30px;
@@ -1430,6 +1436,9 @@ section#signup .layoutP{
     padding: 0px;
 }
 
+article .workstuff-wrap, article  .startstuff-wrap, article .sellstuff-wrap, article .transferstuff-wrap{
+	display:none;
+}
 #options .option .inner h2{
 	background: #ffcc00;
 	font-family: karbonmedium;
@@ -1534,10 +1543,10 @@ form#inputs input{
 	padding: 10px 10px 6px 10px;
 	float:left;
 }
-.topz{
+input.topz{
 	width: 95%;
 }
-.topz1{
+input.topz1{
 	margin-right: 12px;
 }
 
