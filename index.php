@@ -351,53 +351,141 @@ mysqli_close($con);
 
 <section id="options">
 	<div class="content clearfix">
-		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs">
-		<div class="option" id="start">
+
+<div class="option topoption" id="start">
 			<div class="inner">
-			<h1>START</h1>
-			<h2>1. SHARED DESK</h2>
-			<div class="box">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi non amet exercitationem? Deleniti, nihil labore doloremque id quae magni saepe.</p>
-				<div class="price">FROM $25 PER DAY<br>OR $245 PER MONTH</div>
+			<button type="button" data-toggle="collapse" data-target="#startstuff" class="choice1">START</button>
 			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainService" value="sharedDesk" id="sharedDesk"><label for="sharedDesk"><span></span></label></div>
 			</div>
-		</div>
-		<div class="option" id="work">
+
+		<div class="option topoption" id="work">
 			<div class="inner">
-			<h1>WORK</h1>
-			<h2>2. PRIVATE DESK</h2>
-			<div class="box">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, sequi deleniti quae totam distinctio commodi cumque excepturi rem assumenda animi.</p>
-				<div class="price">FROM $395 PER MONTH</div>
-			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainService" value="privateDesk" id="privateDesk"><label for="privateDesk"><span></span></label></div>
+			<button type="button" data-toggle="collapse" data-target="#workstuff" class="choice1">WORK</button>
 		</div>
 		</div>
-		<div class="option" id="sell">
+		
+
+		<div class="option topoption" id="sell">
 			<div class="inner">
-			<h1>SELL</h1>
-			<h2>3. TEAM OFFICE</h2>
-			<div class="box">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta tempore nulla cupiditate consequatur? Eum, ipsum, maiores repudiandae tempore voluptas reiciendis!</p>
-				<div class="price">FROM $795 PER MONTH</div>
-			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainService" value="teamOffice" id="teamOffice"><label for="teamOffice"><span></span></label></div>
+			<button type="button" data-toggle="collapse" data-target="#sellstuff" class="choice1">SELL</button>
 			</div>
 		</div>
-		<div class="option" id="transfer">
+		
+
+		<div class="option topoption" id="transfer">
 			<div class="inner">
-			<h1>TRANSFER</h1>
-			<h2>4. BUILD YOUR OWN</h2>
-			<div class="box">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, repudiandae voluptate sit libero qui id fuga molestias magnam officiis saepe.</p>
-				<div class="price">NAME YOUR PRICE</div>
-			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainService" value="buildYourOwn" id="buildYourOwn"><label for="buildYourOwn"><span></span></label></div>
+			<button type="button" data-toggle="collapse" data-target="#transferstuff"  class="choice1">TRANSFER</button>
 			</div>
 		</div>
 	</div>
-<div id="options2">
+
+
+
+
+<!---#startstuff---->
+	<article id="startstuff" class="collapse">
+		<div class="content clearfix">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs">
+
+<div class="option" id="sayhello">
+			<div class="inner">
+			<h2>1. SAY HELLO</h2>
+			<div class="box">
+				<p>		The XFR is a place to start.  If this concept sounds intriguing but you're not quite sure where to begin, fill out the form below and we'll keep you in the loop as we progress from concept to reality!  Thanks for your interest!</p>
+				<div class="price">SUBSCRIBE AND SHARE</div>
+			</div>
+
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#startmore" class="check"><input type="radio" name="mainService" value="sayHello" id="sayHello"><label for="sayHello"><span></span></label></button></div>
+			</div>
+		</div>
+</div>
+
+
+
+<div id="startmore" class="collapse options2">
+<div class="content clearfix">
+	<div class="inner">
+	<div class="toprow">
+	<input type="text" name="firstName" value="<?php $_POST['firstName'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastName" value="<?php $_POST['lastName'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessName" pvalue="<?php $_POST['businessName'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
+	<textarea name="howDidYouHear" value="<?php $_POST['howDidYouHear'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+
+	<input type="submit" name ="submit3" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+</form>
+</div>
+</article>
+<!---end #startstuff---->
+
+
+
+
+
+
+
+<!---#workstuff---->
+	<article id="workstuff" class="collapse">
+		<div class="content clearfix">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs">
+
+<div class="option" id="shareddesk">
+			<div class="inner">
+			<h2>1. SHARED DESK</h2>
+			<div class="box">
+				<p>	Co-working comes to Main Street!  Upgrade from the coffee shop to one of our shared desks in the XFR's beautiful "bullpen," work among likeminded individuals, and benefit from our uncompromising shared resources.  </p>
+				<div class="price">FROM $25 PER DAY<br>OR $245 PER MONTH</div>
+			</div>
+
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="mainService" value="sharedDesk" id="sharedDesk"><label for="sharedDesk"><span></span></label></button></div>
+			</div>
+		</div>
+
+
+
+			<div class="option" id="privatedesk">
+			<div class="inner">
+			<h2>2. PRIVATE DESK</h2>
+			<div class="box">
+				<p>	Co-working with privacy!  The XFR offers a limited selection of private one-person offices that offer the perfect mix of isolated workspace and access to our uncompromising shared amenities.  Consider this the ultimate "home" office.</p>
+				<div class="price">FROM $395 PER MONTH</div>
+			</div>
+
+
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="mainService" value="privateDesk" id="privateDesk"><label for="privateDesk"><span></span></label></button></div>
+
+
+
+		</div>
+		</div>
+
+		<div class="option" id="teamoffice">
+			<div class="inner">
+			<h2>3. TEAM OFFICE</h2>
+			<div class="box">
+				<p>	Co-working for groups!  If you're part of a team that needs space for up to four employees, reserve a private office and enjoy the full XFR experience for your whole team!  Customizable layouts are available for your individual needs.</p>
+				<div class="price">FROM $795 PER MONTH</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="mainService" value="teamOffice" id="teamOffice"><label for="teamOffice"><span></span></label></button></div>
+			</div>
+		</div>
+		
+<div class="option" id="buildyourown">
+			<div class="inner">
+			<h2>4. BUILD YOUR OWN</h2>
+			<div class="box">
+				<p>Your dream office on Main Street!  Our architectural team has designed our spaces with flexibility in mind to best accommodate your individual needs.  Let us know what your ideal workspace looks like, and we'll build it together.</p>
+				<div class="price">NAME YOUR PRICE</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#workmore" class="check"><input type="radio" name="mainService" value="buildYourOwn" id="buildYourOwn"><label for="buildYourOwn"><span></span></label></button></div>
+			</div>
+		</div>
+</div>
+
+
+
+<div id="workmore" class="collapse options2">
 <div class="content clearfix">
 	<div class="inner">
 	<div class="option2">
@@ -406,7 +494,7 @@ mysqli_close($con);
 			<h1>+ THE XFR STARTUP KIT</h1>
 			<span class="addthis">ADD THIS</span>
 			</div>
-			<input type="checkbox" name="startUpKit" value="1" id="startUpKit"><label for="startUpKit"><span></span></label>
+			<input type="checkbox" name="workmoreStartUpKit" value="1" id="workmoreStartUpKit"><label for="workmoreStartUpKit"><span></span></label>
 		</div>
 		<div class="info clearfix">
 			<div class="para">
@@ -423,11 +511,124 @@ mysqli_close($con);
 			<h1>+ THE XFR OFFICE ASSISTANT</h1>
 			<span class="addthis">ADD THIS</span>
 			</div>
-			<input type="checkbox" name="officeAssistant" value="1" id="officeAssistant"><label for="officeAssistant"><span></span></label>
+			<input type="checkbox" name="workmoreOfficeAssistant" value="1" id="workmoreOfficeAssistant"><label for="workmoreOfficeAssistant"><span></span></label>
 		</div>
 		<div class="info clearfix">
 			<div class="para">
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, cupiditate, sed. Illo, voluptatem voluptatum reiciendis nulla qui labore at dolorem. Aspernatur, perferendis, deserunt, ipsam harum esse deleniti repellat sunt dolor excepturi perspiciatis exercitationem explicabo ab quod accusamus at beatae quaerat.</p>
+			</div>
+			<div class="price"><span class="fee">$195 PER MONTH</span> <br> <span class="why">THE MOST AFFORDABLE EMPLOYEE</span></div>
+		</div>
+	</div>
+	<div class="toprow">
+	<input type="text" name="firstName" value="<?php $_POST['firstName'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastName" value="<?php $_POST['lastName'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessName" pvalue="<?php $_POST['businessName'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
+	<textarea name="howDidYouHear" value="<?php $_POST['howDidYouHear'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+
+	<input type="submit" name ="submit3" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+</form>
+</div>
+</article>
+<!---end #workstuff---->
+
+
+
+
+
+<!---#sellstuff---->
+	<article id="sellstuff" class="collapse">
+		<div class="content clearfix">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs">
+
+<div class="option" id="gallerywall">
+			<div class="inner">
+			<h2>1. GALLERY WALL</h2>
+			<div class="box">
+				<p>	Your own gallery space on Main Street!  The XFR curated gallery is changing how local artist will show and sell their work by offering highly-desirable display space with no gallery fees and no strings attached! </p>
+				<div class="price">FROM $45 PER MONTH</div>
+			</div>
+
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="mainService" value="galleryWall" id="galleryWall"><label for="galleryWall"><span></span></label></button></div>
+			</div>
+		</div>
+
+
+
+			<div class="option" id="displaycase">
+			<div class="inner">
+			<h2>2. DISPLAY CASE</h2>
+			<div class="box">
+				<p>	Making retail on Main Street possible.  The main two story volume at the XFR is our curated collaborative gallery, providing a completely new way for individual artists and small businesses to have an affordable retail showcase on Main Street. </p>
+				<div class="price">FROM $245 PER MONTH</div>
+			</div>
+
+
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="mainService" value="displayCase" id="displayCase"><label for="displayCase"><span></span></label></button></div>
+
+
+
+		</div>
+		</div>
+
+		<div class="option" id="retailstore">
+			<div class="inner">
+			<h2>3. RETAIL STORE</h2>
+			<div class="box">
+				<p>	Completely customizable, unbelievably affordable.  Whether you're just starting out or already have an existing operation that needs to expand or downscale, our XFR retail pods are changing how retail is done in Philadelphia.</p>
+				<div class="price">FROM $345 PER MONTH</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="mainService" value="retailStore" id="retailStore"><label for="retailStore"><span></span></label></button></div>
+			</div>
+		</div>
+		
+<div class="option" id="customize">
+			<div class="inner">
+			<h2>4. CUSTOMIZE</h2>
+			<div class="box">
+				<p>	Your store-front dream on Main Street.  Our architectural team has designed our spaces with flexibility in mind to best accommodate your individual needs.  Let us know what your ideal storefront looks like, and we'll build it together. </p>
+				<div class="price">NAME YOUR PRICE</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#sellmore" class="check"><input type="radio" name="mainService" value="customize1" id="customize1"><label for="customize1"><span></span></label></button></div>
+			</div>
+		</div>
+</div>
+
+
+<div id="sellmore" class="collapse options2">
+<div class="content clearfix">
+	<div class="inner">
+	<div class="option2">
+		<div class="heading clearfix">
+			<div class="headingLeft">
+			<h1>+ THE XFR STARTUP KIT</h1>
+			<span class="addthis">ADD THIS</span>
+			</div>
+			<input type="checkbox" name="sellmoreStartUpKit" value="1" id="sellmoreStartUpKit"><label for="sellmoreStartUpKit"><span></span></label>
+		</div>
+		<div class="info clearfix">
+			<div class="para">
+			<p>MAKE YOUR BEST FIRST IMPRESSION.  Every member of the XFR community should be armed with the tools they need to make a great impression on their future clients and co-workers.  For a limited time, we will be offering new members a complete startup kit including a branding design/makeover kit from our in-house creative team, consultation with our consultants network (strategy/legal/accounting), and a basic website with an email address and social media integration through our XFR domain!
+			</p>
+			</div>
+			<div class="price"><span class="fee">$495 ONE TIME FEE</span> <br> <span class="why">WHY IS THIS SO CHEAP?</span></div>
+		</div>
+	</div>
+
+	<div class="option2">
+		<div class="heading clearfix">
+			<div class="headingLeft">
+			<h1>+ THE XFR OFFICE ASSISTANT</h1>
+			<span class="addthis">ADD THIS</span>
+			</div>
+			<input type="checkbox" name="sellmoreOfficeAssistant" value="1" id="sellmoreOfficeAssistant"><label for="sellmoreOfficeAssistant"><span></span></label>
+		</div>
+		<div class="info clearfix">
+			<div class="para">
+			<p>THE ULTIMATE BUSINESS TOOLKIT.  As small business owners ourselves, we're offering a toolkit that includes everything we wish we had when we were first starting out.  This business support package includes live reception services with intercom and custom answering options, a business mailing address and shipping center with forwarding service, office hours with our professional consultants network, discounted access to all XFR classes/events, and a monthly guest-pass allotment.  Limited availability!
+</p>
 			</div>
 			<div class="price"><span class="fee">$195 PER MONTH</span> <br> <span class="why">THE MOST AFFORDABLE EMPLOYEE</span></div>
 		</div>
@@ -438,11 +639,11 @@ mysqli_close($con);
 			<h1>+ THE XFR RETAIL SOLUTION</h1>
 			<span class="addthis">ADD THIS</span>
 			</div>
-			<input type="checkbox" name="retailSolution" value="1" id="retailSolution"><label for="retailSolution"><span></span></label>
+			<input type="checkbox" name="sellmoreRetailSolution" value="1" id="sellmoreRetailSolution"><label for="sellmoreRetailSolution"><span></span></label>
 		</div>
 		<div class="info clearfix">
 			<div class="para">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, ex, est, quasi excepturi nemo quia nostrum delectus rerum architecto natus nihil corrupti quo recusandae temporibus aut fugiat quis porro deleniti accusantium facere! Vel, nihil, explicabo, earum cupiditate exercitationem provident quae numquam asperiores sunt aut reiciendis quos accusantium placeat non fugit.</p>
+			<p>A COMPLETE RETAIL ECOSYSTEM.  The true cost of owning a retail store becomes apparent when considering all of the operational expenses (rent, employees, insurance, security, etc).  We're setting out to remove the high-cost barriers to retail by giving small operations a truly complete solution that includes full-time staffing (our staff becomes your staff), electronic payment processing, e-commerce integration with shipping management, secure inventory storage, and remote monitoring for 24/7 security. </p>
 			</div>
 			<div class="price"><span class="fee">$495 PER MONTH</span> <br> <span class="why">A MAIN STREET DREAM COME TRUE</span></div>
 		</div>
@@ -457,6 +658,94 @@ mysqli_close($con);
 
 	<input type="submit" name ="submit3" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
+</div>
+</article>
+<!---end #sellstuff---->
+
+
+
+
+
+<!---#transferstuff---->
+	<article id="transferstuff" class="collapse">
+		<div class="content clearfix">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs">
+
+	<div class="option" id="learn">
+			<div class="inner">
+			<h2>1. LEARN</h2>
+			<div class="box">
+				<p>One of the core tenants of the XFR concept is self-development.  We're offering a myriad of ways to learn, grow, and experience something new through lectures, hands-on workshops, and individual lessons.  Let us know what you want to learn!</p>
+				<div class="price">SUBSCRIBE AND SHARE</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="mainService" value="learn1" id="learn1"><label for="learn1"><span></span></label></button></div>
+			</div>
+		</div>
+
+
+
+			<div class="option" id="share">
+			<div class="inner">
+			<h2>2. SHARE</h2>
+			<div class="box">
+				<p>Are you an expert in your field and love to share?  Join our group of teachers and sign up to give lectures, workshops, or individual lessons - we're looking for expertise in any and every field, no matter how obscure it may seem.</p>
+				<div class="price">SUBSCRIBE AND SHARE</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="mainService" value="share1" id="share1"><label for="share1"><span></span></label></button>
+			</div>
+		</div>
+		</div>
+
+		<div class="option" id="create">
+			<div class="inner">
+			<h2>3. CREATE</h2>
+			<div class="box">
+				<p>	Between our small-batch kitchen, our creative media production studio, and our sister facility MAKESH/FT (a full-service maker lab), we have the resources to help bring your ideas to life.  Get your creations started at the XFR!</p>
+				<div class="price">SUBSCRIBE AND SHARE</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="mainService" value="create1" id="create1"><label for="create1"><span></span></label></button></div>
+			</div>
+		</div>
+		
+<div class="option" id="perform">
+			<div class="inner">
+			<h2>4. PERFORM</h2>
+			<div class="box">
+				<p>As beautiful as our performance and rehearsal venues are, they need you to bring them to life.  If you're looking for a performance venue or unique event space, let us know if you think our facilities would be the right fit!</p>
+				<div class="price">SUBSCRIBE AND SHARE</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><button type="button" data-toggle="collapse" data-target="#transfermore" class="check"><input type="radio" name="mainService" value="perform1" id="perform1"><label for="perform1"><span></span></label></button></div>
+			</div>
+		</div>
+</div>
+
+
+<div id="transfermore" class="collapse options2">
+<div class="content clearfix">
+	<div class="inner">
+	<div class="toprow">
+	<input type="text" name="firstName" value="<?php $_POST['firstName'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastName" value="<?php $_POST['lastName'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessName" pvalue="<?php $_POST['businessName'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
+	<textarea name="howDidYouHear" value="<?php $_POST['howDidYouHear'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+
+	<input type="submit" name ="submit3" id="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+</form>
+</div>
+</article>
+<!---end #transferstuff---->
+
+
+
+
+
+
+
+
+
+
 <?php echo $surveyErrors; ?>
 </div>
 </div>
