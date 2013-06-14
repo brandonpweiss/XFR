@@ -239,7 +239,31 @@ form#topform{
 	line-height: 30px;
 	text-align: center;
 }
-
+table.allformdata{
+	margin:20px auto 40px auto;
+	background-color:rgba(255,255,255,0.4);
+}
+table.allformdata tr.odd td{
+	background-color:#ffcc00;
+}
+table.allformdata tr td{
+	border: 1px solid black;
+	text-align: left;
+	padding: 10px;
+	font-size: 12px;
+}
+table.allformdata tr th{
+	border: 1px solid black;
+	text-align: left;
+	padding: 5px 10px;
+}
+.form-wrap{
+	min-height: 400px;
+	padding-bottom: 100px;
+}
+.start-wrap, .work-wrap, .sell-wrap, .transfer-wrap, #workmore, #sellmore, #transfermore{
+	display:none;
+}
 input[type="checkbox"], input[type="radio"] {
     display:none!important;
 }
@@ -1439,9 +1463,6 @@ section#signup .layoutP{
     padding: 0px;
 }
 
-article .workstuff-wrap, article  .startstuff-wrap, article .sellstuff-wrap, article .transferstuff-wrap{
-	display:none;
-}
 #options .option .inner h2{
 	background: #ffcc00;
 	font-family: karbonmedium;

@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!session_is_registered(myusername)){
+header("location:datalogin.php");
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,73 +19,173 @@
 <body  data-spy="scroll" data-target="nav">
 	<div id="navbttnwrapper"><div id="navbttn"></div></div>
 	<nav>
-	<div id="sticky_navigation_wrapper">
-    <div id="sticky_navigation">
 		<!-- <div class="content"> -->
 		<ul class="nav">
-			<li id="about1"><a href="#about">ABOUT</a></li>
-			<li><a href="#layout">THE LAYOUT</a></li>
-			<li><a href="#membership">MEMBERSHIP</a></li>
-			<li><a href="#connect">CONNECT</a></li>
-			<li><a href="#blog">BLOG</a></li>
-			<li id="subscribe1"><a href="#top">SUBSCRIBE TO UPDATES</a></li>
+			<li id="about1"><a href="datasignout.php">SIGN OUT</a></li>
 		</ul>
 		<!-- </div> -->
-	</div>
-	</div>
 	</nav>
+	<section id="layout">
+		<div class="content clearfix">
+		<div class="form-wrap">
 <?php
 include('config.php');
+$i = 0;
+
+$surveyresults = mysqli_query($con,"SELECT * FROM start UNION ALL SELECT * FROM work UNION ALL SELECT * FROM sell UNION ALL SELECT * FROM transfer ORDER BY form");
+
+$countrows = mysqli_num_rows($surveyresults);
+print ("<table class='allformdata'>");
+print ("<tr>");
+print ("<th scope='col'>Total Survey Submissions:</th>");
+print ("<th scope='col'>$countrows</th>");
+print ("</tr>");
+print ("</table>");
+
+print ("<table class='allformdata'>");
+print ("<thead>");
+print ("<tr>");
+print ("<th scope='col'>Form</th>");
+print ("<th scope='col'>IP</th>");
+print ("<th scope='col'>Date and Time</th>");
+print ("<th scope='col'>First Name</th>");
+print ("<th scope='col'>Last Name</th>");
+print ("<th scope='col'>Business Name</th>");
+print ("<th scope='col'>Email Address</th>");
+print ("<th scope='col'>About</th>");
+print ("<th scope='col'>How did they hear</th>");
+print ("<th scope='col'>Main Service</th>");
+print ("<th scope='col'>Start Up Kit</th>");
+print ("<th scope='col'>Office Assistant</th>");
+print ("<th scope='col'>Retail Solution</th>");
+print ("</tr>");
+print ("</thead>");
+
+print ("<tbody>");
+while($row=mysqli_fetch_array($surveyresults)) {
+	if ($i % 2 == 0) {
+	$stripe = 'even';
+} else {
+	$stripe = 'odd';
+};
+
+print ("<tr class='$stripe'>");
+print ("<td>$row[form]</td>");
+print ("<td>$row[ip]</td>");
+print ("<td>$row[dt]</td>");
+print ("<td>$row[firstname]</td>");
+print ("<td>$row[lastname]</td>");
+print ("<td>$row[businessname]</td>");
+print ("<td>$row[email]</td>");
+print ("<td>$row[about]</td>");
+print ("<td>$row[referrer]</td>");
+print ("<td>$row[mainservice]</td>");
+print ("<td>$row[startupkit]</td>");
+print ("<td>$row[officeassistant]</td>");
+print ("<td>$row[retailsolution]</td>");
+print ("</tr>");
+$i++;
+};
+print ("</tbody>");
+print ("</table>");
+print ("</div><hr>");
 
 
+$subscribers = mysqli_query($con,"SELECT * FROM subscribers ORDER BY dt");
+
+print ("<div class='form-wrap'>");
+$countrows = mysqli_num_rows($subscribers);
+print ("<table class='allformdata'>");
+print ("<tr>");
+print ("<th scope='col'>Total Subcribers:</th>");
+print ("<th scope='col'>$countrows</th>");
+print ("</tr>");
+print ("</table>");
+
+print ("<table class='allformdata'>");
+print ("<thead>");
+print ("<tr>");
+print ("<th scope='col'>IP</th>");
+print ("<th scope='col'>Date and Time</th>");
+print ("<th scope='col'>First Name</th>");
+print ("<th scope='col'>Last Name</th>");
+print ("<th scope='col'>Email Address</th>");
+print ("</tr>");
+print ("</thead>");
+
+print ("<tbody>");
+while($row=mysqli_fetch_array($subscribers)) {
+	if ($i % 2 == 0) {
+	$stripe = 'even';
+} else {
+	$stripe = 'odd';
+};
+print ("<tr class='$stripe'>");
+print ("<td>$row[ip]</td>");
+print ("<td>$row[dt]</td>");
+print ("<td>$row[firstname]</td>");
+print ("<td>$row[lastname]</td>");
+print ("<td>$row[email]</td>");
+print ("</tr>");
+$i++;
+};
+print ("</tbody>");
+print ("</table>");
+print ("</div><hr>");
+
+$contacted = mysqli_query($con,"SELECT * FROM connect ORDER BY dt");
+
+print ("<div class='form-wrap'>");
+$countrows = mysqli_num_rows($contacted);
+print ("<table class='allformdata'>");
+print ("<tr>");
+print ("<th scope='col'>Total Comment/Message Submissions:</th>");
+print ("<th scope='col'>$countrows</th>");
+print ("</tr>");
+print ("</table>");
+
+print ("<table class='allformdata'>");
+print ("<thead>");
+print ("<tr>");
+print ("<th scope='col'>IP</th>");
+print ("<th scope='col'>Date and Time</th>");
+print ("<th scope='col'>First Name</th>");
+print ("<th scope='col'>Last Name</th>");
+print ("<th scope='col'>Business Name</th>");
+print ("<th scope='col'>Email Address</th>");
+print ("<th scope='col'>Phone</th>");
+print ("<th scope='col'>Comments</th>");
+print ("</tr>");
+print ("</thead>");
+
+print ("<tbody>");
+while($row=mysqli_fetch_array($contacted)) {
+	if ($i % 2 == 0) {
+	$stripe = 'even';
+} else {
+	$stripe = 'odd';
+};
+
+print ("<tr class='$stripe'>");
+print ("<td>$row[ip]</td>");
+print ("<td>$row[dt]</td>");
+print ("<td>$row[firstname]</td>");
+print ("<td>$row[lastname]</td>");
+print ("<td>$row[businessname]</td>");
+print ("<td>$row[email]</td>");
+print ("<td>$row[phone]</td>");
+print ("<td>$row[comments]</td>");
+print ("</tr>");
+$i++;
+};
+print ("</tbody>");
+print ("</table>");
+print ("</div>");
 ?>
-
-<footer>
-	<div class="content clearfx">
-		<ul class="buttons">
-			<li><img src="images/facebook2.png" alt="FACEBOOK"></li>
-			<li><img src="images/twitter2.png" alt="TWITTER"></li>
-			<li><img src="images/email.png" alt="EMAIL"></li>
-			<li><img src="images/call.png" alt="CALL"></li>
-			<li><img src="images/locate.png" alt="MAP"></li>
-		</ul>
-		<div class="column" id="column1">
-			<h3>NAVIGATION</h3>
-			<ul id="footernav">
-				<li><a href="#top">TOP</a></li>
-				<li><a href="#about">ABOUT XFR</a></li>
-				<li><a href="#layout">THE LAYOUT</a></li>
-				<li><a href="#membership">MEMBERSHIP</a></li>
-				<li><a href="#connect">CONNECT</a></li>
-				<li><a href="#">BLOG</a></li>
-			</ul>
-		</div>
-		<div class="column" id="column2">
-			<h3>INORMATION</h3>
-			<ul>
-				<li><a href="mailto:info@thexfr.org">INFO@THEXFR.ORG</a></li>
-				<li>(267) 908-4104</li>
-				<li><a target="_blank" href="https://www.facebook.com/thexfr">FACEBOOK.COM/THEXFR</a></li>
-				<li><a target="_blank" href="http://www.twitter.com/thexfr">TWITTER.COM/THEXFR</a></li>
-				<li><a target="_blank" href="http://www.instagram.com/thexfr">INSTAGRAM.COM/THEXFR</a></li>
-				<li>THE TRANSFER STATION</li>
-				<li class="address">114 GREEN LANE</li>
-				<li class="address">PHILADELPHIA, PA 19127</li>
-			</ul>
-		</div>
-		<div class="column" id="column3">
-			<h3>THE XFR TEAM</h3>
-<ul class="positions">
-	<li>ADAM ROGERS  <span class="position">CO-FOUNDER + STRATEGIC DIRECTOR</span>  <a href="mailto: adam@thexfr.org">EMAIL</a></li>
-	<li>SIMON ROGERS  <span class="position">CO-FOUNDER + CREATIVE DIRECTOR</span>  <a href="mailto:simon@thexfr.org">EMAIL</a></li>
-	<li>FRANKIE ZELNICK  <span class="position">COMMUNICATIONS DIRECTOR</span>  <a href="mailto:frankie@thexfr.org">EMAIL</a></li>
-	<li>BRIAN MURRAY  <span class="position">PARTNER</span></li>
-	<li>IMAR HUTCHINS  <span class="position">PARTNER</span></li>
-</ul>
-
+	</section>
+</div>
+<footer style ="height: 400px; text-align: center;">
 <p>Site created by Transfer Creative.  Copyright © 2013 THEXFR LLC.  All rights reserved.</p>
-		</div>
-	</div>
 </footer>
 		<script>
 /*####### STICKY NAV SCRIPT ##########*/

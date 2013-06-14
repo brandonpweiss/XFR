@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2013 at 09:47 PM
+-- Generation Time: Jun 14, 2013 at 04:48 PM
 -- Server version: 5.5.29
 -- PHP Version: 5.3.15
 
@@ -28,9 +28,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `connect` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) NOT NULL,
-  `businessName` varchar(150) NOT NULL,
-  `email` varchar(150) NOT NULL,
+  `ip` text NOT NULL,
+  `dt` datetime NOT NULL,
+  `firstname` text NOT NULL,
+  `lastname` text NOT NULL,
+  `businessname` text NOT NULL,
+  `email` text NOT NULL,
   `phone` varchar(25) NOT NULL,
   `comments` text NOT NULL,
   PRIMARY KEY (`id`)
@@ -39,31 +42,67 @@ CREATE TABLE IF NOT EXISTS `connect` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `membershipSurvey`
+-- Table structure for table `sell`
 --
 
-CREATE TABLE IF NOT EXISTS `membershipSurvey` (
+CREATE TABLE IF NOT EXISTS `sell` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `firstName` varchar(150) NOT NULL,
-  `lastName` varchar(150) NOT NULL,
-  `businessName` varchar(150) NOT NULL,
-  `email` varchar(150) NOT NULL,
+  `form` text NOT NULL,
+  `ip` text NOT NULL,
+  `dt` datetime NOT NULL,
+  `firstname` text NOT NULL,
+  `lastname` text NOT NULL,
+  `businessname` text NOT NULL,
+  `email` text NOT NULL,
   `about` text NOT NULL,
-  `howDidYouHear` text NOT NULL,
-  `mainService` varchar(14) NOT NULL,
-  `startUpKit` tinyint(4) NOT NULL,
-  `officeAssistant` tinyint(4) NOT NULL,
-  `retailSolution` tinyint(4) NOT NULL,
+  `referrer` text NOT NULL,
+  `mainservice` varchar(80) NOT NULL,
+  `startupkit` tinyint(1) NOT NULL,
+  `officeassistant` tinyint(1) NOT NULL,
+  `retailsolution` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `membershipSurvey`
+-- Dumping data for table `sell`
 --
 
-INSERT INTO `membershipSurvey` (`id`, `firstName`, `lastName`, `businessName`, `email`, `about`, `howDidYouHear`, `mainService`, `startUpKit`, `officeAssistant`, `retailSolution`) VALUES
-(1, 'robert', 'c', 'rc Web', '', 'blah hey', 'simon', 'on', 1, 1, 0),
-(2, 'Robert', 'Capell', 'RC WEB', 'rcapell@me.com', '', 'simon', 'teamOffice', 0, 1, 1);
+INSERT INTO `sell` (`id`, `form`, `ip`, `dt`, `firstname`, `lastname`, `businessname`, `email`, `about`, `referrer`, `mainservice`, `startupkit`, `officeassistant`, `retailsolution`) VALUES
+(1, 'sell', '', '2013-06-14 11:50:48', 'test1', 'test1', 'test1', 'test1@thexfr.org', 'about myself', 'plane exhaust in sky.', 'gallerywall', 0, 1, 1),
+(2, 'sell', '::1', '2013-06-14 12:28:08', 'test4', 'test4', 'test4', 'test4@thexfr.org', 'about me', 'bla bla', 'displaycase', 1, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `start`
+--
+
+CREATE TABLE IF NOT EXISTS `start` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `form` text NOT NULL,
+  `ip` text NOT NULL,
+  `dt` datetime NOT NULL,
+  `firstname` text NOT NULL,
+  `lastname` text NOT NULL,
+  `businessname` text NOT NULL,
+  `email` text NOT NULL,
+  `about` text NOT NULL,
+  `referrer` text NOT NULL,
+  `mainservice` text NOT NULL,
+  `startupkit` text NOT NULL,
+  `officeassistant` text NOT NULL,
+  `retailsolution` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `start`
+--
+
+INSERT INTO `start` (`id`, `form`, `ip`, `dt`, `firstname`, `lastname`, `businessname`, `email`, `about`, `referrer`, `mainservice`, `startupkit`, `officeassistant`, `retailsolution`) VALUES
+(1, 'start', '', '2013-06-14 11:21:27', 'test1', 'test1', 'test1', 'test1@thexfr.org', 'about me', 'The internet', '0', '', '', ''),
+(2, 'start', '', '2013-06-14 11:23:27', 'test1', 'test1', 'test1', 'test1@thexfr.org', 'about me', 'The internet', '0', '', '', ''),
+(3, 'start', '', '2013-06-14 11:24:26', 'test2', 'test2', 'test2', 'test2@thexfr.org', 'about me', 'a magazine', '1', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -73,19 +112,86 @@ INSERT INTO `membershipSurvey` (`id`, `firstName`, `lastName`, `businessName`, `
 
 CREATE TABLE IF NOT EXISTS `subscribers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(150) NOT NULL,
-  `email` varchar(150) NOT NULL,
+  `ip` text NOT NULL,
+  `dt` datetime NOT NULL,
+  `firstname` text NOT NULL,
+  `lastname` text NOT NULL,
+  `email` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `subscribers`
 --
 
-INSERT INTO `subscribers` (`id`, `name`, `email`) VALUES
-(1, 'rob', 'rcapell@Me.com'),
-(2, 'rob', 'rcapell@Me.com'),
-(3, 'rob', 'rcapell@me.com');
+INSERT INTO `subscribers` (`id`, `ip`, `dt`, `firstname`, `lastname`, `email`) VALUES
+(1, '', '0000-00-00 00:00:00', 'rob', '', 'rcapell@Me.com'),
+(2, '', '0000-00-00 00:00:00', 'rob', '', 'rcapell@Me.com'),
+(3, '', '0000-00-00 00:00:00', 'rob', '', 'rcapell@me.com'),
+(4, '::1', '2013-06-14 16:46:19', 'test7', '', 'test7@thexfr.org');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transfer`
+--
+
+CREATE TABLE IF NOT EXISTS `transfer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `form` text NOT NULL,
+  `ip` text NOT NULL,
+  `dt` datetime NOT NULL,
+  `firstname` text NOT NULL,
+  `lastname` text NOT NULL,
+  `businessname` text NOT NULL,
+  `email` text NOT NULL,
+  `about` text NOT NULL,
+  `referrer` text NOT NULL,
+  `mainservice` varchar(80) NOT NULL,
+  `startupkit` tinyint(1) NOT NULL,
+  `officeassistant` tinyint(1) NOT NULL,
+  `retailsolution` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `transfer`
+--
+
+INSERT INTO `transfer` (`id`, `form`, `ip`, `dt`, `firstname`, `lastname`, `businessname`, `email`, `about`, `referrer`, `mainservice`, `startupkit`, `officeassistant`, `retailsolution`) VALUES
+(1, 'transfer', '', '2013-06-14 12:09:03', 'test6', 'test6', 'test6', 'test6@thexfr.org', 'about me', 'google', 'learn', 0, 0, 1),
+(2, 'transfer', '', '2013-06-12 14:23:47', 'test7', 'test7', 'test7', 'test7@thexfr.org', 'about me bla bla', 'bing', 'create', 1, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `work`
+--
+
+CREATE TABLE IF NOT EXISTS `work` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `form` text NOT NULL,
+  `ip` text NOT NULL,
+  `dt` datetime NOT NULL,
+  `firstname` text NOT NULL,
+  `lastname` text NOT NULL,
+  `businessname` text NOT NULL,
+  `email` text NOT NULL,
+  `about` text NOT NULL,
+  `referrer` text NOT NULL,
+  `mainservice` varchar(80) NOT NULL,
+  `startupkit` tinyint(1) NOT NULL,
+  `officeassistant` tinyint(1) NOT NULL,
+  `retailsolution` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `work`
+--
+
+INSERT INTO `work` (`id`, `form`, `ip`, `dt`, `firstname`, `lastname`, `businessname`, `email`, `about`, `referrer`, `mainservice`, `startupkit`, `officeassistant`, `retailsolution`) VALUES
+(1, 'work', '', '2013-06-14 11:49:31', 'test1', 'test1', 'test1', 'test1@thexfr.org', 'about me', 'the internet', 'customize', 1, 1, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

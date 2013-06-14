@@ -1,6 +1,7 @@
 <?php
 include('config.php');
 $dt = date("Y-m-d H:i:s");
+$ip = $_SERVER["REMOTE_ADDR"];
 /* Subscribe */
 if ( isset( $_POST['submit1'] ) )
 {
@@ -33,8 +34,10 @@ if ( isset( $_POST['submit1'] ) )
 	/* Send to DB */
 	if ($subscribeErrors == NULL)
 	{
-		mysqli_query($con,"INSERT INTO subscribers (name, email)
-		VALUES ('$name', '$email')");
+		mysqli_query($con,"INSERT INTO subscribers (ip, dt, firstname, email)
+		VALUES ('$ip', '$dt', '$name', '$email')");
+
+			header("location:thanks.html");
 	};
 
 }
@@ -94,12 +97,14 @@ else if ( isset( $_POST['submit2'] ) ) /* CONNECT */
 	/* Send to DB */
 	if ($connectErrors == NULL)
 	{
-		mysqli_query($con,"INSERT INTO connect (name, businessName, email, phone, comments)
-		VALUES ('$name', '$businessName', '$email', '$phone', '$comments')");
+		mysqli_query($con,"INSERT INTO connect (ip, dt, firstname, businessName, email, phone, comments)
+		VALUES ('$ip', '$dt', '$name', '$businessName', '$email', '$phone', '$comments')");
+
+		header("location:thanks.html");
 	};
 
 }
-else if ( isset( $_POST['submit3'] ) ) /* START */
+else if ( isset( $_POST['startsubmit'] ) ) /* START */
 {
 
 	/* First Name */
@@ -155,17 +160,18 @@ else if ( isset( $_POST['submit3'] ) ) /* START */
 	$referrer = filter_var($_POST['referrer'], FILTER_SANITIZE_STRING);
 
 	/* Say Hello */
-	$sayhello = filter_var($_POST['sayhello'], FILTER_SANITIZE_STRING);
+	$mainservice = filter_var($_POST['sayhello'], FILTER_SANITIZE_STRING);
 
 	/* Send to DB */
 	if ($surveyErrors == NULL)
 	{
-		mysqli_query($con,"INSERT INTO start (dt, firstname, lastname, businessname, email, about, referrer, sayhello)
-		VALUES ('$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$sayhello')");
+		mysqli_query($con,"INSERT INTO start (form, ip, dt, firstname, lastname, businessname, email, about, referrer, mainservice)
+		VALUES ('start', $ip','$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice')");
+		header("location:thanks.html");
 	};
 
 }
-else if ( isset( $_POST['submit4'] ) ) /* WORK */
+else if ( isset( $_POST['worksubmit'] ) ) /* WORK */
 {
 
 	/* First Name */
@@ -220,36 +226,36 @@ else if ( isset( $_POST['submit4'] ) ) /* WORK */
 	/* How Did you Hear About Us? */
 	$referrer = filter_var($_POST['referrer'], FILTER_SANITIZE_STRING);
 
-	/* shared desk */
-	$shareddesk = filter_var($_POST['shareddesk'], FILTER_SANITIZE_STRING);
 
-	/* private desk */
-	$privatedesk = filter_var($_POST['privatedesk'], FILTER_SANITIZE_STRING);
-
-	/* team office */
-	$teamoffice = filter_var($_POST['teamoffice'], FILTER_SANITIZE_STRING);
-
-	/* customize*/
-	$customize = filter_var($_POST['customize'], FILTER_SANITIZE_STRING);
+	/* main service */
+	if ($_POST['mainservice'] != '')
+	{
+	$mainservice = filter_var($_POST['mainservice'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please select a service.</span>";
+	};
 
 	/* Start Up Kit */
-	$startupkit = filter_var($_POST['startupkit'], FILTER_SANITIZE_STRING);
+	$startupkit = filter_var($_POST['workstartupkit'], FILTER_SANITIZE_STRING);
 
 	/* Office Assistant */
-	$officeassistant = filter_var($_POST['officeassistant'], FILTER_SANITIZE_STRING);
+	$officeassistant = filter_var($_POST['workofficeassistant'], FILTER_SANITIZE_STRING);
 
 	/* Retail Solution */
-	$retailsolution = filter_var($_POST['retailsolution'], FILTER_SANITIZE_STRING);
+	$retailsolution = filter_var($_POST['workretailsolution'], FILTER_SANITIZE_STRING);
 
 	/* Send to DB */
 	if ($surveyErrors == NULL)
 	{
-		mysqli_query($con,"INSERT INTO work (dt, firstname, lastname, businessname, email, about, referrer, shareddesk, privatedesk, teamoffice, customize, startupkit, officeassistant, retailsolution)
-		VALUES ('$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$shareddesk', '$privatedesk', '$teamoffice', '$customize', '$startupkit', '$officeassistant', '$retailsolution')");
+		mysqli_query($con,"INSERT INTO work (form, ip, dt, firstname, lastname, businessname, email, about, referrer, mainservice, startupkit, officeassistant, retailsolution)
+		VALUES ('work', $ip','$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice', '$startupkit', '$officeassistant', '$retailsolution')");
+		header("location:thanks.html");
 	};
 
 }
-else if ( isset( $_POST['submit5'] ) ) /* SELL */
+else if ( isset( $_POST['sellsubmit'] ) ) /* SELL */
 {
 
 	/* First Name */
@@ -304,36 +310,35 @@ else if ( isset( $_POST['submit5'] ) ) /* SELL */
 	/* How Did you Hear About Us? */
 	$referrer = filter_var($_POST['referrer'], FILTER_SANITIZE_STRING);
 
-	/* shared desk */
-	$gallerywall = filter_var($_POST['gallerywall'], FILTER_SANITIZE_STRING);
-
-	/* private desk */
-	$displaycase = filter_var($_POST['displaycase'], FILTER_SANITIZE_STRING);
-
-	/* team office */
-	$retailstore = filter_var($_POST['retailstore'], FILTER_SANITIZE_STRING);
-
-	/* customize*/
-	$customize = filter_var($_POST['customize'], FILTER_SANITIZE_STRING);
+	/* main service */
+	if ($_POST['mainservice'] != '')
+	{
+	$mainservice = filter_var($_POST['mainservice'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please select a service.</span>";
+	};
 
 	/* Start Up Kit */
-	$startupkit = filter_var($_POST['startupkit'], FILTER_SANITIZE_STRING);
+	$startupkit = filter_var($_POST['sellstartupkit'], FILTER_SANITIZE_STRING);
 
 	/* Office Assistant */
-	$officeassistant = filter_var($_POST['officeassistant'], FILTER_SANITIZE_STRING);
+	$officeassistant = filter_var($_POST['sellofficeassistant'], FILTER_SANITIZE_STRING);
 
 	/* Retail Solution */
-	$retailsolution = filter_var($_POST['retailsolution'], FILTER_SANITIZE_STRING);
+	$retailsolution = filter_var($_POST['sellretailsolution'], FILTER_SANITIZE_STRING);
 
 	/* Send to DB */
 	if ($surveyErrors == NULL)
 	{
-		mysqli_query($con,"INSERT INTO sell (dt, firstname, lastname, businessname, email, about, referrer, gallerywall, displaycase, retailstore, customize, startupkit, officeassistant, retailsolution)
-		VALUES ('$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$gallerywall', '$displaycase', '$retailstore', '$customize', '$startupkit', '$officeassistant', '$retailsolution')");
+		mysqli_query($con,"INSERT INTO sell (form, ip, dt, firstname, lastname, businessname, email, about, referrer, mainservice, startupkit, officeassistant, retailsolution)
+		VALUES ('sell', $ip', '$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice', '$startupkit', '$officeassistant', '$retailsolution')");
+		header("location:thanks.html");
 	};
 
 }
-else if ( isset( $_POST['submit5'] ) ) /* TRANSFER */
+else if ( isset( $_POST['transfersubmit'] ) ) /* TRANSFER */
 {
 
 	/* First Name */
@@ -388,23 +393,22 @@ else if ( isset( $_POST['submit5'] ) ) /* TRANSFER */
 	/* How Did you Hear About Us? */
 	$referrer = filter_var($_POST['referrer'], FILTER_SANITIZE_STRING);
 
-	/* learn */
-	$learn = filter_var($_POST['learn'], FILTER_SANITIZE_STRING);
-
-	/* share */
-	$share = filter_var($_POST['share'], FILTER_SANITIZE_STRING);
-
-	/* create */
-	$create = filter_var($_POST['create'], FILTER_SANITIZE_STRING);
-
-	/* perform */
-	$perform = filter_var($_POST['perform'], FILTER_SANITIZE_STRING);
+	/* main service */
+	if ($_POST['mainservice'] != '')
+	{
+	$mainservice = filter_var($_POST['mainservice'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please select a service.</span>";
+	};
 
 	/* Send to DB */
 	if ($surveyErrors == NULL)
 	{
-		mysqli_query($con,"INSERT INTO sell (dt, firstname, lastname, businessname, email, about, referrer, learn, share, create, perform)
-		VALUES ('$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$learn', '$share', '$create', '$perform')");
+		mysqli_query($con,"INSERT INTO transfer (form, ip, dt, firstname, lastname, businessname, email, about, referrer, mainservice)
+		VALUES ('transfer', $ip', '$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice')");
+		header("location:thanks.html");
 	};
 
 };
@@ -579,41 +583,364 @@ mysqli_close($con);
 
 <div class="option topoption" id="start">
 			<div class="inner">
-			<button type="button" data-toggle="collapse" data-target="#startstuff" class="choice1 collapsed">START</button>
+			<button type="button" class="choice1 collapsed">START</button>
 			</div>
 			</div>
 
 		<div class="option topoption" id="work">
 			<div class="inner">
-			<button type="button" data-toggle="collapse" data-target="#workstuff" class="choice1 collapsed">WORK</button>
+			<button type="button" class="choice1 collapsed">WORK</button>
 		</div>
 		</div>
 
 
 		<div class="option topoption" id="sell">
 			<div class="inner">
-			<button type="button" data-toggle="collapse" data-target="#sellstuff" class="choice1 collapsed">SELL</button>
+			<button type="button" class="choice1 collapsed">SELL</button>
 			</div>
 		</div>
 
 
 		<div class="option topoption" id="transfer">
 			<div class="inner">
-			<button type="button" data-toggle="collapse" data-target="#transferstuff"  class="choice1 collapsed">TRANSFER</button>
+			<button type="button" class="choice1 collapsed">TRANSFER</button>
 			</div>
 		</div>
 	</div>
 
+<!---#transferstuff---->
+<div class="transfer-wrap">
+	<article id="transferstuff">
+		<div class="content clearfix">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs4">
+
+	<div class="option">
+			<div class="inner">
+			<h2>1. LEARN</h2>
+			<div class="box">
+				<p>One of the core tenants of the XFR concept is self-development.  We're offering a myriad of ways to learn, grow, and experience something new through lectures, hands-on workshops, and individual lessons.  Let us know what you want to learn!</p>
+				<div class="price">SUBSCRIBE AND SHARE</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservice" value="learn" id="learn"><label for="learn"><span class="transferbttn2"></span></label></div>
+			</div>
+		</div>
 
 
+
+			<div class="option">
+			<div class="inner">
+			<h2>2. SHARE</h2>
+			<div class="box">
+				<p>Are you an expert in your field and love to share?  Join our group of teachers and sign up to give lectures, workshops, or individual lessons - we're looking for expertise in any and every field, no matter how obscure it may seem.</p>
+				<div class="price">SUBSCRIBE AND SHARE</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservice" value="share" id="share"><label for="share"><span class="transferbttn2"></span></label>
+			</div>
+		</div>
+		</div>
+
+		<div class="option">
+			<div class="inner">
+			<h2>3. CREATE</h2>
+			<div class="box">
+				<p>	Between our small-batch kitchen, our creative media production studio, and our sister facility MAKESH/FT (a full-service maker lab), we have the resources to help bring your ideas to life.  Get your creations started at the XFR!</p>
+				<div class="price">SUBSCRIBE AND SHARE</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservice" value="create" id="create"><label for="create"><span class="transferbttn2"></span></label></div>
+			</div>
+		</div>
+
+<div class="option">
+			<div class="inner">
+			<h2>4. PERFORM</h2>
+			<div class="box">
+				<p>As beautiful as our performance and rehearsal venues are, they need you to bring them to life.  If you're looking for a performance venue or unique event space, let us know if you think our facilities would be the right fit!</p>
+				<div class="price">SUBSCRIBE AND SHARE</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservice" value="perform" id="perform"><label for="perform"><span class="transferbttn2"></span></label></div>
+			</div>
+		</div>
+</div>
+
+
+<div id="transfermore">
+<div class="content clearfix">
+	<div class="inner">
+	<div class="toprow">
+	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
+	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+
+	<input type="submit" name ="transfersubmit" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+</form>
+</div>
+</article>
+</div>
+<!---end #transferstuff---->
+
+<!---#sellstuff---->
+<div class="sell-wrap">
+	<article id="sellstuff" class="wrap">
+		<div class="content clearfix">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs3">
+
+<div class="option">
+			<div class="inner">
+			<h2>1. GALLERY WALL</h2>
+			<div class="box">
+				<p>	Your own gallery space on Main Street!  The XFR curated gallery is changing how local artist will show and sell their work by offering highly-desirable display space with no gallery fees and no strings attached! </p>
+				<div class="price">FROM $45 PER MONTH</div>
+			</div>
+
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservice" value="gallerywall" id="gallerywall"><label for="gallerywall"><span class="sellbttn2"></span></label></div>
+			</div>
+		</div>
+
+
+
+			<div class="option">
+			<div class="inner">
+			<h2>2. DISPLAY CASE</h2>
+			<div class="box">
+				<p>	Making retail on Main Street possible.  The main two story volume at the XFR is our curated collaborative gallery, providing a completely new way for individual artists and small businesses to have an affordable retail showcase on Main Street. </p>
+				<div class="price">FROM $245 PER MONTH</div>
+			</div>
+
+
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservice" value="displaycase" id="displaycase"><label for="displaycase"><span class="sellbttn2"></span></label></div>
+
+
+
+		</div>
+		</div>
+
+		<div class="option">
+			<div class="inner">
+			<h2>3. RETAIL STORE</h2>
+			<div class="box">
+				<p>	Completely customizable, unbelievably affordable.  Whether you're just starting out or already have an existing operation that needs to expand or downscale, our XFR retail pods are changing how retail is done in Philadelphia.</p>
+				<div class="price">FROM $345 PER MONTH</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservice" value="retailstore" id="retailstore"><label for="retailstore"><span class="sellbttn2"></span></label></div>
+			</div>
+		</div>
+
+<div class="option">
+			<div class="inner">
+			<h2>4. CUSTOMIZE</h2>
+			<div class="box">
+				<p>	Your store-front dream on Main Street.  Our architectural team has designed our spaces with flexibility in mind to best accommodate your individual needs.  Let us know what your ideal storefront looks like, and we'll build it together. </p>
+				<div class="price">NAME YOUR PRICE</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservice" value="customize" id="sellcustomize"><label for="sellcustomize"><span class="sellbttn2"></span></label></div>
+			</div>
+		</div>
+</div>
+
+
+<div id="sellmore" class="options2">
+<div class="content clearfix">
+	<div class="inner">
+	<div class="option2">
+		<div class="heading clearfix">
+			<div class="headingLeft">
+			<h1>+ THE XFR STARTUP KIT</h1>
+			<span class="addthis">ADD THIS</span>
+			</div>
+			<input type="checkbox" name="sellstartupkit" value="1" id="sellstartupkit"><label for="sellstartupkit"><span></span></label>
+		</div>
+		<div class="info clearfix">
+			<div class="para">
+			<p>MAKE YOUR BEST FIRST IMPRESSION.  Every member of the XFR community should be armed with the tools they need to make a great impression on their future clients and co-workers.  For a limited time, we will be offering new members a complete startup kit including a branding design/makeover kit from our in-house creative team, consultation with our consultants network (strategy/legal/accounting), and a basic website with an email address and social media integration through our XFR domain!
+			</p>
+			</div>
+			<div class="price"><span class="fee">$495 ONE TIME FEE</span> <br> <span class="why">WHY IS THIS SO CHEAP?</span></div>
+		</div>
+	</div>
+
+	<div class="option2">
+		<div class="heading clearfix">
+			<div class="headingLeft">
+			<h1>+ THE XFR OFFICE ASSISTANT</h1>
+			<span class="addthis">ADD THIS</span>
+			</div>
+			<input type="checkbox" name="sellofficeassistant" value="1" id="sellofficeassistant"><label for="sellofficeassistant"><span></span></label>
+		</div>
+		<div class="info clearfix">
+			<div class="para">
+			<p>THE ULTIMATE BUSINESS TOOLKIT.  As small business owners ourselves, we're offering a toolkit that includes everything we wish we had when we were first starting out.  This business support package includes live reception services with intercom and custom answering options, a business mailing address and shipping center with forwarding service, office hours with our professional consultants network, discounted access to all XFR classes/events, and a monthly guest-pass allotment.  Limited availability!
+</p>
+			</div>
+			<div class="price"><span class="fee">$195 PER MONTH</span> <br> <span class="why">THE MOST AFFORDABLE EMPLOYEE</span></div>
+		</div>
+	</div>
+	<div class="option2">
+		<div class="heading clearfix">
+		<div class="headingLeft">
+			<h1>+ THE XFR RETAIL SOLUTION</h1>
+			<span class="addthis">ADD THIS</span>
+			</div>
+			<input type="checkbox" name="sellretailsolution" value="1" id="sellretailsolution"><label for="sellretailsolution"><span></span></label>
+		</div>
+		<div class="info clearfix">
+			<div class="para">
+			<p>A COMPLETE RETAIL ECOSYSTEM.  The true cost of owning a retail store becomes apparent when considering all of the operational expenses (rent, employees, insurance, security, etc).  We're setting out to remove the high-cost barriers to retail by giving small operations a truly complete solution that includes full-time staffing (our staff becomes your staff), electronic payment processing, e-commerce integration with shipping management, secure inventory storage, and remote monitoring for 24/7 security. </p>
+			</div>
+			<div class="price"><span class="fee">$495 PER MONTH</span> <br> <span class="why">A MAIN STREET DREAM COME TRUE</span></div>
+		</div>
+	</div>
+	<div class="toprow">
+	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
+	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+
+	<input type="submit" name ="sellsubmit" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+</form>
+</div>
+</article>
+</div>
+<!---end #sellstuff---->
+
+<!---#workstuff---->
+<div class="work-wrap">
+	<article id="workstuff" class="wrap">
+		<div class="content clearfix">
+		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs2" name="work">
+
+<div class="option">
+			<div class="inner">
+			<h2>1. SHARED DESK</h2>
+			<div class="box">
+				<p>	Co-working comes to Main Street!  Upgrade from the coffee shop to one of our shared desks in the XFR's beautiful "bullpen," work among likeminded individuals, and benefit from our uncompromising shared resources.  </p>
+				<div class="price">FROM $25 PER DAY<br>OR $245 PER MONTH</div>
+			</div>
+
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservice" value="shareddesk" id="shareddesk"><label for="shareddesk"><span class="workbttn2"></span></label></div>
+			</div>
+		</div>
+
+
+
+			<div class="option">
+			<div class="inner">
+			<h2>2. PRIVATE DESK</h2>
+			<div class="box">
+				<p>	Co-working with privacy!  The XFR offers a limited selection of private one-person offices that offer the perfect mix of isolated workspace and access to our uncompromising shared amenities.  Consider this the ultimate "home" office.</p>
+				<div class="price">FROM $395 PER MONTH</div>
+			</div>
+
+
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservice" value="privatedesk" id="privatedesk"><label for="privatedesk"><span class="workbttn2"></span></label></div>
+
+
+
+		</div>
+		</div>
+
+		<div class="option">
+			<div class="inner">
+			<h2>3. TEAM OFFICE</h2>
+			<div class="box">
+				<p>	Co-working for groups!  If you're part of a team that needs space for up to four employees, reserve a private office and enjoy the full XFR experience for your whole team!  Customizable layouts are available for your individual needs.</p>
+				<div class="price">FROM $795 PER MONTH</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservice" value="teamoffice" id="teamoffice"><label for="teamoffice"><span class="workbttn2"></span></label></div>
+			</div>
+		</div>
+
+<div class="option">
+			<div class="inner">
+			<h2>4. BUILD YOUR OWN</h2>
+			<div class="box">
+				<p>Your dream office on Main Street!  Our architectural team has designed our spaces with flexibility in mind to best accommodate your individual needs.  Let us know what your ideal workspace looks like, and we'll build it together.</p>
+				<div class="price">NAME YOUR PRICE</div>
+			</div>
+			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservice" value="customize" id="workcustomize"><label for="workcustomize"><span class="workbttn2"></span></label></div>
+			</div>
+		</div>
+</div>
+
+
+
+<div id="workmore" class="options2">
+<div class="content clearfix">
+	<div class="inner">
+	<div class="option2">
+		<div class="heading clearfix">
+			<div class="headingLeft">
+			<h1>+ THE XFR STARTUP KIT</h1>
+			<span class="addthis">ADD THIS</span>
+			</div>
+			<input type="checkbox" name="workstartupkit" value="1" id="workstartupkit"><label for="workstartupkit"><span></span></label>
+		</div>
+		<div class="info clearfix">
+			<div class="para">
+			<p>MAKE YOUR BEST FIRST IMPRESSION.  Every member of the XFR community should be armed with the tools they need to make a great impression on their future clients and co-workers.  For a limited time, we will be offering new members a complete startup kit including a branding design/makeover kit from our in-house creative team, consultation with our consultants network (strategy/legal/accounting), and a basic website with an email address and social media integration through our XFR domain!
+			</p>
+			</div>
+			<div class="price"><span class="fee">$495 ONE TIME FEE</span> <br> <span class="why">WHY IS THIS SO CHEAP?</span></div>
+		</div>
+	</div>
+
+	<div class="option2">
+		<div class="heading clearfix">
+			<div class="headingLeft">
+			<h1>+ THE XFR OFFICE ASSISTANT</h1>
+			<span class="addthis">ADD THIS</span>
+			</div>
+			<input type="checkbox" name="workofficeassistant" value="1" id="workofficeassistant"><label for="workofficeassistant"><span></span></label>
+		</div>
+		<div class="info clearfix">
+			<div class="para">
+			<p>THE ULTIMATE BUSINESS TOOLKIT.  As small business owners ourselves, we're offering a toolkit that includes everything we wish we had when we were first starting out.  This business support package includes live reception services with intercom and custom answering options, a business mailing address and shipping center with forwarding service, office hours with our professional consultants network, discounted access to all XFR classes/events, and a monthly guest-pass allotment.  Limited availability!
+</p>
+			</div>
+			<div class="price"><span class="fee">$195 PER MONTH</span> <br> <span class="why">THE MOST AFFORDABLE EMPLOYEE</span></div>
+		</div>
+	</div>
+	<div class="option2">
+		<div class="heading clearfix">
+		<div class="headingLeft">
+			<h1>+ THE XFR RETAIL SOLUTION</h1>
+			<span class="addthis">ADD THIS</span>
+			</div>
+			<input type="checkbox" name="workretailsolution" value="1" id="workretailsolution"><label for="workretailsolution"><span></span></label>
+		</div>
+		<div class="info clearfix">
+			<div class="para">
+			<p>A COMPLETE RETAIL ECOSYSTEM.  The true cost of owning a retail store becomes apparent when considering all of the operational expenses (rent, employees, insurance, security, etc).  We're setting out to remove the high-cost barriers to retail by giving small operations a truly complete solution that includes full-time staffing (our staff becomes your staff), electronic payment processing, e-commerce integration with shipping management, secure inventory storage, and remote monitoring for 24/7 security. </p>
+			</div>
+			<div class="price"><span class="fee">$495 PER MONTH</span> <br> <span class="why">A MAIN STREET DREAM COME TRUE</span></div>
+		</div>
+	</div>
+	<div class="toprow">
+	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
+	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+
+	<input type="submit" name ="worksubmit" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+</form>
+</div>
+</article>
+</div>
+<!---end #workstuff---->
 
 <!---#startstuff---->
-<div class="startstuff-wrap">
+<div class="start-wrap">
 	<article id="startstuff" class="wrap">
 		<div class="content clearfix">
 		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs1">
 
-<div class="option" id="sayhello">
+<div class="option">
 			<div class="inner">
 			<h2>1. SAY HELLO</h2>
 			<div class="box">
@@ -639,7 +966,7 @@ mysqli_close($con);
 	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
 	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
-	<input type="submit" name ="submit3" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
+	<input type="submit" name ="startsubmit" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
 </div>
 </div>
@@ -647,355 +974,6 @@ mysqli_close($con);
 </div>
 </article>
 <!---end #startstuff---->
-
-
-
-
-
-
-
-<!---#workstuff---->
-<div class="workstuff-wrap">
-	<article id="workstuff" class="wrap">
-		<div class="content clearfix">
-		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs2" name="work">
-
-<div class="option" id="shareddesk">
-			<div class="inner">
-			<h2>1. SHARED DESK</h2>
-			<div class="box">
-				<p>	Co-working comes to Main Street!  Upgrade from the coffee shop to one of our shared desks in the XFR's beautiful "bullpen," work among likeminded individuals, and benefit from our uncompromising shared resources.  </p>
-				<div class="price">FROM $25 PER DAY<br>OR $245 PER MONTH</div>
-			</div>
-
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservicework" value="shareddesk" id="shareddesk"><label for="shareddesk"><span></span></label></div>
-			</div>
-		</div>
-
-
-
-			<div class="option" id="privatedesk">
-			<div class="inner">
-			<h2>2. PRIVATE DESK</h2>
-			<div class="box">
-				<p>	Co-working with privacy!  The XFR offers a limited selection of private one-person offices that offer the perfect mix of isolated workspace and access to our uncompromising shared amenities.  Consider this the ultimate "home" office.</p>
-				<div class="price">FROM $395 PER MONTH</div>
-			</div>
-
-
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservicework" value="privatedesk" id="privatedesk"><label for="privatedesk"><span></span></label></div>
-
-
-
-		</div>
-		</div>
-
-		<div class="option" id="teamoffice">
-			<div class="inner">
-			<h2>3. TEAM OFFICE</h2>
-			<div class="box">
-				<p>	Co-working for groups!  If you're part of a team that needs space for up to four employees, reserve a private office and enjoy the full XFR experience for your whole team!  Customizable layouts are available for your individual needs.</p>
-				<div class="price">FROM $795 PER MONTH</div>
-			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservicework" value="teamoffice" id="teamoffice"><label for="teamoffice"><span></span></label></div>
-			</div>
-		</div>
-
-<div class="option" id="buildyourown">
-			<div class="inner">
-			<h2>4. BUILD YOUR OWN</h2>
-			<div class="box">
-				<p>Your dream office on Main Street!  Our architectural team has designed our spaces with flexibility in mind to best accommodate your individual needs.  Let us know what your ideal workspace looks like, and we'll build it together.</p>
-				<div class="price">NAME YOUR PRICE</div>
-			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservicework" value="customize" id="customize"><label for="customize"><span></span></label></div>
-			</div>
-		</div>
-</div>
-
-
-
-<div id="workmore" class="options2">
-<div class="content clearfix">
-	<div class="inner">
-	<div class="option2">
-		<div class="heading clearfix">
-			<div class="headingLeft">
-			<h1>+ THE XFR STARTUP KIT</h1>
-			<span class="addthis">ADD THIS</span>
-			</div>
-			<input type="checkbox" name="startupkit" value="1" id="startupkit"><label for="startupkit"><span></span></label>
-		</div>
-		<div class="info clearfix">
-			<div class="para">
-			<p>MAKE YOUR BEST FIRST IMPRESSION.  Every member of the XFR community should be armed with the tools they need to make a great impression on their future clients and co-workers.  For a limited time, we will be offering new members a complete startup kit including a branding design/makeover kit from our in-house creative team, consultation with our consultants network (strategy/legal/accounting), and a basic website with an email address and social media integration through our XFR domain!
-			</p>
-			</div>
-			<div class="price"><span class="fee">$495 ONE TIME FEE</span> <br> <span class="why">WHY IS THIS SO CHEAP?</span></div>
-		</div>
-	</div>
-
-	<div class="option2">
-		<div class="heading clearfix">
-			<div class="headingLeft">
-			<h1>+ THE XFR OFFICE ASSISTANT</h1>
-			<span class="addthis">ADD THIS</span>
-			</div>
-			<input type="checkbox" name="officeassistant" value="1" id="officeassistant"><label for="officeassistant"><span></span></label>
-		</div>
-		<div class="info clearfix">
-			<div class="para">
-			<p>THE ULTIMATE BUSINESS TOOLKIT.  As small business owners ourselves, we're offering a toolkit that includes everything we wish we had when we were first starting out.  This business support package includes live reception services with intercom and custom answering options, a business mailing address and shipping center with forwarding service, office hours with our professional consultants network, discounted access to all XFR classes/events, and a monthly guest-pass allotment.  Limited availability!
-</p>
-			</div>
-			<div class="price"><span class="fee">$195 PER MONTH</span> <br> <span class="why">THE MOST AFFORDABLE EMPLOYEE</span></div>
-		</div>
-	</div>
-	<div class="option2">
-		<div class="heading clearfix">
-		<div class="headingLeft">
-			<h1>+ THE XFR RETAIL SOLUTION</h1>
-			<span class="addthis">ADD THIS</span>
-			</div>
-			<input type="checkbox" name="retailsolution" value="1" id="retailsolution"><label for="retailsolution"><span></span></label>
-		</div>
-		<div class="info clearfix">
-			<div class="para">
-			<p>A COMPLETE RETAIL ECOSYSTEM.  The true cost of owning a retail store becomes apparent when considering all of the operational expenses (rent, employees, insurance, security, etc).  We're setting out to remove the high-cost barriers to retail by giving small operations a truly complete solution that includes full-time staffing (our staff becomes your staff), electronic payment processing, e-commerce integration with shipping management, secure inventory storage, and remote monitoring for 24/7 security. </p>
-			</div>
-			<div class="price"><span class="fee">$495 PER MONTH</span> <br> <span class="why">A MAIN STREET DREAM COME TRUE</span></div>
-		</div>
-	</div>
-	<div class="toprow">
-	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
-	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
-	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
-	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
-	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
-	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
-
-	<input type="submit" name ="submit4" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
-</form>
-</div>
-</article>
-</div>
-<!---end #workstuff---->
-
-
-
-
-
-<!---#sellstuff---->
-<div class="sellstuff-wrap">
-	<article id="sellstuff" class="wrap">
-		<div class="content clearfix">
-		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs3">
-
-<div class="option" id="gallerywall">
-			<div class="inner">
-			<h2>1. GALLERY WALL</h2>
-			<div class="box">
-				<p>	Your own gallery space on Main Street!  The XFR curated gallery is changing how local artist will show and sell their work by offering highly-desirable display space with no gallery fees and no strings attached! </p>
-				<div class="price">FROM $45 PER MONTH</div>
-			</div>
-
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservicesell" value="gallerywall" id="gallerywall"><label for="gallerywall"><span></span></label></div>
-			</div>
-		</div>
-
-
-
-			<div class="option" id="displaycase">
-			<div class="inner">
-			<h2>2. DISPLAY CASE</h2>
-			<div class="box">
-				<p>	Making retail on Main Street possible.  The main two story volume at the XFR is our curated collaborative gallery, providing a completely new way for individual artists and small businesses to have an affordable retail showcase on Main Street. </p>
-				<div class="price">FROM $245 PER MONTH</div>
-			</div>
-
-
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservicesell" value="displaycase" id="displaycase"><label for="displaycase"><span></span></label></div>
-
-
-
-		</div>
-		</div>
-
-		<div class="option" id="retailstore">
-			<div class="inner">
-			<h2>3. RETAIL STORE</h2>
-			<div class="box">
-				<p>	Completely customizable, unbelievably affordable.  Whether you're just starting out or already have an existing operation that needs to expand or downscale, our XFR retail pods are changing how retail is done in Philadelphia.</p>
-				<div class="price">FROM $345 PER MONTH</div>
-			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservicesell" value="retailstore" id="retailstore"><label for="retailstore"><span></span></label></div>
-			</div>
-		</div>
-
-<div class="option" id="customize">
-			<div class="inner">
-			<h2>4. CUSTOMIZE</h2>
-			<div class="box">
-				<p>	Your store-front dream on Main Street.  Our architectural team has designed our spaces with flexibility in mind to best accommodate your individual needs.  Let us know what your ideal storefront looks like, and we'll build it together. </p>
-				<div class="price">NAME YOUR PRICE</div>
-			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservicesell" value="customize2" id="customize2"><label for="customize"><span></span></label></div>
-			</div>
-		</div>
-</div>
-
-
-<div id="sellmore" class="options2">
-<div class="content clearfix">
-	<div class="inner">
-	<div class="option2">
-		<div class="heading clearfix">
-			<div class="headingLeft">
-			<h1>+ THE XFR STARTUP KIT</h1>
-			<span class="addthis">ADD THIS</span>
-			</div>
-			<input type="checkbox" name="startupkit" value="1" id="startupkit"><label for="startupkit"><span></span></label>
-		</div>
-		<div class="info clearfix">
-			<div class="para">
-			<p>MAKE YOUR BEST FIRST IMPRESSION.  Every member of the XFR community should be armed with the tools they need to make a great impression on their future clients and co-workers.  For a limited time, we will be offering new members a complete startup kit including a branding design/makeover kit from our in-house creative team, consultation with our consultants network (strategy/legal/accounting), and a basic website with an email address and social media integration through our XFR domain!
-			</p>
-			</div>
-			<div class="price"><span class="fee">$495 ONE TIME FEE</span> <br> <span class="why">WHY IS THIS SO CHEAP?</span></div>
-		</div>
-	</div>
-
-	<div class="option2">
-		<div class="heading clearfix">
-			<div class="headingLeft">
-			<h1>+ THE XFR OFFICE ASSISTANT</h1>
-			<span class="addthis">ADD THIS</span>
-			</div>
-			<input type="checkbox" name="officeassistant" value="1" id="officeassistant"><label for="officeassistant"><span></span></label>
-		</div>
-		<div class="info clearfix">
-			<div class="para">
-			<p>THE ULTIMATE BUSINESS TOOLKIT.  As small business owners ourselves, we're offering a toolkit that includes everything we wish we had when we were first starting out.  This business support package includes live reception services with intercom and custom answering options, a business mailing address and shipping center with forwarding service, office hours with our professional consultants network, discounted access to all XFR classes/events, and a monthly guest-pass allotment.  Limited availability!
-</p>
-			</div>
-			<div class="price"><span class="fee">$195 PER MONTH</span> <br> <span class="why">THE MOST AFFORDABLE EMPLOYEE</span></div>
-		</div>
-	</div>
-	<div class="option2">
-		<div class="heading clearfix">
-		<div class="headingLeft">
-			<h1>+ THE XFR RETAIL SOLUTION</h1>
-			<span class="addthis">ADD THIS</span>
-			</div>
-			<input type="checkbox" name="retailsolution" value="1" id="retailsolution"><label for="retailsolution"><span></span></label>
-		</div>
-		<div class="info clearfix">
-			<div class="para">
-			<p>A COMPLETE RETAIL ECOSYSTEM.  The true cost of owning a retail store becomes apparent when considering all of the operational expenses (rent, employees, insurance, security, etc).  We're setting out to remove the high-cost barriers to retail by giving small operations a truly complete solution that includes full-time staffing (our staff becomes your staff), electronic payment processing, e-commerce integration with shipping management, secure inventory storage, and remote monitoring for 24/7 security. </p>
-			</div>
-			<div class="price"><span class="fee">$495 PER MONTH</span> <br> <span class="why">A MAIN STREET DREAM COME TRUE</span></div>
-		</div>
-	</div>
-	<div class="toprow">
-	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
-	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
-	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
-	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
-	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
-	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
-
-	<input type="submit" name ="submit5" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
-</form>
-</div>
-</article>
-</div>
-<!---end #sellstuff---->
-
-
-
-
-
-<!---#transferstuff---->
-<div class="transferstuff-wrap">
-	<article id="transferstuff">
-		<div class="content clearfix">
-		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>" id="inputs4">
-
-	<div class="option" id="learn">
-			<div class="inner">
-			<h2>1. LEARN</h2>
-			<div class="box">
-				<p>One of the core tenants of the XFR concept is self-development.  We're offering a myriad of ways to learn, grow, and experience something new through lectures, hands-on workshops, and individual lessons.  Let us know what you want to learn!</p>
-				<div class="price">SUBSCRIBE AND SHARE</div>
-			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservicetransfer" value="learn" id="learn"><label for="learn"><span></span></label></div>
-			</div>
-		</div>
-
-
-
-			<div class="option" id="share">
-			<div class="inner">
-			<h2>2. SHARE</h2>
-			<div class="box">
-				<p>Are you an expert in your field and love to share?  Join our group of teachers and sign up to give lectures, workshops, or individual lessons - we're looking for expertise in any and every field, no matter how obscure it may seem.</p>
-				<div class="price">SUBSCRIBE AND SHARE</div>
-			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservicetransfer" value="share" id="share"><label for="share"><span></span></label>
-			</div>
-		</div>
-		</div>
-
-		<div class="option" id="create">
-			<div class="inner">
-			<h2>3. CREATE</h2>
-			<div class="box">
-				<p>	Between our small-batch kitchen, our creative media production studio, and our sister facility MAKESH/FT (a full-service maker lab), we have the resources to help bring your ideas to life.  Get your creations started at the XFR!</p>
-				<div class="price">SUBSCRIBE AND SHARE</div>
-			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservicetransfer" value="create" id="create"><label for="create"><span></span></label></div>
-			</div>
-		</div>
-
-<div class="option" id="perform">
-			<div class="inner">
-			<h2>4. PERFORM</h2>
-			<div class="box">
-				<p>As beautiful as our performance and rehearsal venues are, they need you to bring them to life.  If you're looking for a performance venue or unique event space, let us know if you think our facilities would be the right fit!</p>
-				<div class="price">SUBSCRIBE AND SHARE</div>
-			</div>
-			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservicetransfer" value="perform" id="perform"><label for="perform"><span></span></label></div>
-			</div>
-		</div>
-</div>
-
-
-<div id="transfermore" class="options2">
-<div class="content clearfix">
-	<div class="inner">
-	<div class="toprow">
-	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
-	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
-	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
-	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
-	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
-	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
-
-	<input type="submit" name ="submit6" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
-</form>
-</div>
-</article>
-</div>
-<!---end #transferstuff---->
-
-
-
-
-
-
-
-
-
 
 <?php echo $surveyErrors; ?>
 </div>
@@ -1121,6 +1099,131 @@ mysqli_close($con);
 			});
 		});
 
+	$(".workbttn2").click(function()
+	{
+		$('#workmore').slideDown(400);
+	});
+		$(".sellbttn2").click(function()
+	{
+		$('#sellmore').slideDown(400);
+	});
+		$(".transferbttn2").click(function()
+	{
+		$('#transfermore').slideDown(400);
+	});
+
+	$("#start").click(function()
+	{
+		$('#start > .inner > .choice1').removeClass('collapsed');
+
+		if ($('.start-wrap').hasClass('expanded'))
+		{
+			//do nothing;
+		}
+		else
+		{
+			if ($('.expanded').length)
+			{
+				$('#work .inner > .choice1').addClass('collapsed');
+				$('#sell .inner > .choice1').addClass('collapsed');
+				$('#transfer .inner > .choice1').addClass('collapsed');
+
+				$('.expanded').slideUp(400);
+				$('.expanded').removeClass('expanded');
+				$('.start-wrap').addClass('expanded');
+				$('.start-wrap').slideDown(400);
+			}
+			else
+			{
+			$('.start-wrap').addClass('expanded');
+			$('.start-wrap').slideDown(400);
+			};
+		};
+	});
+	$("#work").click(function()
+	{
+		$('#work > .inner > .choice1').removeClass('collapsed');
+
+		if ($('.work-wrap').hasClass('expanded'))
+		{
+			//do nothing;
+		}
+		else
+		{
+			if ($('.expanded').length)
+			{
+				$('#start .inner > .choice1').addClass('collapsed');
+				$('#sell .inner > .choice1').addClass('collapsed');
+				$('#transfer .inner > .choice1').addClass('collapsed');
+
+				$('.expanded').slideUp(400);
+				$('.expanded').removeClass('expanded');
+				$('.work-wrap').addClass('expanded');
+				$('.work-wrap').slideDown(400);
+			}
+			else
+			{
+			$('.work-wrap').addClass('expanded');
+			$('.work-wrap').slideDown(400);
+			};
+		};
+	});
+	$("#sell").click(function()
+	{
+		$('#sell > .inner > .choice1').removeClass('collapsed');
+
+		if ($('.sell-wrap').hasClass('expanded'))
+		{
+			//do nothing;
+		}
+		else
+		{
+			if ($('.expanded').length)
+			{
+				$('#work .inner > .choice1').addClass('collapsed');
+				$('#start .inner > .choice1').addClass('collapsed');
+				$('#transfer .inner > .choice1').addClass('collapsed');
+
+				$('.expanded').slideUp(400);
+				$('.expanded').removeClass('expanded');
+				$('.sell-wrap').addClass('expanded');
+				$('.sell-wrap').slideDown(400);
+			}
+			else
+			{
+			$('.sell-wrap').addClass('expanded');
+			$('.sell-wrap').slideDown(400);
+			};
+		};
+	});
+	$("#transfer").click(function()
+	{
+		$('#transfer > .inner > .choice1').removeClass('collapsed');
+
+		if ($('.transfer-wrap').hasClass('expanded'))
+		{
+			//do nothing;
+		}
+		else
+		{
+			if ($('.expanded').length)
+			{
+				$('#work .inner > .choice1').addClass('collapsed');
+				$('#sell .inner > .choice1').addClass('collapsed');
+				$('#start .inner > .choice1').addClass('collapsed');
+
+				$('.expanded').slideUp(400);
+				$('.expanded').removeClass('expanded');
+				$('.transfer-wrap').addClass('expanded');
+				$('.transfer-wrap').slideDown(400);
+			}
+			else
+			{
+			$('.transfer-wrap').addClass('expanded');
+			$('.transfer-wrap').slideDown(400);
+			};
+		};
+	});
 </script>
 <script>window.scrollTo(0, 1);</script>
 </body>
