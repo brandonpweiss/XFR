@@ -57,7 +57,7 @@ else if ( isset( $_POST['submit2'] ) ) /* CONNECT */
 	/* Business Name */
 	if ($_POST['businessName'] != '')
 	{
-		$businessName = filter_var($_POST['businessName'], FILTER_SANITIZE_STRING);
+		$businessName = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
 	}
 	else
 	{
@@ -97,8 +97,8 @@ else if ( isset( $_POST['submit2'] ) ) /* CONNECT */
 	/* Send to DB */
 	if ($connectErrors == NULL)
 	{
-		mysqli_query($con,"INSERT INTO connect (ip, dt, firstname, businessName, email, phone, comments)
-		VALUES ('$ip', '$dt', '$name', '$businessName', '$email', '$phone', '$comments')");
+		mysqli_query($con,"INSERT INTO connect (ip, dt, firstname, businessname, email, phone, comments)
+		VALUES ('$ip', '$dt', '$name', '$businessname', '$email', '$phone', '$comments')");
 
 		header("location:thanks.html");
 	};
