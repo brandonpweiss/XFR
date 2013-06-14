@@ -55,7 +55,7 @@ else if ( isset( $_POST['submit2'] ) ) /* CONNECT */
 	};
 
 	/* Business Name */
-	if ($_POST['businessName'] != '')
+	if ($_POST['businessname'] != '')
 	{
 		$businessName = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
 	}
