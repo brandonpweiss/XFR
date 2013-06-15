@@ -429,6 +429,7 @@ mysqli_close($con);
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 <body  data-spy="scroll" data-target="nav">
+		<a name="top" class="marker"></a>
 	<header>
 		<div class="content">
 		<img src="images/xfr.png" id="xfr" alt="XFR">
@@ -457,12 +458,12 @@ mysqli_close($con);
     <div id="sticky_navigation">
 		<!-- <div class="content"> -->
 		<ul class="nav">
-			<li id="about1"><a href="#about">ABOUT</a></li>
-			<li><a href="#layout">THE LAYOUT</a></li>
-			<li><a href="#membership">MEMBERSHIP</a></li>
-			<li><a href="#connect">CONNECT</a></li>
-			<li><a href="#blog">BLOG</a></li>
-			<li id="subscribe1"><a href="#top">SUBSCRIBE TO UPDATES</a></li>
+			<li id="about1"><a href="#" id="aboutnav">ABOUT</a></li>
+			<li><a href="#" id="layoutnav">THE LAYOUT</a></li>
+			<li><a href="#" id="membershipnav">MEMBERSHIP</a></li>
+			<li><a href="#" id="connectnav">CONNECT</a></li>
+			<li><a target="_blank" href="http://blog.thexfr.org">BLOG</a></li>
+			<li id="subscribe1"><a href="#" id="topnav">SUBSCRIBE TO UPDATES</a></li>
 		</ul>
 		<!-- </div> -->
 	</div>
@@ -471,6 +472,7 @@ mysqli_close($con);
 	<section id="smallspaces">
 		<div class="smallspaces">SMALL SPACES. <br>BIG IDEAS.</div>
 	</section>
+	<a name="about" class="marker"></a>
 	<section id="about">
 		<div class="content clearfix">
 			<div class="column left">
@@ -493,18 +495,18 @@ mysqli_close($con);
 		<div class="content clearfix">
 			<div id="ohhello">OH HELLO. I'M JUST HERE TO</div>
 			<ul id="nav2">
-				<li><a href="#">JOIN</a></li>
-				<li><a href="#">WORK</a></li>
-				<li><a href="#">SELL</a></li>
-				<li><a href="#">TRANSFER</a></li>
-				<li><a href="#">RINSE</a></li>
-				<li><a href="#">REPEAT</a></li>
+				<li><a>JOIN</a></li>
+				<li><a>WORK</a></li>
+				<li><a>SELL</a></li>
+				<li><a>TRANSFER</a></li>
+				<li><a>RINSE</a></li>
+				<li><a>REPEAT</a></li>
 			</ul>
 			</div>
 	</section>
 	<section id="chair">
 	</section>
-
+<a name="layout" class="marker"></a>
 <section id="layout">
 		<div class="layoutP">
 		<div class="inner">
@@ -521,7 +523,7 @@ mysqli_close($con);
 	<img src="images/microretail.png" alt="Microretail">
 	<p>This living marketplace is a winding expanse of customizable “retail pods” - small, highly-modifiable storefronts that can be configured to showcase any product type.  Our layout is designed to encourage high-volume foot traffic from those just starting their walk down Main Street, or those winding down at our cafe and outdoor deck.
 </p>
-	<a href="#" class="learnmore">< LEARN MORE ></a>
+	<a target="_blank" href="http://www.facebook.com/thexfr" class="learnmore">< LEARN MORE ></a>
 	<a href="#" class="tellafriend">> TELL A FRIEND <</a>
 </div>
 <div class="dept">
@@ -529,7 +531,7 @@ mysqli_close($con);
 	<h3>LEVEL 2 / OFFICE</h3>
 	<img src="images/worknest.png" alt="">
 	<p>The WorkNest is the heart of our co-working facility.  With a collection of private and semi-private offices, a bullpen of open desk space, and a variety of shared amenities (conference room, lounge, etc.), this floor has been designed to encourage and support all manner of business needs in the most inviting environment we could imagine.</p>
-	<a href="#" class="learnmore">< LEARN MORE ></a>
+	<a  target="_blank" href="http://www.facebook.com/thexfr" class="learnmore">< LEARN MORE ></a>
 	<a href="#" class="tellafriend">> TELL A FRIEND <</a>
 </div>
 <div class="dept">
@@ -537,7 +539,7 @@ mysqli_close($con);
 	<h3>LEVEL 3 / EVENT</h3>
 	<img src="images/flexhall.png" alt="">
 	<p>Poised directly beneath the forthcoming Manayunk Bridge Park, our third-floor flex-space is a premier event and community program venue.  Featuring a wrap-around deck, commercial kitchen, and large open-volume communal halls, this flexible layout can be modified to fit any purpose, limited only by our member's imaginations. </p>
-	<a href="#" class="learnmore">< LEARN MORE ></a>
+	<a  target="_blank" href="http://www.facebook.com/thexfr"  class="learnmore">< LEARN MORE ></a>
 	<a href="#" class="tellafriend">> TELL A FRIEND <</a>
 </div>
 <div class="dept">
@@ -546,7 +548,7 @@ mysqli_close($con);
 	<img src="images/xfrcrtv.png" alt="">
 	<p>Transfer Creative (XFRCRTV) is our in-house creative division, servicing our member's marketing needs in an expansive production suite on the lower level.  A large central control-room sits between our soundstage for visual arts and our iso-room for audio production, providing our member’s ideas with unmatched production value.
 </p>
-	<a href="#" class="learnmore">< LEARN MORE ></a>
+	<a  target="_blank" href="http://www.facebook.com/thexfr"  class="learnmore">< LEARN MORE ></a>
 	<a href="#" class="tellafriend">> TELL A FRIEND <</a>
 </div>
 </article>
@@ -555,6 +557,7 @@ mysqli_close($con);
 <section id="transferhere">
 	<div class="smallspaces">TRANSFER<br>HERE</div>
 </section>
+<a name="membership" class="marker"></a>
 <section id="membership">
 		<div class="content clearfix">
 			<div class="layoutP">
@@ -984,6 +987,7 @@ mysqli_close($con);
 <section id="oldstation">
 	<img src="images/oldstation.jpg" alt="The Transfer Station">
 </section>
+<a name="connect" class="marker"></a>
 <section id="connect">
 		<div class="content clearfix">
 			<div class="column left">
@@ -1027,7 +1031,7 @@ mysqli_close($con);
 				<li><a href="#layout">THE LAYOUT</a></li>
 				<li><a href="#membership">MEMBERSHIP</a></li>
 				<li><a href="#connect">CONNECT</a></li>
-				<li><a href="#">BLOG</a></li>
+				<li><a target="_blank" href="http://blog.thexfr.org">BLOG</a></li>
 			</ul>
 		</div>
 		<div class="column" id="column2">
@@ -1225,6 +1229,7 @@ mysqli_close($con);
 		};
 	});
 </script>
+<script src="scroll.js"></script>
 <script>window.scrollTo(0, 1);</script>
 </body>
 </html>

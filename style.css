@@ -144,7 +144,10 @@ table {
     font-style: normal;
 
 }
-
+a.marker{
+	position: relative;
+	top:-40px;
+}
 body{
 	font-family: karbonregular;
 	letter-spacing: 2px;
@@ -434,6 +437,9 @@ ul#nav2 li a{
 	font-family: karbonmedium;
 	font-size: 25px;
 	padding: 12px;
+}
+ul#nav2 li a:hover{
+	text-decoration:none;
 }
 /*iamhereto section end*/
 #chair{
