@@ -425,6 +425,11 @@ mysqli_close($con);
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" href="style.css">
 	<link rel="shortcut icon" href="images/xfr.gif">
+	<!--[if lt IE 9]>
+<script type="text/javascript">
+    window.location = "ie8.html";
+</script>
+<![endif]-->
 	<script src="jquery.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="modernizr.js"></script>
