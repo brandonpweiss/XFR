@@ -55,14 +55,7 @@ else if ( isset( $_POST['submit2'] ) ) /* CONNECT */
 	};
 
 	/* Business Name */
-	if ($_POST['businessname'] != '')
-	{
-		$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
-	}
-	else
-	{
-		$connectErrors .= "<span class='errors'>Please enter your Business's name.</span>";
-	};
+	$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
 
 	/* Email */
 	if ($_POST['email'] != '')
@@ -81,18 +74,10 @@ else if ( isset( $_POST['submit2'] ) ) /* CONNECT */
 	};
 
 		/* Phone */
-	if ($_POST['phone'] != '')
-	{
-		$phone = filter_var($_POST['phone'], FILTER_SANITIZE_NUMBER_INT);
-	}
-	else
-	{
-		$connectErrors .= "<span class='errors'>Please enter your phone number.</span>";
-	};
+	$phone = filter_var($_POST['phone'], FILTER_SANITIZE_NUMBER_INT);
 
 	/* Comments */
 	$comments = filter_var($_POST['comments'], FILTER_SANITIZE_STRING);
-
 
 	/* Send to DB */
 	if ($connectErrors == NULL)
@@ -128,14 +113,7 @@ else if ( isset( $_POST['startsubmit'] ) ) /* START */
 	};
 
 	/* Business name */
-	if ($_POST['businessname'] != '')
-	{
-		$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
-	}
-	else
-	{
-		$surveyErrors .= "<span class='errors'>Please enter your business name.</span>";
-	};
+	$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
 
 	/* Email */
 	if ($_POST['email'] != '')
@@ -195,14 +173,7 @@ else if ( isset( $_POST['worksubmit'] ) ) /* WORK */
 	};
 
 	/* Business name */
-	if ($_POST['businessname'] != '')
-	{
-		$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
-	}
-	else
-	{
-		$surveyErrors .= "<span class='errors'>Please enter your business name.</span>";
-	};
+	$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
 
 	/* Email */
 	if ($_POST['email'] != '')
@@ -228,14 +199,7 @@ else if ( isset( $_POST['worksubmit'] ) ) /* WORK */
 
 
 	/* main service */
-	if ($_POST['mainservice'] != '')
-	{
 	$mainservice = filter_var($_POST['mainservice'], FILTER_SANITIZE_STRING);
-	}
-	else
-	{
-		$surveyErrors .= "<span class='errors'>Please select a service.</span>";
-	};
 
 	/* Start Up Kit */
 	$startupkit = filter_var($_POST['workstartupkit'], FILTER_SANITIZE_STRING);
@@ -279,14 +243,7 @@ else if ( isset( $_POST['sellsubmit'] ) ) /* SELL */
 	};
 
 	/* Business name */
-	if ($_POST['businessname'] != '')
-	{
-		$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
-	}
-	else
-	{
-		$surveyErrors .= "<span class='errors'>Please enter your business name.</span>";
-	};
+	$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
 
 	/* Email */
 	if ($_POST['email'] != '')
@@ -311,14 +268,7 @@ else if ( isset( $_POST['sellsubmit'] ) ) /* SELL */
 	$referrer = filter_var($_POST['referrer'], FILTER_SANITIZE_STRING);
 
 	/* main service */
-	if ($_POST['mainservice'] != '')
-	{
 	$mainservice = filter_var($_POST['mainservice'], FILTER_SANITIZE_STRING);
-	}
-	else
-	{
-		$surveyErrors .= "<span class='errors'>Please select a service.</span>";
-	};
 
 	/* Start Up Kit */
 	$startupkit = filter_var($_POST['sellstartupkit'], FILTER_SANITIZE_STRING);
@@ -334,6 +284,7 @@ else if ( isset( $_POST['sellsubmit'] ) ) /* SELL */
 	{
 		mysqli_query($con,"INSERT INTO sell (form, ip, dt, firstname, lastname, businessname, email, about, referrer, mainservice, startupkit, officeassistant, retailsolution)
 		VALUES ('sell', '$ip', '$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice', '$startupkit', '$officeassistant', '$retailsolution')");
+
 		header("location:thanks.html");
 	};
 
@@ -362,14 +313,7 @@ else if ( isset( $_POST['transfersubmit'] ) ) /* TRANSFER */
 	};
 
 	/* Business name */
-	if ($_POST['businessname'] != '')
-	{
-		$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
-	}
-	else
-	{
-		$surveyErrors .= "<span class='errors'>Please enter your business name.</span>";
-	};
+	$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
 
 	/* Email */
 	if ($_POST['email'] != '')
@@ -394,14 +338,7 @@ else if ( isset( $_POST['transfersubmit'] ) ) /* TRANSFER */
 	$referrer = filter_var($_POST['referrer'], FILTER_SANITIZE_STRING);
 
 	/* main service */
-	if ($_POST['mainservice'] != '')
-	{
 	$mainservice = filter_var($_POST['mainservice'], FILTER_SANITIZE_STRING);
-	}
-	else
-	{
-		$surveyErrors .= "<span class='errors'>Please select a service.</span>";
-	};
 
 	/* Send to DB */
 	if ($surveyErrors == NULL)
