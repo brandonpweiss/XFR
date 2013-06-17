@@ -157,6 +157,10 @@ body{
 	max-width: 880px;
 	margin: 0 auto;
 }
+.placeholder
+{
+  color: #aaa;
+}
 /*header*/
 header{
 	background: #ededed;
@@ -634,6 +638,9 @@ a.tellafriend:hover{
 }
 #membership .left .inner{
 	padding-right: 35px;
+}
+#membership .left .inner p{
+	text-align: justify;
 }
 #membership .right .inner{
 	padding-left: 35px;
@@ -1701,7 +1708,8 @@ header img#xfr{
 	text-transform: uppercase;
 	line-height: 16px;
 	font-size: 12px;
-	margin: 5px 0px 5px 0px;
+	padding: 10px 0px 10px 0px;
+	margin: 10px 0px 10px 0px;
 }
 
 header form#topform input{

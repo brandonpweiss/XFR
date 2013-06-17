@@ -427,7 +427,7 @@ mysqli_close($con);
 	<link rel="shortcut icon" href="images/xfr.gif">
 	<script src="jquery.js"></script>
 	<script src="js/bootstrap.js"></script>
-
+	<script src="modernizr.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="description" content="An innovative resource center for artists and entrepreneurs and a unique venue for the community they inspire."
 </head>
@@ -481,7 +481,7 @@ mysqli_close($con);
 			<div class="column left">
 				<div class="inner">
 					<h1>ABOUT XFR</h1>
-					<p>Welcome to The Transfer Station (THEXFR), an innovative resource center for artists and entrepreneurs and a unique venue for the community they inspire.  Located on Main Street in Manayunk, The Transfer Station offers tailor-made spaces and customized support services for bringing ideas to life.  Our curated retail marketplace, co-working spaces, creative labs, artist studios, kitchen share and cafe garden make for the ideal setting to work, sell, create, and collaborate with like-minded individuals.  Above all, The Transfer Station is a place to start.</p>
+					<p>Welcome to The Transfer Station (THEXFR), an innovative resource center for artists and entrepreneurs and a unique venue for the community they inspire.  Located on Main Street in Manayunk, The Transfer Station offers tailor-made spaces and customized support services for bringing ideas to life.  Our curated retail marketplace, co-working spaces, creative labs, artist studios, kitchen share and garden cafe make for the ideal setting to work, sell, create, and collaborate with like-minded individuals.  Above all, The Transfer Station is a place to start.</p>
 					<p class="ctas">JOIN THE CONVERSATION ON <a href="http://www.facebook.com/thetransferstation">FACEBOOK</a> AND <a href="http://www.twitter.com/thetransferstation">TWITTER</a></p>
 				</div>
 			</div>
@@ -801,7 +801,7 @@ mysqli_close($con);
 	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
 	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
 	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
-	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="QUESTIONS AND COMMENTS (OPTIONAL)" class="comments"></textarea>
 	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
 	<input type="submit" name ="sellsubmit" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
@@ -915,7 +915,7 @@ mysqli_close($con);
 	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
 	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
 	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
-	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="QUESTIONS AND COMMENTS (OPTIONAL)" class="comments"></textarea>
 	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
 	<input type="submit" name ="worksubmit" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
@@ -954,7 +954,7 @@ mysqli_close($con);
 	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
 	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
 	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
-	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="QUESTIONS AND COMMENTS (OPTIONAL)" class="comments"></textarea>
 	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
 	<input type="submit" name ="startsubmit" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
@@ -1231,6 +1231,30 @@ mysqli_close($con);
 
 </script>
 
-<script>var sharer = "https://www.facebook.com/sharer/sharer.php?u=http://www.thexfr.org";
+<script>var sharer = "https://www.facebook.com/sharer/sharer.php?u=http://www.thexfr.org";</script>
+
+<script>
+$('[placeholder]').focus(function() {
+  var input = $(this);
+  if (input.val() == input.attr('placeholder')) {
+    input.val('');
+    input.removeClass('placeholder');
+  }
+}).blur(function() {
+  var input = $(this);
+  if (input.val() == '' || input.val() == input.attr('placeholder')) {
+    input.addClass('placeholder');
+    input.val(input.attr('placeholder'));
+  }
+}).blur();
+$('[placeholder]').parents('form').submit(function() {
+  $(this).find('[placeholder]').each(function() {
+    var input = $(this);
+    if (input.val() == input.attr('placeholder')) {
+      input.val('');
+    }
+  })
+});
+</script>
 </body>
 </html>
