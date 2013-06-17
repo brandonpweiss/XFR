@@ -914,7 +914,7 @@ mysqli_close($con);
 		</div>
 	</div>
 	<div class="option2">
-		
+
 	<div class="toprow">
 	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
 	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
@@ -1056,6 +1056,18 @@ mysqli_close($con);
 	</div>
 </footer>
 		<script>
+		$(window).resize(function()
+		{
+			if ($(window).width() > 640)
+			{
+				$('nav').css('display', 'block');
+				$('nav').removeClass('open');
+			}
+			else if ($(window).width() < 640)
+			{
+				$('nav').css('display', 'none');
+			}
+		});
 /*####### STICKY NAV SCRIPT ##########*/
 	var nav_pos = $('nav').offset().top;
 	var i = 0;
@@ -1096,6 +1108,16 @@ mysqli_close($con);
 				$('nav').slideToggle(250);
 			});
 		});
+					$(document).ready(function()
+		{
+				$('nav ul li').click(function()
+				{
+					if (($(window).width() < 640)&&($('nav').hasClass('open'))) {
+						$('nav').removeClass('open');
+						$('nav').slideToggle(250);
+					};
+				});
+		});
 
 	$(".workbttn2").click(function()
 	{
@@ -1126,7 +1148,7 @@ mysqli_close($con);
 				$('#sell .inner > .choice1').addClass('collapsed');
 				$('#transfer .inner > .choice1').addClass('collapsed');
 
-				$('.expanded').slideUp(400);
+				$('.expanded').hide();
 				$('.expanded').removeClass('expanded');
 				$('.start-wrap').addClass('expanded');
 				$('.start-wrap').slideDown(400);
@@ -1136,6 +1158,9 @@ mysqli_close($con);
 			$('.start-wrap').addClass('expanded');
 			$('.start-wrap').slideDown(400);
 			};
+							$('html, body').animate({
+         		scrollTop: $("#startstuff").offset().top - 40
+     			}, 400);
 		};
 	});
 	$("#work").click(function()
@@ -1154,7 +1179,7 @@ mysqli_close($con);
 				$('#sell .inner > .choice1').addClass('collapsed');
 				$('#transfer .inner > .choice1').addClass('collapsed');
 
-				$('.expanded').slideUp(400);
+				$('.expanded').hide();
 				$('.expanded').removeClass('expanded');
 				$('.work-wrap').addClass('expanded');
 				$('.work-wrap').slideDown(400);
@@ -1164,6 +1189,9 @@ mysqli_close($con);
 			$('.work-wrap').addClass('expanded');
 			$('.work-wrap').slideDown(400);
 			};
+							$('html, body').animate({
+         		scrollTop: $("#workstuff").offset().top - 40
+     			}, 400);
 		};
 	});
 	$("#sell").click(function()
@@ -1182,7 +1210,7 @@ mysqli_close($con);
 				$('#start .inner > .choice1').addClass('collapsed');
 				$('#transfer .inner > .choice1').addClass('collapsed');
 
-				$('.expanded').slideUp(400);
+				$('.expanded').hide();
 				$('.expanded').removeClass('expanded');
 				$('.sell-wrap').addClass('expanded');
 				$('.sell-wrap').slideDown(400);
@@ -1192,6 +1220,9 @@ mysqli_close($con);
 			$('.sell-wrap').addClass('expanded');
 			$('.sell-wrap').slideDown(400);
 			};
+							$('html, body').animate({
+         		scrollTop: $("#sellstuff").offset().top - 40
+     			}, 400);
 		};
 	});
 	$("#transfer").click(function()
@@ -1210,7 +1241,7 @@ mysqli_close($con);
 				$('#sell .inner > .choice1').addClass('collapsed');
 				$('#start .inner > .choice1').addClass('collapsed');
 
-				$('.expanded').slideUp(400);
+				$('.expanded').hide();
 				$('.expanded').removeClass('expanded');
 				$('.transfer-wrap').addClass('expanded');
 				$('.transfer-wrap').slideDown(400);
@@ -1220,6 +1251,9 @@ mysqli_close($con);
 			$('.transfer-wrap').addClass('expanded');
 			$('.transfer-wrap').slideDown(400);
 			};
+							$('html, body').animate({
+         		scrollTop: $("#transferstuff").offset().top - 40
+     			}, 400);
 		};
 	});
 </script>
