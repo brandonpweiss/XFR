@@ -166,7 +166,7 @@ else if ( isset( $_POST['startsubmit'] ) ) /* START */
 	if ($surveyErrors == NULL)
 	{
 		mysqli_query($con,"INSERT INTO start (form, ip, dt, firstname, lastname, businessname, email, about, referrer, mainservice)
-		VALUES ('start', $ip','$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice')");
+		VALUES ('start', '$ip','$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice')");
 		header("location:thanks.html");
 	};
 
@@ -250,7 +250,7 @@ else if ( isset( $_POST['worksubmit'] ) ) /* WORK */
 	if ($surveyErrors == NULL)
 	{
 		mysqli_query($con,"INSERT INTO work (form, ip, dt, firstname, lastname, businessname, email, about, referrer, mainservice, startupkit, officeassistant, retailsolution)
-		VALUES ('work', $ip','$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice', '$startupkit', '$officeassistant', '$retailsolution')");
+		VALUES ('work', '$ip','$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice', '$startupkit', '$officeassistant', '$retailsolution')");
 		header("location:thanks.html");
 	};
 
@@ -333,7 +333,7 @@ else if ( isset( $_POST['sellsubmit'] ) ) /* SELL */
 	if ($surveyErrors == NULL)
 	{
 		mysqli_query($con,"INSERT INTO sell (form, ip, dt, firstname, lastname, businessname, email, about, referrer, mainservice, startupkit, officeassistant, retailsolution)
-		VALUES ('sell', $ip', '$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice', '$startupkit', '$officeassistant', '$retailsolution')");
+		VALUES ('sell', '$ip', '$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice', '$startupkit', '$officeassistant', '$retailsolution')");
 		header("location:thanks.html");
 	};
 
@@ -407,7 +407,7 @@ else if ( isset( $_POST['transfersubmit'] ) ) /* TRANSFER */
 	if ($surveyErrors == NULL)
 	{
 		mysqli_query($con,"INSERT INTO transfer (form, ip, dt, firstname, lastname, businessname, email, about, referrer, mainservice)
-		VALUES ('transfer', $ip', '$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice')");
+		VALUES ('transfer', '$ip', '$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice')");
 		header("location:thanks.html");
 	};
 
@@ -424,9 +424,12 @@ mysqli_close($con);
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" href="style.css">
+	<link rel="shortcut icon" href="images/xfr.gif">
 	<script src="jquery.js"></script>
 	<script src="js/bootstrap.js"></script>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="An innovative resource center for artists and entrepreneurs and a unique venue for the community they inspire."
 </head>
 <body  data-spy="scroll" data-target="nav">
 		<a name="top" class="marker"></a>
@@ -478,7 +481,7 @@ mysqli_close($con);
 			<div class="column left">
 				<div class="inner">
 					<h1>ABOUT XFR</h1>
-					<p>Welcome to The Transfer Station (THEXFR), an innovative resource center for artists and entrepreneurs, and a unique venue for the community they inspire.  Located on Main Street in Manayunk, The Transfer Station offers tailored-made spaces and customized support services for bringing ideas to life.  Our curated marketplace, co-workspace, creative lab, artist studios, kitchen share and hidden cafe make for the ideal setting to work, sell, create, and collaborate with likeminded individuals.  Above all, The Transfer Station is a place to start.</p>
+					<p>Welcome to The Transfer Station (THEXFR), an innovative resource center for artists and entrepreneurs and a unique venue for the community they inspire.  Located on Main Street in Manayunk, The Transfer Station offers tailor-made spaces and customized support services for bringing ideas to life.  Our curated retail marketplace, co-working spaces, creative labs, artist studios, kitchen share and cafe garden make for the ideal setting to work, sell, create, and collaborate with like-minded individuals.  Above all, The Transfer Station is a place to start.</p>
 					<p class="ctas">JOIN THE CONVERSATION ON <a href="http://www.facebook.com/thetransferstation">FACEBOOK</a> AND <a href="http://www.twitter.com/thetransferstation">TWITTER</a></p>
 				</div>
 			</div>
@@ -486,7 +489,7 @@ mysqli_close($con);
 				<div class="inner">
 					<h1>GET INVOLVED</h1>
 					<p>Our concept for The Transfer Station has been in development for years; now it's finally time to bring it to life!  In order to move forward, we need you - the community - to let us know what you think and give us feedback regarding which aspects appeal to you most.  By generating interest and encouraging participation through this website, we can all directly influence how soon The Transfer Station is able to open its doors and what the concept ultimately evolves into.  We ask you to explore this website, let us know what you're most interested in, and help spread the word!</p>
-					<p class="ctas">GET STARTED WITH THE XFR <a href="#membership">QUESTIONNAIRE</a> BELOW</p>
+					<p class="ctas">GET STARTED WITH OUR <a href="#membership">QUESTIONNAIRE</a> BELOW</p>
 				</div>
 			</div>
 		</div>
@@ -511,7 +514,7 @@ mysqli_close($con);
 		<div class="layoutP">
 		<div class="inner">
 		<h1>THE LAYOUT</h1>
-		<p>Our facility has been designed with adaptive reuse at its core - completely retrofitting an abandoned industrial building in the heart of Philadelphia's Manayunk neighborhood to accommodate a mix of working, making, learning, selling, and collaborating.  Our spaces are designed to be as comfortable as they are impactful, creating a warm and friendly facility in which you can make your best first impression.</p>
+		<p>Our facility has been designed with adaptive reuse at its core - completely retrofitting an unfinished industrial building in the heart of Philadelphia's Manayunk neighborhood to accommodate a mix of working, making, learning, selling, and collaborating.  Our spaces are designed to be as comfortable as they are impactful, creating a warm and friendly facility in which you can make your best first impression.</p>
 		<p><span class="bold">EXPLORE OUR DESIGNS BELOW</span></p>
 		</div>
 	</div>
@@ -521,35 +524,35 @@ mysqli_close($con);
 	<h2>MICRORETAIL</h2>
 	<h3>LEVEL 1 / RETAIL</h3>
 	<img src="images/microretail.png" alt="Microretail">
-	<p>This living marketplace is a winding expanse of customizable “retail pods” - small, highly-modifiable storefronts that can be configured to showcase any product type.  Our layout is designed to encourage high-volume foot traffic from those just starting their walk down Main Street, or those winding down at our cafe and outdoor deck.
+	<p>Completely customizable, unbelievably affordable.  Our two-story collaborative retail gallery is an expanse of small, highly-modifiable storefronts designed around your needs.  Whether you want to expand or just get started, we're making Main Street retail affordable again.
 </p>
 	<a target="_blank" href="http://www.facebook.com/thexfr" class="learnmore">< LEARN MORE ></a>
-	<a href="#" class="tellafriend">> TELL A FRIEND <</a>
+	<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.thexfr.org" target="_blank" class="tellafriend">> TELL A FRIEND <</a>
 </div>
 <div class="dept">
 	<h2>WORKNEST</h2>
 	<h3>LEVEL 2 / OFFICE</h3>
 	<img src="images/worknest.png" alt="">
-	<p>The WorkNest is the heart of our co-working facility.  With a collection of private and semi-private offices, a bullpen of open desk space, and a variety of shared amenities (conference room, lounge, etc.), this floor has been designed to encourage and support all manner of business needs in the most inviting environment we could imagine.</p>
+	<p>Co-working comes to Main Street!  With a collection of private offices, a bank of open desk space, and a complete ecosystem of shared amenities, our co-working spaces have been designed to encourage and support all manner of business needs in an inviting and engaging environment.</p>
 	<a  target="_blank" href="http://www.facebook.com/thexfr" class="learnmore">< LEARN MORE ></a>
-	<a href="#" class="tellafriend">> TELL A FRIEND <</a>
+	<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.thexfr.org" target="_blank" class="tellafriend">> TELL A FRIEND <</a>
 </div>
 <div class="dept">
 	<h2>FLEXHALL</h2>
 	<h3>LEVEL 3 / EVENT</h3>
 	<img src="images/flexhall.png" alt="">
-	<p>Poised directly beneath the forthcoming Manayunk Bridge Park, our third-floor flex-space is a premier event and community program venue.  Featuring a wrap-around deck, commercial kitchen, and large open-volume communal halls, this flexible layout can be modified to fit any purpose, limited only by our member's imaginations. </p>
+	<p>Poised directly beneath the forthcoming Manayunk Bridge Park, our beautiful third-floor atrium is a premier location in which to learn, to share, to create, and to perform.  Our flexible event spaces, classrooms, rehearsal, and makerspaces are limited only by the imaginations of our members!</p>
 	<a  target="_blank" href="http://www.facebook.com/thexfr"  class="learnmore">< LEARN MORE ></a>
-	<a href="#" class="tellafriend">> TELL A FRIEND <</a>
+	<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.thexfr.org" target="_blank" class="tellafriend">> TELL A FRIEND <</a>
 </div>
 <div class="dept">
 	<h2>XFRCRTV</h2>
 	<h3>LEVEL 0 / CREATIVE</h3>
 	<img src="images/xfrcrtv.png" alt="">
-	<p>Transfer Creative (XFRCRTV) is our in-house creative division, servicing our member's marketing needs in an expansive production suite on the lower level.  A large central control-room sits between our soundstage for visual arts and our iso-room for audio production, providing our member’s ideas with unmatched production value.
+	<p>Transfer Creative (XFRCRTV) is a strategic branding agency, reinvented for today's small business economy. By leveraging both our creative team and our in-house production facilities, we help to actualize transformative experiences through carefully crafted media.
 </p>
 	<a  target="_blank" href="http://www.facebook.com/thexfr"  class="learnmore">< LEARN MORE ></a>
-	<a href="#" class="tellafriend">> TELL A FRIEND <</a>
+	<a href="https://www.facebook.com/sharer/sharer.php?u=http://www.thexfr.org" target="_blank" class="tellafriend">> TELL A FRIEND <</a>
 </div>
 </article>
 </div>
@@ -572,12 +575,10 @@ mysqli_close($con);
 			</div>
 			<div class="column right">
 				<div class="inner">
-					<p class="yellow">DON’T WORRY, <br>
-					No money or promises required. <br>
-					we just want TO GET TO KNOW YOU!</p>
+					<p class="yellow">Please fill out this non-binding questionnaire to ensure your place in the community.<br>Space is limited!</p>
+					<div id="iwant">TO BEGIN, SELECT ONE OF THE FOUR OPTIONS BELOW...</div>
 				</div>
 			</div>
-			<div id="iwant">MAKE A SELECTION BELOW:</div>
 		</div>
 </section>
 
@@ -674,7 +675,7 @@ mysqli_close($con);
 	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
 	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
 	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
-	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="TELL US A LITTLE ABOUT YOURSELF (OPTIONAL)" class="comments"></textarea>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="QUESTIONS OR COMMENTS? (OPTIONAL)" class="comments"></textarea>
 	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
 	<input type="submit" name ="transfersubmit" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
@@ -908,20 +909,7 @@ mysqli_close($con);
 		</div>
 	</div>
 	<div class="option2">
-		<div class="heading clearfix">
-		<div class="headingLeft">
-			<h1>+ THE XFR RETAIL SOLUTION</h1>
-			<span class="addthis">ADD THIS</span>
-			</div>
-			<input type="checkbox" name="workretailsolution" value="1" id="workretailsolution"><label for="workretailsolution"><span></span></label>
-		</div>
-		<div class="info clearfix">
-			<div class="para">
-			<p>A COMPLETE RETAIL ECOSYSTEM.  The true cost of owning a retail store becomes apparent when considering all of the operational expenses (rent, employees, insurance, security, etc).  We're setting out to remove the high-cost barriers to retail by giving small operations a truly complete solution that includes full-time staffing (our staff becomes your staff), electronic payment processing, e-commerce integration with shipping management, secure inventory storage, and remote monitoring for 24/7 security. </p>
-			</div>
-			<div class="price"><span class="fee">$495 PER MONTH</span> <br> <span class="why">A MAIN STREET DREAM COME TRUE</span></div>
-		</div>
-	</div>
+		
 	<div class="toprow">
 	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
 	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
@@ -1055,6 +1043,7 @@ mysqli_close($con);
 	<li>FRANKIE ZELNICK  <span class="position">COMMUNICATIONS DIRECTOR</span>  <a href="mailto:frankie@thexfr.org">EMAIL</a></li>
 	<li>BRIAN MURRAY  <span class="position">PARTNER</span></li>
 	<li>IMAR HUTCHINS  <span class="position">PARTNER</span></li>
+	<li><a target="_blank" href="http://www.makeshift.us">MAKESH/FT</a> <span class="position">OUR SISTER FACILITY FOR MAKERS</span></li>
 </ul>
 
 <p>Site created by Transfer Creative.  Copyright © 2013 THEXFR LLC.  All rights reserved.</p>
@@ -1231,5 +1220,17 @@ mysqli_close($con);
 </script>
 <script src="scroll.js"></script>
 <script>window.scrollTo(0, 1);</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41779460-1', 'thexfr.org');
+  ga('send', 'pageview');
+
+</script>
+
+<script>var sharer = "https://www.facebook.com/sharer/sharer.php?u=http://www.thexfr.org";
 </body>
 </html>

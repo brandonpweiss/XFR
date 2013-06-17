@@ -6,11 +6,6 @@ include('config.php');
 $myusername=$_POST['username'];
 $mypassword=$_POST['password'];
 
-$myusername = stripslashes($myusername);
-$mypassword = stripslashes($mypassword);
-$myusername = mysql_real_escape_string($myusername);
-$mypassword = mysql_real_escape_string($mypassword);
-
 if ($myusername == $formdatausername && $mypassword == $formdatapassword){
 	session_register("myusername");
 	session_register("mypassword");

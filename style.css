@@ -198,6 +198,10 @@ form#topform #submit1{
 	top: -5px;
 	padding: 10px 12px 9px 12px;
 }
+form#topform #submit1:hover{
+		background: #333333;
+		color: #ffcc00;
+	}
 form#topform{
 	display: inline-block;
 }
@@ -267,6 +271,11 @@ table.allformdata tr th{
 .start-wrap, .work-wrap, .sell-wrap, .transfer-wrap, #workmore, #sellmore, #transfermore{
 	display:none;
 }
+#transfermore .content .inner{
+	width: 97%;
+	padding-top: 40px;
+	margin: 0 auto;
+}
 input[type="checkbox"], input[type="radio"] {
     display:none!important;
 }
@@ -281,6 +290,7 @@ input[type="checkbox"] + label span, input[type="radio"] + label span{
 }
 input[type="checkbox"] + label span {
 	width:5%;
+	border-left: solid medium white;
     height:49px;
 }
 #startstuff input[type="checkbox"] + label span {
@@ -532,12 +542,11 @@ section#layout .dept h2{
     letter-spacing: 2px;
 }
 section#layout .dept p{
-    text-align: justify;
+    text-align: center;
     border-top: solid 20px #000000;
     padding: 20px 0px 20px 0px;
     line-height: 23px;
     height: 300px;
-    font-family: karbonthin;
 }
 
 section#layout .dept .bold{
@@ -565,7 +574,14 @@ a.learnmore{
 	padding: 5px;
 	color: #000000;
 	text-decoration: none;
-
+	-webkit-transition: color .3s ease-in-out;
+	-moz-transition: color .3s ease-in-out;
+	-o-transition: color .3s ease-in-out;
+	-ms-transition: color .3s ease-in-out;
+	transition: color .3s ease-in-out;
+}
+a.learnmore:hover{
+	color: #ffcc00;
 }
 a.tellafriend{
 	display:block;
@@ -577,6 +593,14 @@ a.tellafriend{
 	padding: 5px;
 	color: #000000;
 	text-decoration: none;
+	-webkit-transition: color .3s ease-in-out;
+	-moz-transition: color .3s ease-in-out;
+	-o-transition: color .3s ease-in-out;
+	-ms-transition: color .3s ease-in-out;
+	transition: color .3s ease-in-out;
+}
+a.tellafriend:hover{
+	color: #ffffff;
 }
 /*layout section end*/
 
@@ -615,7 +639,7 @@ a.tellafriend{
 	padding-left: 35px;
 }
 #membership .right .inner p{
-	padding-top: 60px;
+	padding-top: 15px;
 		font-size: 20px;
 		line-height: 25px;
 }
@@ -628,7 +652,7 @@ a.tellafriend{
 }
 #membership p{
 	padding-top: 15px;
-	text-align: justify;
+	text-align: left;
 	line-height: 22px;
 	font-size: 14px;
 	color: #cccccc;
@@ -647,8 +671,8 @@ a.tellafriend{
 	clear:both;
 	color: #66cccc;
 	font-family: karbonmedium;
-	font-size: 30px;
-	padding-top: 40px;
+	font-size: 27px;
+	padding-top: 20px;
 	display:block;
 }
 /*membership section end*/
@@ -663,7 +687,7 @@ a.tellafriend{
 	max-width: 1280px;
 	width: 95%;
 	margin: 0 auto;
-	padding-top: 40px;
+	padding-top: 0px;
 }
 
 .option{
@@ -728,14 +752,14 @@ button.choice1{
 }
 
 .box{
-	text-align: justify;
+	text-align: center;
 	background: #cccccc;
 	padding: 20px;
 	min-height: 340px;
 }
 
 .box p{
-	font-family: karbonthin;
+	font-family: karbonlight;
 	line-height: 20px;
 	padding-bottom: 60px;
 	min-height: 209px;
@@ -846,7 +870,7 @@ button.check{
 	background: #cccccc;
 	width: 100%;
 	padding: 20px 0px 20px 0px;
-	font-family: karbonthin;
+	font-family: karbonlight;
 }
 .option2 .info .para{
 	margin-left: 20px;
@@ -880,20 +904,20 @@ form#inputs input{
 	padding: 10px 10px 6px 10px;
 	display:inline-block;
 }
-.names{
-}
-.rightz{
-}
 input.topz{
-	width: 23.7%;
+	width: 99%;
 	border:none;
 	border-radius:0;
+	font-size: 25px;
+	padding-top: 10px;
+	height: 25px;
 }
 textarea{
 	border-radius: 0px;
 	border: 0px;
 	height: 100px;
 	width: 48.8%;
+	font-size: 25px;
 }
 
 
@@ -971,6 +995,10 @@ input.submit3{
 	width: 100px;
 	background: #000000;
 }
+#connect form input#submit2:hover{
+	background: #ffffff;
+	color: #333333;
+}
 /*connect section end*/
 
 /*footer*/
@@ -978,6 +1006,9 @@ footer{
 	background: #2b2b28	url(images/earth.png) center center no-repeat;
 	background-size: cover;;
 	border-top: #ffffff solid thick;
+}
+footer .content a:hover{
+	color: #ededed;
 }
 footer .content{
 	display:block;
@@ -1122,11 +1153,7 @@ form textarea{
 	clear:both;
 }
 
-
-
-
-
-    section#layout .layoutP{
+section#layout .layoutP{
         padding-left: 0px;
         padding-right: 0px;
     }
@@ -1141,10 +1168,11 @@ form textarea{
 		font-size: 14px;
 	}
 section#layout .dept p{
-    text-align: justify;
+    text-align: left;
     border-top: solid 2px #555;
     padding: 10px 0px 0px 0px;
     height: 400px;
+
 }
 input[type="radio"] + label span {
 	height: 37px;
@@ -1156,7 +1184,7 @@ input[type="radio"] + label span {
 	font-size: 18px;
 }
 #options .option p{
-	height: 180px;
+	height: 220px;
 	font-size: 14px;
 }
 #options .box{
@@ -1180,6 +1208,11 @@ input[type="radio"] + label span {
 	header .content{
 	max-width: 70%;
 }
+#transfermore .content .inner{
+	width: 96%;
+	padding-top: 20px;
+	margin: 0 auto;
+}
 #tagline{
 	font-size: 14px;
 	line-height: 16px;
@@ -1189,7 +1222,12 @@ input[type="radio"] + label span {
 }
 input[type="checkbox"] + label span {
 	height: 37px;
-	width: 9%;
+}
+
+input.topz{
+	width: 98%;	
+	border:none;
+	border-radius:0;
 }
 nav ul li{
 	display:inline-block;
@@ -1227,7 +1265,6 @@ form#topform #submit1{
 }
 
 
-
 section#layout .layoutP{
         padding-left: 0px;
         padding-right: 0px;
@@ -1250,7 +1287,7 @@ section#layout .dept h3{
 		margin-bottom:0px;
 	}
 section#layout .dept p{
-    text-align: justify;
+    text-align: center;
     border-top: solid 2px #555;
     padding: 10px 0px 0px 0px;
     font-size: 12px;
@@ -1265,8 +1302,12 @@ section#layout .dept img{
 .selectbox button{
 	font-size: 18px;
 }
-
-
+#startstuff .content, #workstuff .content, #sellstuff .content, #transferstuff .content{
+	padding-top: 0px;
+}
+#transferstuff .content{
+	padding-bottom: 20px;
+}
 #options h1{
 	font-size: 18px;
 }
@@ -1275,10 +1316,10 @@ section#layout .dept img{
 }
 #options .option p{
 	font-size: 12px;
-	height: 200px;
+	height: 340px;
 }
 #options .box{
-	height: 300px;
+	height: 450px;
 }
 #options .price{
 	font-size: 8px;
@@ -1326,6 +1367,7 @@ footer.column#column2{
 @media only screen and (max-width: 700px){
 input[type="checkbox"] + label span {
 	height: 31px;
+	width: 10%;
 }
 nav{
 	position: fixed;
@@ -1360,10 +1402,10 @@ nav ul li {
 	background: none;
 }
 section#layout .dept p{
-    text-align: justify;
+    text-align: center;
     border-top: solid 2px #555;
     padding: 10px 0px 0px 0px;
-    font-size: 12px;
+    font-size: 14px;
     height: auto;
 }
 section#layout .dept{
@@ -1460,7 +1502,7 @@ section#layout .dept{
     margin-bottom: 40px;
 }
 section#layout .dept p{
-    text-align: justify;
+    text-align: center;
     border-top: solid 2px #555;
     padding: 10px 0px 0px 0px;
     min-height: 100px;
@@ -1508,7 +1550,7 @@ section#options .option p{
 	min-height: 0px;
 }
 .options2 .option2 .heading .headingLeft{
-	width: 90%;
+	width: 70%;
 }
 .options2 .option2 .heading .addthis{
 	position: relative;
@@ -1554,6 +1596,17 @@ footer .content{
 	height: 800px;
 	max-width: 95%;
 	padding: 20px;
+}
+#options .option2 .heading .headingLeft h1{
+	width: 60%;
+	position: relative;
+	left: 10px;
+	text-align: left;
+	margin-bottom: 0px;
+	background:none;
+	padding: 0px;
+	float:left;
+	font-size: 10px;
 }
 }
 
@@ -1609,6 +1662,9 @@ form textarea{
 	padding: 10px 0px 10px 0px;
 	margin-left: 0px;
 	clear:both;
+}
+input.submit3{
+	font-size: 20px;
 }
 
 
