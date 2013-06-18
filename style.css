@@ -766,8 +766,9 @@ button.choice1{
 	font-family: karbonlight;
 	line-height: 20px;
 	padding-bottom: 60px;
-	min-height: 209px;
+	min-height: 230px;
 }
+
 .box .price{
 	font-family: karbonmedium;
 	text-align: center;
@@ -1106,6 +1107,10 @@ a#safari{
 	.topz{
 	width: 23%;
 }
+input[type="radio"] + label span, #sayhello  + label span{
+	width:20%;
+    height:37px;
+}
 }
 @media only screen and (max-width: 1240px) {
 .topz{
@@ -1197,11 +1202,11 @@ input[type="radio"] + label span,  {
 	font-size: 18px;
 }
 #options .option p{
-	height: 220px;
+	height: 340px;
 	font-size: 14px;
 }
 #options .box{
-	height: 300px;
+	height: 500px;
 }
 .option2 .info .price{
 	text-align: center;
@@ -1215,8 +1220,28 @@ input[type="radio"] + label span,  {
 .options2 p{
 	font-size: 14px;
 }
+
+footer img{
+	display:none;
+}
+footer .content{
+	max-width: 90%;
+}
+footer .column#column3{
+	clear:both;
+}
+footer.column#column2{
+	float:right;
 }
 
+}
+@media only screen and (max-width: 900px){
+	nav ul li{
+	display:inline-block;
+	text-align: center;
+	padding: 0px 10px 0px 10px;
+}
+}
 @media only screen and (max-width: 788px) {
 	header .content{
 	max-width: 70%;
@@ -1354,18 +1379,6 @@ section#layout .dept img{
 .options2 .option2 .info .para p{
 	font-size: 10px;
 	padding-right: 10px;
-}
-footer img{
-	display:none;
-}
-footer .content{
-	max-width: 90%;
-}
-footer .column#column3{
-	clear:both;
-}
-footer.column#column2{
-	float:right;
 }
 #connect form input#submit2{
 	text-align: left;
@@ -1555,9 +1568,7 @@ section#options .option p{
     padding: 10px 0px 0px 0px;
     min-height: 100px;
 }
-#options .option p{
-	height: auto;
-}
+
 #options .box{
 	height: auto;
 	min-height: 0px;

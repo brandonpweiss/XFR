@@ -1,3 +1,5 @@
+
+
 <?php
 include('config.php');
 $dt = date("Y-m-d H:i:s");
@@ -370,6 +372,8 @@ mysqli_close($con);
 	<script src="jquery.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="modernizr.js"></script>
+	<link rel="image_src" href="http://www.thexfr.org/images/xfr.png" / >
+	<meta property="og:image" content="http://www.thexfr.org/images/logo.jpg" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="description" content="An innovative resource center for artists and entrepreneurs and a unique venue for the community they inspire."
 </head>
@@ -529,7 +533,7 @@ mysqli_close($con);
 
 <div class="option topoption" id="start">
 			<div class="inner">
-			<button type="button" class="choice1 collapsed">START</button>
+			<button type="button" class="choice1 collapsed">SAY HELLO</button>
 			</div>
 			</div>
 
@@ -564,7 +568,7 @@ mysqli_close($con);
 			<div class="inner">
 			<h2>1. LEARN</h2>
 			<div class="box">
-				<p>One of the core tenants of the XFR concept is self-development.  We're offering a myriad of ways to learn, grow, and experience something new through lectures, hands-on workshops, and individual lessons.  Let us know what you want to learn!</p>
+				<p>One of the core tenets of the XFR concept is self-development.  We're offering a myriad of ways to learn, grow, and experience something new through lectures, hands-on workshops, and individual lessons.  Let us know what you want to learn!</p>
 				<div class="price">SUBSCRIBE AND SHARE</div>
 			</div>
 			<div class="selectbox clearfix"><span class="selectthis">SELECT THIS</span><input type="radio" name="mainservice" value="learn" id="learn"><label for="learn"><span class="transferbttn2"></span></label></div>
@@ -923,7 +927,7 @@ mysqli_close($con);
 			<div class="column left">
 				<div class="inner">
 					<h1>MAKE HISTORY</h1>
-					<p>Built in 1925 as a power station for Manaunk’s “dinky” trolley line, 114 Green Lane has sat idly on the corner of Main Street and Green Lane for well over two decades.  We aim to bring new life to this beautiful historic property, and we hope you’ll join us in lighting it up once again!  We’ve been working on The Transfer Station concept for several years now, and it’s our greatest pleasure to finally be able to invite you to become a part of it.  Sign up, let us know what you think, and share this concept with friends.  Let’s make history in Manayunk.  Together.</p>
+					<p>Built in 1925 as a power station for Manayunk’s “dinky” trolley line, 114 Green Lane has sat idly on the corner of Main Street and Green Lane for well over two decades.  We aim to bring new life to this beautiful historic property, and we hope you’ll join us in lighting it up once again!  We’ve been working on The Transfer Station concept for several years now, and it’s our greatest pleasure to finally be able to invite you to become a part of it.  Sign up, let us know what you think, and share this concept with friends.  Let’s make history in Manayunk.  Together.</p>
 					<p>Adam & Simon Rogers <br>
 					The Transfer Station Co-Founders</p>
 				</div>
@@ -987,7 +991,6 @@ mysqli_close($con);
 	<li>IMAR HUTCHINS  <span class="position">PARTNER</span></li>
 	<li><a target="_blank" href="http://www.makeshift.us">MAKESH/FT</a> <span class="position">OUR SISTER FACILITY FOR MAKERS</span></li>
 </ul>
-
 <p>Site created by Transfer Creative.  Copyright © 2013 THEXFR LLC.  All rights reserved.</p>
 		</div>
 	</div>
