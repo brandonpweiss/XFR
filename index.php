@@ -995,12 +995,12 @@ mysqli_close($con);
 		<script>
 		$(window).resize(function()
 		{
-			if ($(window).width() > 640)
+			if ($(window).width() > 700)
 			{
 				$('nav').css('display', 'block');
 				$('nav').removeClass('open');
 			}
-			else if ($(window).width() < 640)
+			else if ($(window).width() < 701)
 			{
 				$('nav').css('display', 'none');
 			}

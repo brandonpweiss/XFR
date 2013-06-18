@@ -297,11 +297,8 @@ input[type="checkbox"] + label span {
 	border-left: solid medium white;
     height:49px;
 }
-#startstuff input[type="checkbox"] + label span {
-width: 21%;
-}
-input[type="radio"] + label span{
-	width:21%;
+input[type="radio"] + label span, #sayhello  + label span{
+	width:20%;
     height:49px;
 }
 
@@ -1109,10 +1106,6 @@ a#safari{
 	.topz{
 	width: 23%;
 }
-#startstuff input[type="checkbox"] + label span {
-width: 20%;
-height: 37px;
-}
 }
 @media only screen and (max-width: 1240px) {
 .topz{
@@ -1194,7 +1187,7 @@ section#layout .dept p{
     height: 400px;
 
 }
-input[type="radio"] + label span {
+input[type="radio"] + label span,  {
 	height: 37px;
 }
 .selectthis{
@@ -1237,7 +1230,7 @@ input[type="radio"] + label span {
 	font-size: 14px;
 	line-height: 16px;
 }
-input[type="radio"] + label span {
+input[type="radio"] + label span, #sayhello + label span {
 	height: 35px;
 }
 input[type="checkbox"] + label span {
@@ -1245,7 +1238,7 @@ input[type="checkbox"] + label span {
 }
 
 input.topz{
-	width: 98%;	
+	width: 98%;
 	border:none;
 	border-radius:0;
 }
