@@ -925,6 +925,7 @@ textarea{
 	height: 100px;
 	width: 48.8%;
 	font-size: 25px;
+	resize:none;
 }
 
 
@@ -941,6 +942,10 @@ input.submit3{
 	margin-top: 20px;
 }
 
+input.submit3:hover{
+	color: #66cccc;
+	background: #666666;
+}
 /*options section end*/
 
 #oldstation{
@@ -1104,17 +1109,15 @@ a#safari{
 	.topz{
 	width: 23%;
 }
+#startstuff input[type="checkbox"] + label span {
+width: 20%;
+height: 37px;
+}
 }
 @media only screen and (max-width: 1240px) {
 .topz{
 	width: 98%;
 }
-textarea{
-	width: 99%;
-	margin-bottom: 20px;
-}
-}
-@media only screen and (max-width: 1024px) {
 textarea{
 	width: 98%;
 }
