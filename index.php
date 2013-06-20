@@ -1,8 +1,8 @@
 <?php
+include('config.php');
 /* Subscribe */
 if ( isset( $_POST['submit1'] ) )
 {
-include('config.php');
 $dt = date("Y-m-d H:i:s");
 $ip = $_SERVER["REMOTE_ADDR"];
 
@@ -22,7 +22,6 @@ $ip = $_SERVER["REMOTE_ADDR"];
 }
 else if ( isset( $_POST['submit2'] ) ) /* CONNECT */
 {
-include('config.php');
 $dt = date("Y-m-d H:i:s");
 $ip = $_SERVER["REMOTE_ADDR"];
 
@@ -52,7 +51,6 @@ $ip = $_SERVER["REMOTE_ADDR"];
 }
 else if ( isset( $_POST['startsubmit'] ) ) /* START */
 {
-include('config.php');
 $dt = date("Y-m-d H:i:s");
 $ip = $_SERVER["REMOTE_ADDR"];
 
@@ -87,8 +85,6 @@ $ip = $_SERVER["REMOTE_ADDR"];
 }
 else if ( isset( $_POST['worksubmit'] ) ) /* WORK */
 {
-
-include('config.php');
 $dt = date("Y-m-d H:i:s");
 $ip = $_SERVER["REMOTE_ADDR"];
 
@@ -133,8 +129,6 @@ $ip = $_SERVER["REMOTE_ADDR"];
 }
 else if ( isset( $_POST['sellsubmit'] ) ) /* SELL */
 {
-
-include('config.php');
 $dt = date("Y-m-d H:i:s");
 $ip = $_SERVER["REMOTE_ADDR"];
 
@@ -178,8 +172,6 @@ $ip = $_SERVER["REMOTE_ADDR"];
 }
 else if ( isset( $_POST['transfersubmit'] ) ) /* TRANSFER */
 {
-
-include('config.php');
 $dt = date("Y-m-d H:i:s");
 $ip = $_SERVER["REMOTE_ADDR"];
 
