@@ -1,73 +1,137 @@
+
+
 <?php
-ob_start();
-/* Subscribe */
-if ( isset( $_POST['submit1'] ) )
-{
 include('config.php');
 $dt = date("Y-m-d H:i:s");
 $ip = $_SERVER["REMOTE_ADDR"];
-
+/* Subscribe */
+if ( isset( $_POST['submit1'] ) )
+{
 	/* Name */
-	$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+	if ($_POST['name'] != '')
+	{
+		$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$subscribeErrors .= "<span class='errors'>Please enter your name.</span>";
+	};
 
 	/* Email */
-	$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+	if ($_POST['email'] != '')
+	{
+		$sanemail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+		if(!filter_var($sanemail, FILTER_VALIDATE_EMAIL))
+		  {
+		  	$subscribeErrors .= "<span class='errors'>Please enter a valid email.</span>";
+		  } else {
+		  	$email = $sanemail;
+		  };
+	}
+	else
+	{
+		$subscribeErrors .= "<span class='errors'>Please enter your email address.</span>";
+	};
 
 	/* Send to DB */
+	if ($subscribeErrors == NULL)
+	{
 		mysqli_query($con,"INSERT INTO subscribers (ip, dt, firstname, email)
 		VALUES ('$ip', '$dt', '$name', '$email')");
 
-			header("location: thanks.html");
-			exit();
+			header("location:thanks.html");
+	};
 
 }
 else if ( isset( $_POST['submit2'] ) ) /* CONNECT */
 {
-include('config.php');
-$dt = date("Y-m-d H:i:s");
-$ip = $_SERVER["REMOTE_ADDR"];
 
 	/* Name */
-	$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+	if ($_POST['name'] != '')
+	{
+		$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$connectErrors .= "<span class='errors'>Please enter your name.</span>";
+	};
 
 	/* Business Name */
 	$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
 
 	/* Email */
-	$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+	if ($_POST['email'] != '')
+	{
+		$sanemail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+		if(!filter_var($sanemail, FILTER_VALIDATE_EMAIL))
+		  {
+		  	$connectErrors .= "<span class='errors'>Please enter a valid email address.</span>";
+		  } else {
+		  	$email = $sanemail;
+		  };
+	}
+	else
+	{
+		$connectErrors .= "<span class='errors'>Please enter your email address.</span>";
+	};
 
-	/* Phone */
+		/* Phone */
 	$phone = filter_var($_POST['phone'], FILTER_SANITIZE_NUMBER_INT);
 
 	/* Comments */
 	$comments = filter_var($_POST['comments'], FILTER_SANITIZE_STRING);
 
 	/* Send to DB */
-
+	if ($connectErrors == NULL)
+	{
 		mysqli_query($con,"INSERT INTO connect (ip, dt, firstname, businessname, email, phone, comments)
 		VALUES ('$ip', '$dt', '$name', '$businessname', '$email', '$phone', '$comments')");
 
-			header("location: thanks.html");
-			exit();
+		header("location:thanks.html");
+	};
 
 }
 else if ( isset( $_POST['startsubmit'] ) ) /* START */
 {
-include('config.php');
-$dt = date("Y-m-d H:i:s");
-$ip = $_SERVER["REMOTE_ADDR"];
 
 	/* First Name */
-	$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+	if ($_POST['firstname'] != '')
+	{
+		$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your first name.</span>";
+	};
 
 	/* Last name */
-	$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+	if ($_POST['lastname'] != '')
+	{
+		$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your last name.</span>";
+	};
 
 	/* Business name */
 	$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
 
 	/* Email */
-	$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+	if ($_POST['email'] != '')
+	{
+		$sanemail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+		if(!filter_var($sanemail, FILTER_VALIDATE_EMAIL))
+		  {
+		  	$surveyErrors .= "<span class='errors'>Please enter a valid email address.</span>";
+		  } else {
+		  	$email = $sanemail;
+		  };
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your email address.</span>";
+	};
 
 	/* About */
 	$about = filter_var($_POST['about'], FILTER_SANITIZE_STRING);
@@ -79,31 +143,55 @@ $ip = $_SERVER["REMOTE_ADDR"];
 	$mainservice = filter_var($_POST['sayhello'], FILTER_SANITIZE_STRING);
 
 	/* Send to DB */
+	if ($surveyErrors == NULL)
+	{
 		mysqli_query($con,"INSERT INTO start (form, ip, dt, firstname, lastname, businessname, email, about, referrer, mainservice)
 		VALUES ('start', '$ip','$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice')");
-
-			header("location: thanks.html");
-			exit();
+		header("location:thanks.html");
+	};
 
 }
 else if ( isset( $_POST['worksubmit'] ) ) /* WORK */
 {
 
-include('config.php');
-$dt = date("Y-m-d H:i:s");
-$ip = $_SERVER["REMOTE_ADDR"];
-
 	/* First Name */
-	$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+	if ($_POST['firstname'] != '')
+	{
+		$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your first name.</span>";
+	};
 
 	/* Last name */
-	$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+	if ($_POST['lastname'] != '')
+	{
+		$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your last name.</span>";
+	};
 
 	/* Business name */
 	$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
 
 	/* Email */
-	$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+	if ($_POST['email'] != '')
+	{
+		$sanemail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+		if(!filter_var($sanemail, FILTER_VALIDATE_EMAIL))
+		  {
+		  	$surveyErrors .= "<span class='errors'>Please enter a valid email address.</span>";
+		  } else {
+		  	$email = $sanemail;
+		  };
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your email address.</span>";
+	};
 
 	/* About */
 	$about = filter_var($_POST['about'], FILTER_SANITIZE_STRING);
@@ -125,31 +213,55 @@ $ip = $_SERVER["REMOTE_ADDR"];
 	$retailsolution = filter_var($_POST['workretailsolution'], FILTER_SANITIZE_STRING);
 
 	/* Send to DB */
+	if ($surveyErrors == NULL)
+	{
 		mysqli_query($con,"INSERT INTO work (form, ip, dt, firstname, lastname, businessname, email, about, referrer, mainservice, startupkit, officeassistant, retailsolution)
 		VALUES ('work', '$ip','$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice', '$startupkit', '$officeassistant', '$retailsolution')");
-
-			header("location: thanks.html");
-			exit();
+		header("location:thanks.html");
+	};
 
 }
 else if ( isset( $_POST['sellsubmit'] ) ) /* SELL */
 {
 
-include('config.php');
-$dt = date("Y-m-d H:i:s");
-$ip = $_SERVER["REMOTE_ADDR"];
-
 	/* First Name */
-	$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+	if ($_POST['firstname'] != '')
+	{
+		$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your first name.</span>";
+	};
 
 	/* Last name */
-	$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+	if ($_POST['lastname'] != '')
+	{
+		$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your last name.</span>";
+	};
 
 	/* Business name */
 	$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
 
 	/* Email */
-	$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+	if ($_POST['email'] != '')
+	{
+		$sanemail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+		if(!filter_var($sanemail, FILTER_VALIDATE_EMAIL))
+		  {
+		  	$surveyErrors .= "<span class='errors'>Please enter a valid email address.</span>";
+		  } else {
+		  	$email = $sanemail;
+		  };
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your email address.</span>";
+	};
 
 	/* About */
 	$about = filter_var($_POST['about'], FILTER_SANITIZE_STRING);
@@ -170,31 +282,56 @@ $ip = $_SERVER["REMOTE_ADDR"];
 	$retailsolution = filter_var($_POST['sellretailsolution'], FILTER_SANITIZE_STRING);
 
 	/* Send to DB */
+	if ($surveyErrors == NULL)
+	{
 		mysqli_query($con,"INSERT INTO sell (form, ip, dt, firstname, lastname, businessname, email, about, referrer, mainservice, startupkit, officeassistant, retailsolution)
 		VALUES ('sell', '$ip', '$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice', '$startupkit', '$officeassistant', '$retailsolution')");
 
-			header("location: thanks.html");
-			exit();
+		header("location:thanks.html");
+	};
 
 }
 else if ( isset( $_POST['transfersubmit'] ) ) /* TRANSFER */
 {
 
-include('config.php');
-$dt = date("Y-m-d H:i:s");
-$ip = $_SERVER["REMOTE_ADDR"];
-
 	/* First Name */
-	$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+	if ($_POST['firstname'] != '')
+	{
+		$firstname = filter_var($_POST['firstname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your first name.</span>";
+	};
 
 	/* Last name */
-	$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+	if ($_POST['lastname'] != '')
+	{
+		$lastname = filter_var($_POST['lastname'], FILTER_SANITIZE_STRING);
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your last name.</span>";
+	};
 
 	/* Business name */
 	$businessname = filter_var($_POST['businessname'], FILTER_SANITIZE_STRING);
 
 	/* Email */
-	$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+	if ($_POST['email'] != '')
+	{
+		$sanemail = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+		if(!filter_var($sanemail, FILTER_VALIDATE_EMAIL))
+		  {
+		  	$surveyErrors .= "<span class='errors'>Please enter a valid email address.</span>";
+		  } else {
+		  	$email = $sanemail;
+		  };
+	}
+	else
+	{
+		$surveyErrors .= "<span class='errors'>Please enter your email address.</span>";
+	};
 
 	/* About */
 	$about = filter_var($_POST['about'], FILTER_SANITIZE_STRING);
@@ -206,12 +343,15 @@ $ip = $_SERVER["REMOTE_ADDR"];
 	$mainservice = filter_var($_POST['mainservice'], FILTER_SANITIZE_STRING);
 
 	/* Send to DB */
+	if ($surveyErrors == NULL)
+	{
 		mysqli_query($con,"INSERT INTO transfer (form, ip, dt, firstname, lastname, businessname, email, about, referrer, mainservice)
 		VALUES ('transfer', '$ip', '$dt', '$firstname', '$lastname', '$businessname', '$email', '$about', '$referrer', '$mainservice')");
+		header("location:thanks.html");
+	};
 
-			header("location: thanks.html");
-			exit();
 };
+
 mysqli_close($con);
 ?>
 
@@ -250,12 +390,14 @@ mysqli_close($con);
 		</article>
 		<div id="inputs">
 		<form id="topform" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>">
-			<input type="text" name="name" placeholder="YOUR NAME">
-			<input type="text" name="email" placeholder="YOUR EMAIL">
+			<input type="text" name="name" value="<?php $_POST['name'] ?>" placeholder="YOUR NAME">
+			<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="YOUR EMAIL">
 			<input type="submit" name="submit1" id="submit1" value="SUBSCRIBE TO UPDATES">
 		</form>
 		<a target="_blank" class="facebook" href="http://www.facebook.com/thexfr"><img src="images/facebook.jpg" alt="FACEBOOK"></a>
 		<a target="_blank" href="http://www.twitter.com/thexfr"><img src="images/twitter.jpg" alt="TWITTER"></a>
+		<?php
+		echo $subscribeErrors; ?>
 		</div>
 		</div>
 	</header>
@@ -475,12 +617,12 @@ mysqli_close($con);
 <div class="content clearfix">
 	<div class="inner">
 	<div class="toprow">
-	<input type="text" name="firstname" placeholder="FIRST NAME" class="topz names topz1">
-	<input type="text" name="lastname" placeholder="LAST NAME" class="topz names">
-	<input type="text" name="businessname" placeholder="BUSINESS NAME" class="topz names topz1">
-	<input type="text" name="email" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
-	<textarea name="about" placeholder="QUESTIONS OR COMMENTS? (OPTIONAL)" class="comments"></textarea>
-	<textarea name="referrer" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="QUESTIONS OR COMMENTS? (OPTIONAL)" class="comments"></textarea>
+	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
 	<input type="submit" name ="transfersubmit" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
@@ -601,12 +743,12 @@ mysqli_close($con);
 		</div>
 	</div>
 	<div class="toprow">
-	<input type="text" name="firstname" placeholder="FIRST NAME" class="topz names topz1">
-	<input type="text" name="lastname" placeholder="LAST NAME" class="topz names">
-	<input type="text" name="businessname" placeholder="BUSINESS NAME" class="topz names topz1">
-	<input type="text" name="email" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
-	<textarea name="about" placeholder="QUESTIONS AND COMMENTS (OPTIONAL)" class="comments"></textarea>
-	<textarea name="referrer" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="QUESTIONS AND COMMENTS (OPTIONAL)" class="comments"></textarea>
+	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
 	<input type="submit" name ="sellsubmit" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
@@ -715,12 +857,12 @@ mysqli_close($con);
 	<div class="option2">
 
 	<div class="toprow">
-	<input type="text" name="firstname" placeholder="FIRST NAME" class="topz names topz1">
-	<input type="text" name="lastname" placeholder="LAST NAME" class="topz names">
-	<input type="text" name="businessname" placeholder="BUSINESS NAME" class="topz names topz1">
-	<input type="text" name="email" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
-	<textarea name="about" placeholder="QUESTIONS AND COMMENTS (OPTIONAL)" class="comments"></textarea>
-	<textarea name="referrer" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="QUESTIONS AND COMMENTS (OPTIONAL)" class="comments"></textarea>
+	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
 	<input type="submit" name ="worksubmit" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
@@ -754,12 +896,12 @@ mysqli_close($con);
 <div class="content clearfix">
 	<div class="inner">
 	<div class="toprow">
-	<input type="text" name="firstname" placeholder="FIRST NAME" class="topz names topz1">
-	<input type="text" name="lastname" placeholder="LAST NAME" class="topz names">
-	<input type="text" name="businessname" placeholder="BUSINESS NAME" class="topz names topz1">
-	<input type="text" name="email" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
-	<textarea name="about" placeholder="QUESTIONS AND COMMENTS (OPTIONAL)" class="comments"></textarea>
-	<textarea name="referrer" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
+	<input type="text" name="firstname" value="<?php $_POST['firstname'] ?>" placeholder="FIRST NAME" class="topz names topz1">
+	<input type="text" name="lastname" value="<?php $_POST['lastname'] ?>" placeholder="LAST NAME" class="topz names">
+	<input type="text" name="businessname" pvalue="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME" class="topz names topz1">
+	<input type="text" name="email" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS" class="topz rightz"> </div>
+	<textarea name="about" value="<?php $_POST['about'] ?>" placeholder="QUESTIONS AND COMMENTS (OPTIONAL)" class="comments"></textarea>
+	<textarea name="referrer" value="<?php $_POST['referrer'] ?>" placeholder="HOW DID YOU HEAR ABOUT THEXFR (OPTIONAL)" class="comments rightz comments2"></textarea>
 
 	<input type="submit" name ="startsubmit" class="submit3" value="ALL DONE! SUBMIT AND SHARE!">
 </form>
@@ -770,6 +912,7 @@ mysqli_close($con);
 </article>
 <!---end #startstuff---->
 
+<?php echo $surveyErrors; ?>
 </div>
 </div>
 </div>
@@ -793,11 +936,11 @@ mysqli_close($con);
 				<div class="inner">
 					<h1>CONNECT</h1>
 					<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']);?>">
-						<input name="name" type="text" placeholder="FIRST AND LAST NAME">
-						<input name="businessname" type="text" placeholder="BUSINESS NAME">
-						<input name="email" type="text" placeholder="EMAIL ADDRESS">
-						<input name="phone" type="text" placeholder="PHONE NUMBER">
-						<input name="comments" type="text" placeholder="COMMENTS">
+						<input name="name" type="text" value="<?php $_POST['name'] ?>" placeholder="FIRST AND LAST NAME">
+						<input name="businessname" type="text" value="<?php $_POST['businessname'] ?>" placeholder="BUSINESS NAME">
+						<input name="email" type="text" value="<?php $_POST['email'] ?>" placeholder="EMAIL ADDRESS">
+						<input name="phone" type="text" value="<?php $_POST['phone'] ?>" placeholder="PHONE NUMBER">
+						<input name="comments" type="text" value="<?php $_POST['comments'] ?>" placeholder="COMMENTS">
 						<input type="submit" name="submit2" id="submit2" value="SUBMIT">
 					</form>
 					<?php echo $connectErrors; ?>
