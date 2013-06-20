@@ -1,5 +1,4 @@
 <?php
-ob_start();
 /* Subscribe */
 if ( isset( $_POST['submit1'] ) )
 {
